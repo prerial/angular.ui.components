@@ -47,6 +47,7 @@ module.exports = function(grunt) {
 				dest: test_output
 			}
 		},
+
 		karma: {
 			options: {
 				configFile: 'test/karma-conf.js'
