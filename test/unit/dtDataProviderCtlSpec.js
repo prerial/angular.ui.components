@@ -1,7 +1,7 @@
 
 describe('Controllers test', function() {
   //you need to indicate your module in a test
-  beforeEach(module('myApp'));
+  beforeEach(module('prerial'));
 
   describe('dtDataProviderController controller test', function() {
       var compile, scope, ctrl, body = $('body');

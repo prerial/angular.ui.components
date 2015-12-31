@@ -1,7 +1,7 @@
 
 describe('Services test', function() {
 
-  beforeEach(module('myApp'));
+  beforeEach(module('prerial'));
 
     describe('test dtAction service', function() {
 
