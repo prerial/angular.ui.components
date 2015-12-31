@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
-	var app_files = ['app/js/modules.js', 'app/js/*/*.js'],
-		output = 'app/js/main.js',
+	var app_files = ['src/modules.js', 'src/*/*.js'],
+		output = 'target/js/main.js',
 		test_output = 'test/built.js';
 
 // Project configuration.
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 					port: 3000,
 					protocol: 'http',
 					hostname: '*',
-					base: './app',
+					base: './target',
 					keepalive: true,
 //                    debug: true,
 					open: true
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			html: {
-				files: 'app/html/*.html',
+				files: 'target/html/*.html',
 				tasks: ['ngtemplates', 'concat:dist']
 			},
 			js: {
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'app/css/main.css': 'sass/main.scss'
+					'target/css/main.css': 'sass/main.scss'
 				}
 			},
 			dist: {
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'app/css/main.min.css': 'sass/main.scss'
+					'target/css/main.min.css': 'sass/main.scss'
 				}
 			}
 		}

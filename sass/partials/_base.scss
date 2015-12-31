@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  background: $white;
+  margin: 40px;
+//  line-height: 1em;
+   // We are defining the text color with a mixin
+  @include default-text-color($black);
+}
+ 
+#wrapper {
+  background: $white;
+  margin: 0 auto;
+  max-width: 800px;
+}
+ 
+// Fixes overlapping issues
+// Makes the rendered box elements padding, borders, etc.
+// fit into the width
+ 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ 
+article p a {
+  color: $blue;
+  &:hover, &:focus {
+    color: $duke-blue;
+  }
+  &:visited {
+    color: $blue-gray;
+  }
+}
+
+nav#gorMenu1 {
+  margin: 0;
+  padding: 1px 0;
+
+}
+
+ul
+{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+nav ul
+{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  height:21px;
+}
+nav ul:first-child
+{
+  margin-left:20px;
+  cursor: pointer;
+}
+
+nav ul li {
+  display: inline;
+  line-height: 1.7em;
+}
+nav ul li div{
+  float:left;
+  width: 86px;
+  text-align: center;
+  border:1px solid grey;
+  border-top: 0;
+  text-transform: lowercase;
+  font-weight:bold;
+  color: #FFF7E2;
+  @include default-linear-gradient(#EFEFEF, #212121);
+
+}
+nav ul li div:hover
+{
+  color: #fff;
+  @include default-linear-gradient(#C6C6C6, #000);
+
+}
+
