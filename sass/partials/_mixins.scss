@@ -1,0 +1,19 @@
+@mixin default-text-color($tc){
+  color: $tc;
+}
+@mixin default-text-color($tc: $black){
+  color: $tc;
+}
+@mixin default-linear-gradient($tstart: $white, $tend: $black){
+  background: $tstart; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient($tstart, $tend); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($tstart, $tend); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($tstart, $tend); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($tstart, $tend); /* Standard syntax */
+}
+
+/*
+You can define a default value as well if an attribute
+isn't passed
+ 
+*/
