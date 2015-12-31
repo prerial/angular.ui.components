@@ -4,7 +4,7 @@ describe('Directives test', function() {
         var $compile, $rootScope, body = $('body');
 
         // Load the myApp module, which contains the directive
-        beforeEach(module('myApp'));
+        beforeEach(module('prerial'));
 
         // Store references to $rootScope and $compile
         // so they are available to all tests in this describe block

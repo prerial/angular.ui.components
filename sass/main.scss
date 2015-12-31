@@ -1,9 +1,10 @@
 /*@import "compass";*/
-@import "partials/variables";
 /*@import "partials/normalize";*/
+/*@import "compass/css3";*/
+@import "partials/variables";
 @import "partials/mixins";
 @import "partials/base";
-/*@import "compass/css3";*/
+@import "partials/viewport-resizer/base";
 
 #banner{
   padding: 10px;

@@ -13,10 +13,8 @@ module.exports = function(config){
       'test/libs/angular/angular-mocks.js',
 
       // include JS files
-      'app/js/modules.js',
-      'app/js/services/*.js',
-      'app/js/directives/*.js',
-      'app/js/controllers/*.js',
+      'src/modules.js',
+      'src/*/*.js',
 
       //'for-unit-test/**/*.js',
 
@@ -32,9 +30,9 @@ module.exports = function(config){
     ],
     // files to exclude
     exclude : [
-      'app/libs/angular/angular-loader.js'
-      ,'app/libs/angular/*.min.js'
-      ,'app/libs/angular/angular-scenario.js'
+//      'src/libs/angular/angular-loader.js'
+//      ,'src/libs/angular/*.min.js'
+//      ,'src/libs/angular/angular-scenario.js'
     ],
 
     // karma has its own autoWatch feature but Grunt watch can also do this

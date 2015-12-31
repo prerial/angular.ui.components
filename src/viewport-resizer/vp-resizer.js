@@ -1,5 +1,8 @@
-angular.module('prerial', [])
-  .directive('preResizer', function() {
+(function(window, angular) {
+	'use strict';
+
+angular.module('prerial')
+  .directive('resizable', function() {
 
 	return {
 		restrict: 'A',
@@ -47,5 +50,9 @@ angular.module('prerial', [])
 		}
 	};
 });
+
+
+})(window, window.angular);
+
 
 
