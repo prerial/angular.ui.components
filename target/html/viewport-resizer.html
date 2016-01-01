@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="prerial">
 
 <head>
     <meta charset="utf-8" />
 
     <title>Resizable</title>
-<!--
-    <link href="test.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-    <script src="test.js"></script>
-    -->
+
     <link rel="stylesheet" href="../css/main.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
@@ -21,43 +17,41 @@
 
 </head>
 
-<body ng-app="prerial">
+<body>
 
-<main>
+    <main>
 
-    <nav resizable r-direction="horizontal">
-        <div style="overflow:hidden">
-            <h1>1</h1>
+        <nav resizable r-direction="horizontal">
+            <div style="overflow:hidden">
+                <h1>1</h1>
+            </div>
+        </nav>
+
+        <nav id="navone" resizable r-direction="horizontal">
+            <div style="overflow:hidden">
+                <h1>2</h1>
+            </div>
+        </nav>
+
+        <div class="content" style="overflow:hidden">
+
+            <div class="row" resizable r-direction="vertical">
+                <section id="one" resizable r-direction="horizontal" r-width="440">
+                    <p>3</p>
+                </section>
+                <section id="two">
+                    <p>4</p>
+                </section>
+            </div>
+
+            <div class="row">
+                <section id="three" resizable r-direction="horizontal">5</section>
+                <section id="four">6</section>
+            </div>
+
         </div>
-    </nav>
 
-    <nav id="navone" resizable r-direction="horizontal">
-        <div style="overflow:hidden">
-            <h1>2</h1>
-        </div>
-    </nav>
-
-    <div class="content" style="overflow:hidden">
-
-        <div class="row" resizable r-direction="vertical">
-            <section id="one" resizable r-direction="horizontal" r-width="440">
-                <p>3</p>
-            </section>
-            <section id="two">
-                <p>4</p>
-            </section>
-        </div>
-
-        <div class="row">
-            <section id="three" resizable r-direction="horizontal">5</section>
-            <section id="four">6</section>
-        </div>
-
-    </div>
-
-</main>
-
-
+    </main>
 
 </body>
 </html>
