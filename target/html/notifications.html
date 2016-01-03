@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="prerial">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Modal window</title>
+
+    <link rel="stylesheet" href="../css/prerial-components.css" />
+    <link rel="stylesheet" href="../js/plugins/pnotify/jquery.pnotify.default.css">
+    <link rel="stylesheet" href="../js/plugins/pnotify/jquery.pnotify.default.icons.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+    <script src="../js/plugins/jquery.pnotify.min.js"></script>
+
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/controllers/notificationCtl.js"></script>
+
+</head>
+
+<body ng-controller="myListCtrl">
+
+<div class="bs-docs-example">
+    <button ng-click="notification1.show()" class="btn btn-primary">Simple notification</button><br>
+    <br>
+
+    <button ng-click="notification2.show()" class="btn btn-primary">Sticky notice</button><br>
+    <br>
+
+    <button ng-click="notification3.show()" class="btn btn-primary">See Through Notice</button><br>
+    <br>
+
+    <button ng-click="notification4.show()" class="btn btn-primary">No Shadow Notice</button><br>
+    <br>
+
+    <button ng-click="notification5.show()" class="btn btn-primary">Regular Success</button>
+</div>
+
+</body>
+</html>
