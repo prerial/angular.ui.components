@@ -1,0 +1,290 @@
+body.modal-open {
+  overflow: hidden; }
+
+.pre-modal-backdrop,
+.pre-modal-backdrop.fade.in {
+  opacity: 0.54;
+  zoom: 1; }
+.lt-ie9 .pre-modal-backdrop, .lt-ie9
+.pre-modal-backdrop.fade.in {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)"; }
+
+.pre-modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000; }
+
+.pre-modal {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: 1050;
+  width: 580px;
+  margin-left: -280px;
+  background-color: white;
+  border: 1px solid white;
+  outline: 0;
+  font-family: Arial, sans-serif;
+  border-radius: 3px;
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box; }
+.pre-modal.fade {
+  top: -1150%; }
+.pre-modal.fade.in {
+  top: 20%;
+  -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+  -ms-transition: opacity 0.3s linear, top 0.3s ease-out;
+  transition: opacity 0.3s linear, top 0.3s ease-out;
+  opacity: 1;
+  zoom: 1; }
+.pre-modal .close {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  color: #a2a2a2;
+  float: right;
+  z-index: 1;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold; }
+.pre-modal .close.pre-icon-close-box {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 10px;
+  top: 10px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: normal; }
+.pre-modal .close:hover {
+  color: #4a4a4a;
+  opacity: 0.7;
+  zoom: 1; }
+
+.pre-modal-header {
+  position: relative;
+  padding: 12px 10px;
+  background-color: #d1d1d1;
+  border-top: solid 1px white;
+  border-right: solid 1px white;
+  border-bottom: solid 1px white;
+  border-left: solid 1px white; }
+.pre-modal-header h3 {
+  margin: 0;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold; }
+
+.pre-modal-body {
+  position: relative;
+  overflow: auto;
+  padding: 0; }
+
+.pre-modal-footer {
+  padding: 0;
+  margin: 10px;
+  text-align: right;
+  background-color: white;
+  -moz-box-shadow: 0 1px 0 white;
+  -webkit-box-shadow: 0 1px 0 white;
+  box-shadow: 0 1px 0 white;
+  border-radius: 0;
+  border-top: solid 1px transparent;
+  border-right: solid 1px transparent;
+  border-bottom: solid 1px transparent;
+  border-left: solid 1px transparent; }
+.pre-modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px; }
+.pre-modal-footer:before, .pre-modal-footer:after {
+  display: table;
+  line-height: 0;
+  content: ""; }
+.pre-modal-footer:after {
+  clear: both; }
+
+.pre-window-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 9999; }
+.pre-window-wrapper .pre-window {
+  overflow: hidden;
+  position: fixed;
+  min-width: 100px;
+  min-height: 100px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  border: 1px solid white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 3px;
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transform: translate3d(0, 0, 0);
+  /*Forces HA*/
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+.pre-window-wrapper .pre-window .close {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  color: #a2a2a2;
+  float: right;
+  z-index: 1;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold; }
+.pre-window-wrapper .pre-window .close.pre-icon-close-box {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 10px;
+  top: 6px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: normal; }
+.pre-window-wrapper .pre-window .close:hover {
+  color: #4a4a4a;
+  opacity: 0.7;
+  zoom: 1; }
+.pre-window-wrapper .pre-window .pre-window-header {
+  height: 5%;
+  line-height: 5%;
+  padding: 12px 10px;
+  background-color: #d1d1d1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top: solid 1px white;
+  border-right: solid 1px white;
+  border-bottom: solid 1px white;
+  border-left: solid 1px white; }
+.pre-window-wrapper .pre-window .pre-window-header h3 {
+  margin: 0;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: inherit;
+  font-weight: bold; }
+.pre-window-wrapper .pre-window .pre-window-body {
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+.pre-window-wrapper .pre-window .pre-window-footer {
+  height: 10%;
+  line-height: 5%;
+  padding: 12px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+.pre-window-wrapper .pre-window .pre-window-footer .btn {
+  float: right;
+  height: 100%;
+  line-height: inherit;
+  margin-right: 1em; }
+.pre-window-wrapper .pre-window .pre-window-footer .btn:first-child {
+  margin-right: 0; }
+.pre-window-wrapper .pre-window.opacity {
+  -webkit-transition: 0.2s ease-in opacity;
+  -moz-transition: 0.2s ease-in opacity;
+  -ms-transition: 0.2s ease-in opacity;
+  transition: 0.2s ease-in opacity;
+  opacity: 1; }
+.pre-window-wrapper .pre-window.opacity.ng-hide {
+  opacity: 0;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  transition-timing-function: ease-out; }
+.pre-window-wrapper .pre-window.top {
+  -webkit-transition: 0.3s ease-out top;
+  -moz-transition: 0.3s ease-out top;
+  -ms-transition: 0.3s ease-out top;
+  transition: 0.3s ease-out top; }
+.pre-window-wrapper .pre-window.top.ng-hide {
+  top: -100% !important;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -ms-transition-timing-function: ease-in;
+  transition-timing-function: ease-in; }
+.pre-window-wrapper .pre-window.right {
+  -webkit-transition: 0.3s ease-out right;
+  -moz-transition: 0.3s ease-out right;
+  -ms-transition: 0.3s ease-out right;
+  transition: 0.3s ease-out right; }
+.pre-window-wrapper .pre-window.right.ng-hide {
+  right: -100% !important;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -ms-transition-timing-function: ease-in;
+  transition-timing-function: ease-in; }
+.pre-window-wrapper .pre-window.bottom {
+  -webkit-transition: 0.3s ease-out bottom;
+  -moz-transition: 0.3s ease-out bottom;
+  -ms-transition: 0.3s ease-out bottom;
+  transition: 0.3s ease-out bottom; }
+.pre-window-wrapper .pre-window.bottom.ng-hide {
+  bottom: -100% !important;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -ms-transition-timing-function: ease-in;
+  transition-timing-function: ease-in; }
+.pre-window-wrapper .pre-window.left {
+  -webkit-transition: 0.3s ease-out left;
+  -moz-transition: 0.3s ease-out left;
+  -ms-transition: 0.3s ease-out left;
+  transition: 0.3s ease-out left; }
+.pre-window-wrapper .pre-window.left.ng-hide {
+  left: -100% !important;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -ms-transition-timing-function: ease-in;
+  transition-timing-function: ease-in; }
+
+.pre-window-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: black;
+  opacity: 0.5;
+  zoom: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; }
+.pre-window-backdrop.is-shown {
+  display: block; }
+
