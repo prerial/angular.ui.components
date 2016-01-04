@@ -1,15 +1,3 @@
-nav {
-  position: relative;
-  /*
-    z-index: 1;
-    text-align: center;
-    padding: 2.5em 1.75em;
-  */
-  background: #FEE4E4;
-  width: 260px;
-  max-width: 500px;
-  min-width: 65px;
-}
 
 main {
   display: -webkit-box;
@@ -19,10 +7,25 @@ main {
   */
   display: flex;
   height: 100%;
+  height: 600px;
   /*
   */
-  padding-bottom: 70px;
+  padding-bottom: 20px;
   background: #fff;
+  border:1px solid silver;
+}
+
+nav {
+  position: relative;
+  /*
+    z-index: 1;
+    text-align: center;
+    padding: 2.5em 1.75em;
+  */
+  background: #FEE4E4;
+  width: 160px;
+  max-width: 500px;
+  min-width: 65px;
 }
 
 .content {
@@ -108,7 +111,7 @@ section.resizable {
 #one {
   background: #ddd;
   color: #222;
-  flex-basis: 420px;
+  flex-basis: 420px ;
 }
 
 #two {
