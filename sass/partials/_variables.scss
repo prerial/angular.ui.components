@@ -13,6 +13,7 @@ $cyan: #00FFFF;
 $blue: #0000FF;
 $violet: #7F00FF;
 $black: #000000;
+$light-black: #333;
 $duke-blue: #001A57;
 $blue-gray: #6699CC;
 $main-green: #00647D;
@@ -20,6 +21,8 @@ $alice-blue: #F0F8FF;
 $ash-gray: #B2BEB5;
  
 $default-text-color: $black !default;
+
+$percent-100: 100%;
 /*
 You can define a default that is used only if a value isn't
 assigned any place else
