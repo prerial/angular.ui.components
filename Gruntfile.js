@@ -125,5 +125,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-angular-templates');
 	// Default task(s).
-	grunt.registerTask('build', ['concat', 'sass']);
+	grunt.registerTask('build', ['ngtemplates', 'concat','sass']);
 };
