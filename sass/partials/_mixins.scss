@@ -11,6 +11,65 @@
   background: -moz-linear-gradient($tstart, $tend); /* For Firefox 3.6 to 15 */
   background: linear-gradient($tstart, $tend); /* Standard syntax */
 }
+@mixin font($font-size:$font-size-default, $line-height:$line-height-default, $font-weight:$font-weight-normal) {
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+}
+
+@mixin box-shadow ($inset, $x, $y, $blur, $color) {
+  -webkit-box-shadow: $inset $x $y $blur $color;
+  box-shadow: $inset $x $y $blur $color;
+}
+
+@mixin pre-transition-2 ($x, $y) {
+  -webkit-transition: $x, $y;
+  -moz-transition: $x, $y;
+  -o-transition: $x, $y;
+  -ms-transition: $x, $y;
+  transition: $x, $y;
+}
+// Disables content selection in an element
+@mixin pre-unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin bordered($top-color: #d8d8d8, $right-color: #d8d8d8, $bottom-color: #d8d8d8, $left-color: #d8d8d8) {
+  border-top: solid 1px $top-color;
+  border-right: solid 1px $right-color;
+  border-bottom: solid 1px $bottom-color;
+  border-left: solid 1px $left-color;
+}
+
+@mixin padding($top-padding: 10px, $right-padding: 10px, $bottom-padding: 10px, $left-padding: 10px) {
+  padding-top: $top-padding;
+  padding-right: $right-padding;
+  padding-bottom: $bottom-padding;
+  padding-left: $left-padding;
+}
+
+@mixin margin($top-margin: 10px, $right-margin: 10px, $bottom-margin: 10px, $left-margin: 10px) {
+  margin-top: $top-margin;
+  margin-right: $right-margin;
+  margin-bottom: $bottom-margin;
+  margin-left: $left-margin;
+}
+
+@mixin background-clip($background-clip: padding-box) {
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
+// Makes block elements bound to their set dimensions w/o allowing padding to alter final dimensions
+@mixin pre-border-box ($border-box-type: border-box){
+  -webkit-box-sizing: $border-box-type;
+  -moz-box-sizing: $border-box-type;
+  -ms-box-sizing: $border-box-type;
+  box-sizing: $border-box-type;
+}
 
 /*
 You can define a default value as well if an attribute

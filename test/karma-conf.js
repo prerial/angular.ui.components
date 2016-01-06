@@ -10,6 +10,7 @@ module.exports = function(config){
       'test/libs/angular/angular-route.js',
       'test/libs/angular/angular-resource.js',
       'test/libs/jquery/jquery.js',
+      'test/libs/lodash/lodash.js',
       'test/libs/angular/angular-mocks.js',
 
       // include JS files

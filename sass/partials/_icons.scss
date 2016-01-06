@@ -1,0 +1,292 @@
+[class*="pre-icon"] {
+  background: url(img/base-sprite.png);
+  background-position: -100px -80px;
+}
+
+.pre-collapsible-ct .pre-main-ct .pre-toggle-switch .pre-icon-expand,
+.pre-collapsible-ct .pre-main-ct .pre-toggle-switch .pre-icon-collapse,
+.pre-tree .pre-tree-toggle .pre-tree-icon.pre-icon-expand,
+.pre-tree .pre-tree-toggle .pre-tree-icon.pre-icon-collapse,
+.pre-grid-container .pre-body .pre-table .pre-rows-group .expanded .pre-icon-expand,
+.pre-grid-container .pre-body .pre-table .pre-rows-group .expanded .pre-icon-collapse,
+.pre-grid-container .pre-body .pre-table .pre-rows-group .collapsed .pre-icon-expand,
+.pre-grid-container .pre-body .pre-table .pre-rows-group .collapsed .pre-icon-collapse,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .expanded .pre-icon-expand,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .expanded .pre-icon-collapse,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .collapsed .pre-icon-expand,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .collapsed .pre-icon-collapse,
+.pre-grid-container .pre-body .pre-table .pre-row .expanded .pre-icon-expand,
+.pre-grid-container .pre-body .pre-table .pre-row .expanded .pre-icon-collapse,
+.pre-grid-container .pre-body .pre-table .pre-row .collapsed .pre-icon-expand,
+.pre-grid-container .pre-body .pre-table .pre-row .collapsed .pre-icon-collapse,
+.pre-grid-container .pre-body .pre-table .pre-rows-group .expanded /*> .pre-cell > */.pre-icon,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .expanded > .pre-cell > .pre-icon,
+.pre-grid-container .pre-body .pre-table .pre-row.expanded /*.pre-cell >*/ .pre-icon,
+.pre-grid-container .pre-body .pre-table .pre-rows-group .collapsed /*> .pre-cell >*/ .pre-icon,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .collapsed > .pre-cell > .pre-icon,
+.pre-grid-container .pre-body .pre-table .pre-row.collapsed /*> .pre-cell >*/ .pre-icon,
+.pre-grid-container .pre-header .pre-icon {
+  width: 14px;
+  height: 12px;
+}
+
+.pre-grid-container .pre-pager-control .pre-grid-pagination .pre-icon-pager-prev,
+.pre-grid-container .pre-pager-control .pre-grid-pagination .pre-icon-pager-next {
+  width: 20px;
+  height: 19px;
+}
+
+.pre-collapsible-ct .pre-main-ct .pre-toggle-switch .pre-icon-expand,
+.pre-collapsible-ct .pre-main-ct .pre-toggle-switch .pre-icon-collapse,
+.pre-tree .pre-tree-toggle .pre-tree-icon.pre-icon-expand,
+.pre-tree .pre-tree-toggle .pre-tree-icon.pre-icon-collapse {
+  top: 5px;
+}
+
+.pre-grid-container .pre-body .pre-table .pre-rows-group .expanded /*> .pre-cell >*/ .pre-icon,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .expanded > .pre-cell > .pre-icon,
+.pre-grid-container .pre-body .pre-table .pre-row .expanded /*> .pre-cell >*/ .pre-icon,
+.pre-grid-container .pre-body .pre-table .pre-rows-group .collapsed /*> .pre-cell >*/ .pre-icon,
+  //.pre-grid-container .pre-body .pre-table .pre-rows .collapsed > .pre-cell > .pre-icon,
+.pre-grid-container .pre-body .pre-table .pre-row .collapsed /*> .pre-cell >*/ .pre-icon {
+  line-height: 17px;
+}
+
+.pre-icon-search {
+  background-position: -6px -7px;
+}
+
+.pre-icon-arrow-left {
+  background-position: -24px -4px;
+}
+
+.pre-icon-arrow-right {
+  background-position: -44px -4px;
+}
+
+.pre-icon-calendar {
+  background-position: -65px -8px;
+}
+
+.pre-icon-arrow-down {
+  background-position: -3px -23px;
+}
+
+.pre-dropdown.disabled .pre-icon-arrow-down {
+  background-position: -23px -23px;
+}
+
+.collapsed .pre-icon,
+.pre-icon-expand,
+.pre-icon-expand-alt{
+  background-position: -49px -30px;
+}
+
+.expanded .pre-icon,
+.pre-icon-collapse,
+.pre-icon-collapse-alt {
+  background-position: -69px -30px;
+}
+
+.pre-icon-close-box {
+  background-position: -90px -30px;
+}
+
+.pre-icon-sort-asc {
+  background-position: -9px -48px;
+}
+
+.pre-icon-sort-dsc {
+  background-position: -29px -48px;
+}
+
+.pre-icon-pager-prev {
+  background-position: -44px -44px;
+}
+
+.pre-icon-pager-next {
+  background-position: -64px -44px;
+}
+
+.pre-icon-pager-prev.disabled {
+  background-position: -84px -44px;
+}
+
+.pre-icon-pager-next.disabled {
+  background-position: -104px -44px;
+}
+
+.pre-icon-filter {
+  background-position: -50px -70px;
+}
+
+.pre-icon-arrow-up {
+  background-position: -70px -70px;
+}
+
+.pre-icon-edit {
+  background-position: -100px -70px;
+}
+
+.pre-icon-cancel {
+  background-position: -10px -90px;
+}
+
+.pre-icon-save {
+  background-position: -30px -90px;
+}
+
+
+
+
+// DO NOT DELETE CODE BELOW -- for icon font support.
+
+// @font-face {
+// 	font-family: 'Icons';
+// 	src:url('fonts/base-icons.eot');
+// 	src:url('fonts/base-icons.eot?#iefix') format('embedded-opentype'),
+// 		url('fonts/base-icons.woff') format('woff'),
+// 		url('fonts/base-icons.ttf') format('truetype'),
+// 		url('fonts/base-icons.svg#icons') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+// // Use the following CSS code if you want to use data attributes for inserting your icons
+// [data-icon]:before {
+// 	font-family: 'Icons';
+// 	content: attr(data-icon);
+// 	speak: none;
+// 	font-weight: normal;
+// 	font-variant: normal;
+// 	text-transform: none;
+// 	line-height: 1;
+// 	-webkit-font-smoothing: antialiased;
+// }
+
+// Use the following CSS code if you want to have a class per icon
+// Instead of a list of all class selectors,
+// you can use the generic selector below, but it's slower:
+// [class*="icon-"] {
+
+// .pre-icon-arrow-up,
+// .pre-icon-arrow-down,
+// .pre-icon-arrow-down2,
+// .pre-icon-arrow-up2,
+// .pre-icon-sort-dsc,
+// .pre-icon-sort-asc,
+// .pre-icon-arrow-move-up,
+// .pre-icon-arrow-refresh,
+// .pre-icon-attachment,
+// .pre-icon-add-content,
+// .pre-icon-delete-content,
+// .pre-icon-collapse,
+// .pre-icon-expand,
+// .pre-icon-arrow-right,
+// .pre-icon-arrow-left,
+// .pre-icon-calendar,
+// .pre-icon-pager-prev,
+// .pre-icon-pager-next,
+// .pre-icon-close,
+// .pre-icon-close-box,
+// .pre-icon-search,
+// .pre-icon-tooltip,
+// .pre-icon-delete-row,
+// .pre-icon {
+// 	font-family: 'Icons';
+// 	speak: none;
+// 	font-style: normal;
+// 	font-weight: normal;
+// 	font-variant: normal;
+// 	text-transform: none;
+// 	line-height: 1;
+// 	-webkit-font-smoothing: antialiased;
+//     display: block;
+//     color: #000;
+// }
+
+// .pre-icon-arrow-up2:before {
+// 	content: "\e000";
+// }
+
+// .pre-icon-arrow-down2:before {
+// 	content: "\e001";
+// }
+
+// .pre-icon-arrow-down:before,
+// .pre-icon-sort-dsc:before {
+// 	content: "\e002";
+// }
+
+// .pre-icon-arrow-up:before,
+// .pre-icon-sort-asc:before {
+// 	content: "\e003";
+// }
+
+// .pre-icon-arrow-move-up:before {
+// 	content: "\e004";
+// }
+
+// .pre-icon-arrow-refresh:before {
+// 	content: "\e005";
+// }
+
+// .pre-icon-attachment:before {
+// 	content: "\e006";
+// }
+
+// .pre-icon-add-content:before {
+// 	content: "\e007";
+// }
+
+// .pre-icon-delete-content:before {
+// 	content: "\e008";
+// }
+
+// .pre-icon-collapse:before {
+// 	content: "\e009";
+// }
+
+// .pre-icon-expand:before {
+// 	content: "\e00a";
+// }
+
+// .pre-icon-arrow-right:before {
+// 	content: "\e00b";
+// }
+
+// .pre-icon-arrow-left:before {
+// 	content: "\e00c";
+// }
+
+// .pre-icon-calendar:before {
+// 	content: "\e00d";
+// }
+
+// .pre-icon-pager-prev:before {
+//   content: "\e00e";
+// }
+
+// .pre-icon-pager-next:before {
+//   content: "\e00f";
+// }
+
+// .pre-icon-close:before {
+//   content: "\e010";
+// }
+
+// .pre-icon-close-box:before {
+//   content: "\e011";
+// }
+
+// .pre-icon-search:before {
+//   content: "\e012";
+// }
+
+// .pre-icon-tooltip:before {
+//   content: "\e013";
+// }
+
+// .pre-icon-delete-row:before {
+//   content: "\e014";
+// }

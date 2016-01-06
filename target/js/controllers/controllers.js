@@ -85,5 +85,81 @@
 
 })(window, window.angular);
 
+(function(angular) {
+    'use strict';
+
+    angular.module('prerial').controller('comboboxCtrl', ['$scope', '$log', function(scope, $log) {
+        scope.employees = [
+            {
+                name: "Sam",
+                title: "VP",
+                shortkey: "S"
+            },
+            {
+                name: "Felix",
+                title: "Node MQ"
+            },
+            {
+                name: "Wess",
+                title: "Charts Pro"
+            },
+            {
+                name: "Niranjan",
+                title: "JS Pro"
+            },
+            {
+                name: "Chris",
+                title: "JS Pro"
+            },
+            {
+                name: "Jennifer",
+                title: "JS Pro"
+            },
+            {
+                name: "Aaron",
+                title: "JS Pro"
+            },
+            {
+                name: "Kanwaljeet",
+                title: "JS Pro"
+            },
+            {
+                name: "Beth",
+                title: "CSS Pro"
+            },
+            {
+                name: "Lior",
+                title: "JS Pro"
+            },
+            {
+                name: "Raghu",
+                title: "JS Pro"
+            },
+            {
+                name: "John",
+                title: "JS Pro"
+            },
+            {
+                name: "Akhlesh",
+                title: "JS Pro"
+            },
+            {
+                name: "Kevin",
+                title: "JS Pro"
+            }
+        ];
+        scope.myLookup = "";
+        scope.myLookup1 = "";
+        scope.onSelect = function (value, data) {
+            $log.info('Combobox selected:', value, data);
+        };
+
+        scope.onChange = function (value) {
+            $log.info('Combobox changed:', value);
+        };
+
+    }]);
+})(angular);
+
 
 
