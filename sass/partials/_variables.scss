@@ -19,7 +19,204 @@ $blue-gray: #6699CC;
 $main-green: #00647D;
 $alice-blue: #F0F8FF;
 $ash-gray: #B2BEB5;
- 
+// Variable/Parameter Configuration
+
+
+// Specify framework width in pixel without the unit.
+$container-fluid-max-width: 1280;
+$container-fluid-padding-left: 10;
+$container-fluid-padding-right: 10;
+$gutter-width-at-max-width: 10;
+
+// Theme colors
+$color-red-light: #b50f23;
+$color-red-medium: #e2132c;
+$color-red-dark: #b94a48;
+
+$color-pink: #fce7e9;
+
+$color-green-light: #468847;
+$color-green-dark: #006434;
+
+$color-blue-light: #6b8db9;
+$color-blue-medium-1: #18619c;
+$color-blue-medium-2: #546c8b;
+$color-blue-medium-3: #77828c;
+$color-blue-medium-4: #cadaef;
+$color-blue-medium-5: #719cd4;
+$color-blue-dark-1: #0a4374;
+$color-blue-dark-2: #3a4f6a;
+$color-blue-dark-3: #30445e;
+$color-blue-dark-4: #156399;
+
+$color-orange-light: #f89406;
+$color-orange-medium: #eb862e;
+$color-orange-dark: #be4a0b;
+$color-orange-golden: #fea41d;
+
+$color-yellow-light: #fcf8e3;
+$color-yellow-medium: #f5edbf;
+
+$color-gray-light-1: #e3e6e9;
+$color-gray-light-2: #f3f3f3;
+$color-gray-light-3: #f1f3f7;
+$color-gray-light-4: #e5eaf0;
+$color-gray-light-5: #d8dfe8;
+$color-gray-light-6: #d9d9d9;
+$color-gray-light-7: #c2c2c2;
+$color-gray-light-8: #b8b9ba;
+$color-gray-light-9: #f7f8f9;
+$color-gray-medium-1: #cad0d6;
+$color-gray-medium-2: #d2d6d9;
+$color-gray-medium-3: #d7dce0;
+$color-gray-medium-4: #d2d3d2;
+$color-gray-medium-5: #dddede;
+$color-gray-dark-1: #333;
+$color-gray-dark-2: #393939;
+$color-gray-dark-3: #515e6f;
+$color-gray-dark-4: #555;
+
+$color-white: #fff;
+
+$color-transparent: transparent;
+
+// Chart colors
+$color-chart-primary-1: #1e91ca;
+$color-chart-primary-2: #ffa100;
+$color-chart-primary-3: #7ab800;
+$color-chart-primary-4: #8884d5;
+$color-chart-primary-5: #fdc82f;
+$color-chart-primary-6: #c88f42;
+$color-chart-primary-7: #036868;
+$color-chart-primary-8: #888a8c;
+
+$color-chart-secondary-1: #35479c;
+$color-chart-secondary-2: #ea5911;
+$color-chart-secondary-3: #c0d72f;
+$color-chart-secondary-4: #af6fae;
+$color-chart-secondary-5: #dbc2a2;
+$color-chart-secondary-6: #cd1d8c;
+$color-chart-secondary-7: #4a7f28;
+$color-chart-secondary-8: #8e1647;
+
+$color-chart-bar-1: #5eb6e4;
+$color-chart-bar-2: #002350;
+$color-chart-bar-3: #005a8b;
+$color-chart-bar-4: #adafaf;
+
+// Framework
+$body-background-color: $color-white;
+
+// Typography
+$font-family-default: Arial, sans-serif;
+$font-size-default: 12px;
+$line-height-default: 16px;
+
+// Text and link colors
+$text-general: $color-gray-dark-1;
+$text-page-title: $color-blue-dark-1;
+$text-section-title: $color-blue-medium-1;
+$text-primary-link: $color-blue-medium-1;
+$text-primary-visited-link: $color-blue-light;
+$text-primary-hover-link: $color-blue-medium-1;
+$text-navigation-link: $color-gray-dark-3;
+$text-navigation-rollover: $color-orange-medium;
+$text-navigation-selected: $color-orange-dark;
+$text-positive-value: $color-green-dark;
+$text-negative-value: $color-red-light;
+
+// Status colors
+$status-success: $color-green-light;
+$status-important: $color-red-dark;
+$status-warning: $color-orange-light;
+$status-default: $color-yellow-light;
+
+// Chrome colors
+$utility-bar: $color-gray-dark-2;
+$menu-titlebars: $color-blue-medium-2;
+$popover-titlebars: $color-blue-medium-2;
+$secondary-titlebars: $color-gray-medium-1;
+$expand-collapse-l1: $color-gray-medium-2;
+$list-header: $color-gray-medium-2;
+$list-menu-rollover: $color-gray-medium-3;
+$tab-bar: $color-gray-light-1;
+$plating-tab-bar-l1: $color-gray-light-1;
+$plating-tab-bar-l3: $color-gray-light-2;
+
+// Grid colors
+$exhibit-titlebars: $color-gray-dark-3;
+$summary-header: $color-gray-medium-4;
+$filter-rows: $color-gray-medium-5;
+$sortable-column-headings: $color-blue-medium-2;
+$sorted-column-headings: $color-blue-dark-2;
+$row: $color-white;
+$sorted-row: $color-gray-light-3;
+$zebra-row: $color-gray-light-4;
+$sorted-zebra-row: $color-gray-light-5;
+$totals-row: $color-gray-light-6;
+$selected-row: $color-gray-medium-1;
+$rollover-row: $color-gray-medium-3;
+$pending-row: $color-yellow-medium;
+$grid-row-border-width: 1px;
+
+// Border radius
+$border-radius-small: 3px;
+$border-radius-medium: 6px;
+$border-radius-large: 8px;
+
+// Border box
+$border-box-type: border-box;
+
+// Button group
+$button-group-text-color: #35526a;
+$button-group-border-color: #8b9eb6;
+$button-group-hover-text-color: #fff;
+$button-group-hover-border-color: #505d6f;
+$button-group-active-text-color: #fff;
+$button-group-active-border-color: #505d6f;
+$button-group-disabled-text-color: #35526a;
+$button-group-disabled-border-color: #8b9eb6;
+
+// Primary button
+$button-primary-text-color: #fff;
+$button-primary-border-color: #bc6b25;
+$button-primary-hover-text-color: #fff;
+$button-primary-hover-border-color: #505d6f;
+$button-primary-disabled-text-color: #fff;
+$button-primary-disabled-border-color: #bc6b25;
+
+// Secondary button
+$button-secondary-text-color: #363636;
+$button-secondary-border-color: #b7b7b7;
+$button-secondary-hover-text-color: #5f7082;
+$button-secondary-hover-border-color: #b7b7b7;
+$button-secondary-disabled-text-color: #363636;
+$button-secondary-disabled-border-color: #b7b7b7;
+
+// Filter Primary button
+$button-filter-primary-text-color: #35526a;
+$button-filter-primary-border-color: #8b9eb6;
+$button-filter-primary-hover-text-color: #fff;
+$button-filter-primary-hover-border-color: #505d6f;
+$button-filter-primary-disabled-text-color: #35526a;
+$button-filter-primary-disabled-border-color: #8b9eb6;
+
+// Filter Secondary button
+$button-filter-secondary-text-color: #363636;
+$button-filter-secondary-border-color: #b7b7b7;
+$button-filter-secondary-hover-text-color: #5f7082;
+$button-filter-secondary-hover-border-color: #b7b7b7;
+$button-filter-secondary-disabled-text-color: #363636;
+$button-filter-secondary-disabled-border-color: #b7b7b7;
+
+//multi select
+$multi-select-background-color: #999999;
+$multi-select-background-active-color: #1674B2;
+$multi-select-background-hover-color: #1674B2;
+$multi-select-text-color: $color-white;
+$multi-select-remove-icon-color: $color-white;
+$multi-select-font:  $font-family-default;
+
 $default-text-color: $black !default;
 
 $percent-100: 100%;

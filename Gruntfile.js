@@ -6,6 +6,15 @@ module.exports = function(grunt) {
 // Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		ngtemplates:    {
+			prerial:          {
+				src:        'src/**/*.html',
+				dest:       'target/js/templates.js',
+				options:    {
+					htmlmin:  { collapseWhitespace: true, collapseBooleanAttributes: true }
+				}
+			}
+		},
 
 		connect: {
 			server: {
@@ -39,7 +48,7 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			dist: {
-				src: app_files,
+				src: [app_files, '<%= ngtemplates.prerial.dest %>' ],
 				dest: output
 			},
 			test: {
@@ -114,7 +123,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	// Load the plugin that provides the "concat" task.
 	grunt.loadNpmTasks('grunt-contrib-concat');
-
+	grunt.loadNpmTasks('grunt-angular-templates');
 	// Default task(s).
 	grunt.registerTask('build', ['concat', 'sass']);
 };
