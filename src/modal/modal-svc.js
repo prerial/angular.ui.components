@@ -31,14 +31,14 @@
                 shieldEl.addClass('is-shown');
                 bodyEl.append(shieldEl);
 
-                compileTemplate('templates/modal.html')(scope, function (clone) {
+                compileTemplate('src/modal/modal.html')(scope, function (clone) {
                     bodyEl.append(clone);
                     scope.wrapper = modalEl = clone;
                     scope.container = scope.wrapper.find('.pre-window');
                     scope.windowBody = scope.wrapper.find('.pre-window-body');
                 });
 
-                compileTemplate('templates/modalbody.html')(scope, function (clone) {
+                compileTemplate('src/modal/modalbody.html')(scope, function (clone) {
                     scope.content = contentEl = clone;
                     scope.windowBody.append(clone);
                 });
