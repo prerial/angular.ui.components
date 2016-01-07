@@ -91,65 +91,27 @@
     angular.module('prerial').controller('comboboxCtrl', ['$scope', '$log', function(scope, $log) {
         scope.employees = [
             {
+                id: 1,
                 name: "Sam",
                 title: "VP",
-                shortkey: "S"
             },
             {
+                id: 2,
                 name: "Felix",
                 title: "Node MQ"
             },
             {
+                id: 3,
                 name: "Wess",
                 title: "Charts Pro"
             },
             {
-                name: "Niranjan",
-                title: "JS Pro"
-            },
-            {
-                name: "Chris",
-                title: "JS Pro"
-            },
-            {
-                name: "Jennifer",
-                title: "JS Pro"
-            },
-            {
-                name: "Aaron",
-                title: "JS Pro"
-            },
-            {
-                name: "Kanwaljeet",
-                title: "JS Pro"
-            },
-            {
-                name: "Beth",
-                title: "CSS Pro"
-            },
-            {
-                name: "Lior",
-                title: "JS Pro"
-            },
-            {
-                name: "Raghu",
-                title: "JS Pro"
-            },
-            {
-                name: "John",
-                title: "JS Pro"
-            },
-            {
-                name: "Akhlesh",
-                title: "JS Pro"
-            },
-            {
+                id: 4,
                 name: "Kevin",
                 title: "JS Pro"
             }
         ];
-        scope.myLookup = "";
-        scope.myLookup1 = "";
+
         scope.onSelect = function (value, data) {
             $log.info('Combobox selected:', value, data);
         };
@@ -160,6 +122,7 @@
 
     }]);
 })(angular);
+
 
 
 
