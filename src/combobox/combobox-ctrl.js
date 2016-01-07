@@ -4,7 +4,6 @@
     function ComboBoxController(scope, attrs, elem, parse) {
         var ngModel, matches = [],
             input = elem.find('input').val(attrs.placeholder),
-//                    list = $parse( attrs.src ),
             displayText = parse(attrs.display);
 
         this.init = function(ctrl) {
@@ -40,11 +39,6 @@
                 input.val(attrs.placeholder);
             }
         }
-
-        scope.$on('$destroy', function () {
-//            $scope.someElement.remove();
-//            currentWindow.off('resize.' +  $scope.$id);
-        });
 
     }
 
