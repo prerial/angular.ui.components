@@ -8,24 +8,54 @@
 ;(function (document, angular) {
     'use strict';
 
-    function ComboBoxController(scope, attrs) {
-        scope.matches = [];
+    function ComboBoxController(scope, attrs, elem, parse) {
+        var ngModel, matches = [],
+            input = elem.find('input').val(attrs.placeholder),
+//                    list = $parse( attrs.src ),
+            displayText = parse(attrs.display);
+
+        this.init = function(ctrl) {
+            ngModel = ctrl;
+            ngModel.$render = onRender;
+        };
 
         scope.isActive = function (item) {
             var isActive = false;
-            if (scope.matches.length === 1 && scope.selectedValue === item[attrs.field] ) {
+            if (matches.length === 1 && scope.selectedValue === item[attrs.field] ) {
                 isActive = true;
             }
             return isActive;
         };
 
+        scope.$watch(function (){ return ngModel.$viewValue;}, function (newValue) {
+            ngModel.$render();
+            console.log('Watching ngModel: ' + displayText(newValue));
+        });
+
+        scope.itemSelect = function (item) {
+            ngModel.$setViewValue(item);
+            scope.comboShow = false;
+        };
+
+        function onRender() {
+            matches.length = 0;
+            if(ngModel.$viewValue && ngModel.$viewValue[attrs.field]) {
+                matches.push(ngModel.$viewValue);
+                scope.selectedValue = ngModel.$viewValue[attrs.field];
+                input.val(displayText(ngModel.$viewValue));
+            }else {
+                input.val(attrs.placeholder);
+            }
+        }
+
         scope.$on('$destroy', function () {
 //            $scope.someElement.remove();
 //            currentWindow.off('resize.' +  $scope.$id);
         });
+
     }
 
-    ComboBoxController.$inject = ['$scope', '$attrs'];
+    ComboBoxController.$inject = ['$scope', '$attrs', '$element', '$parse'];
 
     angular.module('prerial').controller('ComboBoxController', ComboBoxController);
 
@@ -36,62 +66,34 @@
 
         return {
             restrict: 'E',
-            require: ['?ngModel'],
+            require: ['?ngModel','preCombobox'],
             scope: {
-                src: '='
+                src: '=',
+                field: '@'
             },
             templateUrl: 'src/combobox/combobox.html',
             controller: 'ComboBoxController',
             replace: true,
             link: function (scope, elem, attrs, controllers) {
 
-                var input = elem.find('input').val(attrs.placeholder),
-                    list = $parse( attrs.src ),
-                    displayText = $parse( attrs.display),
-                    ngModelController = controllers[0];
+                var ngModelController = controllers[0],
+                    comboboxController = controllers[1];
 
-                ngModelController.$render = renderCurrentValue;
-                elem.find('.pre-dropdown-menu').width(elem.find('.pre-combobox').width()-2);
-
+                comboboxController.init(ngModelController);
                 scope.comboShow = false;
-                elem.find('.pre-combobox-toggle').on("click", function handleClickEvent( event ) {
-                    if (scope.comboShow){
-                        scope.comboShow = false;
-                    }else{
-                        scope.comboShow = true;
-                    }
+                elem.find('.pre-combobox-toggle').on("click", function handleClickEvent() {
+                    scope.comboShow = !scope.comboShow;
                     scope.$apply();
                 });
+                elem.find('.pre-dropdown-menu').width(elem.find('.pre-combobox').width() - 2);
 
-                scope.$watch(function (){ return ngModelController.$modelValue;}, function (newValue) {
-                    ngModelController.$render();
-                    console.log('Watching ngModel: ' + displayText(newValue));
-                })
-
-                scope.itemSelect = function (item) {
-                    ngModelController.$setViewValue( item );
-                    scope.comboShow = false;
-                }
-
-                function renderCurrentValue() {
-                    scope.matches.length = 0;
-                    if(ngModelController.$viewValue && ngModelController.$viewValue[attrs.field]) {
-                        scope.matches.push(ngModelController.$viewValue);
-                        scope.selectedValue = ngModelController.$viewValue[attrs.field];
-                        input.val(displayText(ngModelController.$viewValue));
-                    }else {
-                        input.val(attrs.placeholder);
-                    }
-                }
             }
-        };
+        }
     }
 
     angular.module('prerial').directive({preCombobox: ComboBoxDirective});
 
-})(document, angular);
-
-;/**
+})(document, angular);;/**
  * @author Akhlesh Tiwari
  * @name Typeahead-combobox data filter service
  * Date: 06/10/2015
