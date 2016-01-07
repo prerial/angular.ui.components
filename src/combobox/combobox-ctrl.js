@@ -3,7 +3,7 @@
 
     function ComboBoxController(scope, attrs, elem, parse) {
         var ngModel, matches = [],
-            input = elem.find('input').val(attrs.placeholder),
+            input = elem.find('input'),
             displayText = parse(attrs.display);
 
         this.init = function(ctrl) {
