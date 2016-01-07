@@ -19,7 +19,7 @@
     });
 
     angular.module('prerial')
-        .directive('dtTest', function(dataActionService) {
+        .directive('dtTest', function() {
 
             return {
                 restrict: 'E',
@@ -93,7 +93,7 @@
             {
                 id: 1,
                 name: "Sam",
-                title: "VP",
+                title: "VP"
             },
             {
                 id: 2,
