@@ -46,6 +46,7 @@
                 input.val(attrs.placeholder);
             }
         }
+        
     }
 
     ComboBoxController.$inject = ['$scope', '$attrs', '$element', '$parse'];
