@@ -1,14 +1,14 @@
 <div>
     <div>
-        <div class="pre-dropdown pre-combobox {{menuClass}}"><div class="input-append pre-input-container">
-            <input class="pre-combobox-input" ng-model="selectedValue" type="text">
+        <div class="pre-dropdown pre-combobox"><div class="input-append pre-input-container">
+            <input class="pre-combobox-input" type="text" value="">
             <span class="add-on pre-combobox-toggle pre-icon-arrow-down" ng-click="toggleDropdown()"></span>
         </div>
-        <div>
-            <ul ng-show='comboShow' class='pre-dropdown-menu pre-combobox-menu' style='max-height:100px'>
-                <li  ng-class="{'active':isActive(item)}" ng-repeat="item in src"><a ng-click="itemSelect(item)">{{item.name}}</a></li>
-            </ul>
+            <div>
+                <ul ng-show='comboShow' class='pre-dropdown-menu pre-combobox-menu' style='max-height:100px'>
+                    <li  ng-class="{'active':isActive(item)}" ng-repeat="item in src"><a ng-click="itemSelect(item)">{{item.name}}</a></li>
+                </ul>
+            </div>
         </div>
+        <div style="margin:10px;font-weight:bold">Selected item: {{selectedValue}}</div>
     </div>
-    <div style="margin:10px;font-weight:bold">Selected item: {{selectedValue}}</div>
-</div>

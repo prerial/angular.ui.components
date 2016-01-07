@@ -8,40 +8,31 @@
 ;(function (document, angular) {
     'use strict';
 
-    function ComboBoxController($scope, $attr) {
+    function ComboBoxController(scope, attrs) {
+        scope.matches = [];
 
-        $scope.matches = [];
-        /**
-         * Selects an item from the menu
-         */
-        $scope.itemSelect = function (item) {
-            $scope.selectedValue = item[$attr.field];
-            $scope.matches.length = 0;
-            $scope.matches.push(item);
-            $scope.comboShow = false;
-        };
-
-        $scope.isActive = function (item) {
+        scope.isActive = function (item) {
             var isActive = false;
-            if ($scope.matches.length === 1 && $scope.selectedValue === item[$attr.field] ) {
+            if (scope.matches.length === 1 && scope.selectedValue === item[attrs.field] ) {
                 isActive = true;
             }
             return isActive;
         };
 
-        $scope.$on('$destroy', function () {
-//            $scope.menuElement.remove();
+        scope.$on('$destroy', function () {
+//            $scope.someElement.remove();
 //            currentWindow.off('resize.' +  $scope.$id);
         });
-     }
+    }
 
     ComboBoxController.$inject = ['$scope', '$attrs'];
 
     angular.module('prerial').controller('ComboBoxController', ComboBoxController);
+
 })(document, angular);;(function (document, angular) {
     'use strict';
 
-    function ComboBoxDirective() {
+    function ComboBoxDirective($parse) {
 
         return {
             restrict: 'E',
@@ -53,17 +44,45 @@
             controller: 'ComboBoxController',
             replace: true,
             link: function (scope, elem, attrs, controllers) {
-                scope.comboShow = false;
-                scope.inputModel = controllers[0];
+
+                var input = elem.find('input').val(attrs.placeholder),
+                    list = $parse( attrs.src ),
+                    displayText = $parse( attrs.display),
+                    ngModelController = controllers[0];
+
+                ngModelController.$render = renderCurrentValue;
                 elem.find('.pre-dropdown-menu').width(elem.find('.pre-combobox').width()-2);
-                elem.find('.pre-combobox-toggle').on('click', function () {
-                    if(scope.comboShow){
+
+                scope.comboShow = false;
+                elem.find('.pre-combobox-toggle').on("click", function handleClickEvent( event ) {
+                    if (scope.comboShow){
                         scope.comboShow = false;
                     }else{
                         scope.comboShow = true;
                     }
                     scope.$apply();
                 });
+
+                scope.$watch(function (){ return ngModelController.$modelValue;}, function (newValue) {
+                    ngModelController.$render();
+                    console.log('Watching ngModel: ' + displayText(newValue));
+                })
+
+                scope.itemSelect = function (item) {
+                    ngModelController.$setViewValue( item );
+                    scope.comboShow = false;
+                }
+
+                function renderCurrentValue() {
+                    scope.matches.length = 0;
+                    if(ngModelController.$viewValue && ngModelController.$viewValue[attrs.field]) {
+                        scope.matches.push(ngModelController.$viewValue);
+                        scope.selectedValue = ngModelController.$viewValue[attrs.field];
+                        input.val(displayText(ngModelController.$viewValue));
+                    }else {
+                        input.val(attrs.placeholder);
+                    }
+                }
             }
         };
     }
@@ -765,7 +784,7 @@ angular.module('prerial')
   'use strict';
 
   $templateCache.put('src/combobox/combobox.html',
-    "<div><div><div class=\"pre-dropdown pre-combobox {{menuClass}}\"><div class=\"input-append pre-input-container\"><input class=\"pre-combobox-input\" ng-model=\"selectedValue\" type=\"text\"> <span class=\"add-on pre-combobox-toggle pre-icon-arrow-down\" ng-click=\"toggleDropdown()\"></span></div><div><ul ng-show=\"comboShow\" class=\"pre-dropdown-menu pre-combobox-menu\" style=\"max-height:100px\"><li ng-class=\"{'active':isActive(item)}\" ng-repeat=\"item in src\"><a ng-click=\"itemSelect(item)\">{{item.name}}</a></li></ul></div></div><div style=\"margin:10px;font-weight:bold\">Selected item: {{selectedValue}}</div></div></div>"
+    "<div><div><div class=\"pre-dropdown pre-combobox\"><div class=\"input-append pre-input-container\"><input class=\"pre-combobox-input\" type=\"text\" value=\"\"> <span class=\"add-on pre-combobox-toggle pre-icon-arrow-down\" ng-click=\"toggleDropdown()\"></span></div><div><ul ng-show=\"comboShow\" class=\"pre-dropdown-menu pre-combobox-menu\" style=\"max-height:100px\"><li ng-class=\"{'active':isActive(item)}\" ng-repeat=\"item in src\"><a ng-click=\"itemSelect(item)\">{{item.name}}</a></li></ul></div></div><div style=\"margin:10px;font-weight:bold\">Selected item: {{selectedValue}}</div></div></div>"
   );
 
 

@@ -2,13 +2,14 @@
 
         <pre-combobox
                 src="employees"
-                ng-model="myLookup"
+                ng-model="selectedItem"
                 field="name"
-                placeholder="Type Here"
+                display="name"
+                placeholder="Select Item"
                 on-select="onSelect(value, data)"
                 on-change="onChange(value)"
                 formatter="comboFormatter(value)"
-                name="empSearch"
+                name="empSelect"
                 required>
         </pre-combobox>
 
@@ -27,13 +28,14 @@
 <div>
         <pre-combobox
                 src="employees"
-                ng-model="myLookup1"
+                ng-model="selectedItem1"
                 field="name"
+                display="( id + '. ' + name + ' - Title: ' + title )"
                 placeholder="Type Here"
                 on-select="onSelect(value, data)"
                 on-change="onChange(value)"
                 formatter="comboFormatter(value)"
-                name="empSearch1"
+                name="empSelect1"
                 required>
         </pre-combobox>
 
