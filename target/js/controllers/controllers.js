@@ -131,6 +131,51 @@
     }]);
 })(angular);
 
+(function(angular) {
+    'use strict';
+
+    angular.module('prerial').controller('gridtagCtrl', ['$scope', function($scope) {
+
+        $scope.buildGrid = function(elemid, options, data){
+            var params = {
+                elid:elemid,
+                fields:[],
+                headers:[],
+                coltypes:[],
+                colwidth:[],
+                data:data.data.Deals
+            };
+
+            options.map(function(item) {
+                params.fields.push(item.field);
+                params.headers.push(item.title);
+                params.coltypes.push(item.format);
+                params.colwidth.push(parseInt(item.width));
+            });
+
+            var mygrid = new Grid();
+            mygrid.init(params);
+            if (parent.document.getElementById("dlayerDiv")) parent.document.getElementById("dlayerDiv").style.visibility = "hidden";
+        }
+    }]);
+
+})(angular);
+
+function disableSelection(target){
+    if (typeof target.onselectstart!="undefined") //IE route
+        target.onselectstart=function(){return false}
+    else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
+        target.style.MozUserSelect="none"
+    else //All other route (ie: Opera)
+        target.onmousedown=function(){return false}
+    target.style.cursor = "default"
+}
+
+function getElementLeft(el){
+    var ol = el.offsetLeft;
+    while ((el = el.offsetParent) != null) { ol += el.offsetLeft; }
+    return ol;
+}
 
 
 
