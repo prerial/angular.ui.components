@@ -1,0 +1,132 @@
+.l a {
+    font-family: Arial;
+    font-size: 12px;
+    text-decoration: underline;
+    color:blue;
+}
+.l a:link {  color:blue;}
+.l a:active {  color:blue;}
+.l a:visited {  color:blue;}
+.l a:hover {  color:blue;}
+
+#gridbox
+{
+	overflow:hidden;
+	white-space:nowrap;
+    position:absolute;
+    top:0px;
+    left:0px;
+    width: 638px;
+    height: 438px;
+/*    border:1px solid #666;*/
+    cursor: default;
+}
+#gridbox1
+{
+	overflow:hidden;
+	white-space:nowrap;
+    position:absolute;
+    top:600px;
+    left:0px;
+    width: 738px;
+    height: 238px;
+    cursor: default;
+}
+.text-span
+{
+    font-size:11px;
+    font-family:arial;
+    overflow:hidden;
+    white-space:nowrap;
+    padding:5px 0px 5px 2px;
+}
+
+table.obj
+{
+	background:#fff;
+	overflow:hidden;
+	table-layout:fixed;
+}
+table.obj th.tblcell
+{
+	font-size:11px;
+	font-family:arial;
+	background-Color:#fff;
+	border: 1px solid;
+	border-color : white Gray Gray white;
+	margin:0px;
+	padding:0px 0px 0px 0px ;
+	font-weight:normal;
+    -moz-user-select:none;
+    overflow:hidden;
+    height:0px !important;
+    text-overflow:ellipsis;
+}
+table.obj th.hdrcell
+{
+	font-size:11px;
+	font-family:arial;
+	background-Color:#D4D0C8;
+	border: 1px solid;
+	border-color : white Gray Gray white;
+	text-align: center;
+	margin:0px;
+	padding:3px 0px 3px 0px ;
+	font-weight:normal;
+    -moz-user-select:none;
+    overflow:hidden;
+}
+table.obj td
+{
+	border: 1px solid;
+	border-color : white Gray Gray white;
+	font-family:Arial;
+	font-size:12px;
+    -moz-user-select:none;
+    overflow:hidden;
+	padding:1px 0px 1px 1px;
+    text-overflow:ellipsis;
+}
+
+table.obj td.cell-right
+{
+    text-align:right;
+	padding:1px 5px 1px 1px;
+}
+
+.se, .n, .e, .s, .w
+{
+	font-size:1px; position:absolute; background-color:#E6E1DA;
+	border:1px solid red;
+}
+.se { cursor:se-resize; height:5px; width:5px; bottom:0px; right:0px; z-index:100; }
+.n { cursor:n-resize;  height:5px; width:100%; top:0px; left:0px; z-index:100; }
+.e { cursor:e-resize;  height:100%; width:5px; top:0px; right:0px; z-index:100; }
+.s { cursor:s-resize;  height:5px; width:100%; bottom:0px; left:0px; z-index:100;}
+.w { cursor:w-resize;  height:100%; width:5px; top:0px; left:0px; z-index:100; }
+
+.title
+{
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	margin-left:12px;
+	margin-top:0px;
+    padding-top:7px;
+    position:relative;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:move;
+}
+.footer
+{
+	font-family:Arial;
+	font-size:11px;
+	font-weight:bold;
+	margin-top:0px;
+	margin-left:12px;
+    padding-top:2px;
+    position:relative;
+    overflow:hidden;
+    cursor:default;
+}

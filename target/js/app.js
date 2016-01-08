@@ -12,7 +12,7 @@
 				.when('/notifications', {controller:'notificationsCtrl', templateUrl:'partials/notifications.html'})
 				.when('/combobox', {controller:'comboboxCtrl', templateUrl:'partials/combobox.html'})
 				.when('/tooltip', {controller:'tooltipCtrl', templateUrl:'partials/tooltip.html'})
-				.when('/tooltip1', {controller:'tooltipCtrl1', templateUrl:'partials/tooltip1.html'})
+				.when('/gridtag', {controller:'gridtagCtrl', templateUrl:'partials/gridtag.html'})
 				.otherwise({
 					redirectTo: '/home'
 				});

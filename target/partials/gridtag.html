@@ -1,0 +1,119 @@
+    <link rel="stylesheet" href="css/table.css" type="text/css"/>
+	<style>
+		[class*="pre-icon"] {
+			background: url(img/base-sprite.png);
+			background-position: -100px -80px; }
+		.close {
+			margin: 0;
+			padding: 0;
+			cursor: pointer;
+			background-color: transparent;
+			border: 0;
+			color: #a2a2a2;
+			float: right;
+			z-index: 1;
+			font-size: 12px;
+			line-height: 12px;
+			font-weight: bold; }
+		.close.pre-icon-close-box {
+		/*    position: absolute; */
+			width: 16px;
+			height: 16px;
+			right: 10px;
+			top: 10px;
+			font-size: 16px;
+			line-height: 16px;
+			font-weight: normal; }
+		.close:hover {
+			color: #4a4a4a;
+			opacity: 0.7;
+			zoom: 1;
+		}
+		.pre-icon-close-box {
+			margin:7px;
+			background-position: -90px -30px;
+		}
+
+		#gridcontextmenu{
+			background: #fff;
+			border: 1px solid #888888;
+			position: absolute;
+			top: 18px;
+			right: 20px;
+		  	box-shadow: 6px 6px 2px #888888;
+		}
+		.sortable {
+			margin: auto;
+			margin-top: 26px;
+			padding: 0;
+			width: 110px;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		.sortable li {
+			list-style: none;
+			border: 1px solid #CCC;
+			background: #F6F6F6;
+			font-family: "Tahoma";
+			color: #1C94C4;
+			margin: 3px;
+			padding: 3px;
+			height: 15px;
+			font-size: 11px;
+		}
+		li.sortable-placeholder {
+			margin: 3px;
+			padding: 3px;
+			border: 1px dashed #CCC;
+			background: none;
+		}
+	</style>
+
+<div>
+
+	<prerial:grid id="gridbox" style="border:1px solid gray">
+		<prerial:column title="Country" field="country" width="80" format="str"> </prerial:column>
+		<prerial:column title="Asset" field="asset" width="190" format="str"> </prerial:column>
+		<prerial:column title="Ref ID" field="refid" width="60" format="str"> </prerial:column>
+		<prerial:column title="Type" field="type" width="50" format="str"> </prerial:column>
+		<prerial:column title="%" field="percent" width="60" format="str"> </prerial:column>
+		<prerial:column title="Face" field="face" width="90" format="str"> </prerial:column>
+		<prerial:column title="Price" field="price" width="60" format="num"> </prerial:column>
+		<prerial:column title="Sale Points" field="points" width="60" format="num"> </prerial:column>
+		<prerial:column title="Date" field="date" width="60" format="dte"> </prerial:column>
+		<prerial:column title="Customer" field="customer" width="310" format="str"> </prerial:column>
+	</prerial:grid>
+<!--
+	<prerial:grid id="gridbox1" style="border:1px solid gray">
+		<prerial:column title="Country" field="country" width="80" format="str"> </prerial:column>
+		<prerial:column title="Asset" field="asset" width="190" format="str"> </prerial:column>
+		<prerial:column title="Ref ID" field="refid" width="60" format="str"> </prerial:column>
+		<prerial:column title="Type" field="type" width="50" format="str"> </prerial:column>
+		<prerial:column title="%" field="percent" width="60" format="str"> </prerial:column>
+		<prerial:column title="Face" field="face" width="90" format="str"> </prerial:column>
+		<prerial:column title="Price" field="price" width="60" format="num"> </prerial:column>
+		<prerial:column title="Sale Points" field="points" width="60" format="num"> </prerial:column>
+		<prerial:column title="Date" field="date" width="60" format="dte"> </prerial:column>
+		<prerial:column title="Customer" field="customer" width="310" format="str"> </prerial:column>
+	</prerial:grid>
+-->
+</div>
+<!--
+    <script src="libs/jquery/jquery-2.1.4.js"></script>
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/lodash/lodash.sambuca.js"></script>
+
+    <script src="js/controllers.js"></script>
+    <script src="js/pre-grid-ctrl.js"></script>
+    <script src="js/pre-grid-dir.js"></script>
+    <script src="js/pre-column-dir.js"></script>
+-->
+    <script src="libs/jquery.sortable.js"></script>
+    <script src="libs/jquery.ui.grid.js"></script>
+
+</body>
+</html>
