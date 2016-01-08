@@ -5,7 +5,7 @@
 	.config( function($routeProvider) {
 
 			$routeProvider
-				.when('/home', {controller:'appController', template:'<h2>Controllers Home</h2>'})
+				.when('/home', {controller:'appController', template:'<h2 class="examples-pane">Controllers Home</h2>'})
 				.when('/data-provider', {controller:'dataProviderController', templateUrl:'partials/data-provider.html'})
 				.when('/modal', {controller:'modalCtrl', templateUrl:'partials/modal.html'})
 				.when('/viewport-resizer', {controller:'viewPortResizeCtrl', templateUrl:'partials/viewport-resizer.html'})
