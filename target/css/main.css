@@ -32,6 +32,10 @@ body {
   overflow: hidden;
 }
 
+.examples-pane {
+  margin-top: 40px;
+}
+
 .topcontainer .ngview {
   box-sizing: border-box;
   position: absolute;
