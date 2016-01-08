@@ -1,4 +1,4 @@
-(function(window, angular) {
+(function() {
 	'use strict';
 
 	angular.module('prerial')
@@ -18,7 +18,7 @@
 		}
     });
 
-})(window, window.angular);
+})();
 
 
 

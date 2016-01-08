@@ -1,4 +1,4 @@
-(function(window, angular) {
+(function() {
 	'use strict';
 
     angular.module('prerial').service('dataActionService', function($http) {
@@ -23,6 +23,6 @@
 */
     });
 
-})(window, window.angular);
+})();
 
 
