@@ -11,6 +11,8 @@
 				.when('/viewport-resizer', {controller:'viewPortResizeCtrl', templateUrl:'partials/viewport-resizer.html'})
 				.when('/notifications', {controller:'notificationsCtrl', templateUrl:'partials/notifications.html'})
 				.when('/combobox', {controller:'comboboxCtrl', templateUrl:'partials/combobox.html'})
+				.when('/tooltip', {controller:'tooltipCtrl', templateUrl:'partials/tooltip.html'})
+				.when('/tooltip1', {controller:'tooltipCtrl1', templateUrl:'partials/tooltip1.html'})
 				.otherwise({
 					redirectTo: '/home'
 				});

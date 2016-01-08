@@ -123,6 +123,15 @@
     }]);
 })(angular);
 
+(function(angular) {
+    'use strict';
+
+    angular.module('prerial').controller('tooltipCtrl', ['$scope', '$log', function(scope, $log) {
+
+    }]);
+})(angular);
+
+
 
 
 
