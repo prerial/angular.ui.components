@@ -19,6 +19,22 @@ body {
     height: $percent-100;
     overflow: hidden;
 }
+
+.topcontainer .ngview {
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  left: 238px;
+  overflow-y: auto;
+  top: 0;
+  bottom: 0;
+  /*
+          top: 47px;
+          bottom: 58px;
+          padding: 0 20px 20px;
+  */
+}
+
 /*
 * {
   box-sizing: border-box;

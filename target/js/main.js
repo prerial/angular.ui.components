@@ -87,7 +87,147 @@
 
     angular.module('prerial').directive({preCombobox: ComboBoxDirective});
 
-})(document, angular);;/**
+})(document, angular);;(function (angular, _) {
+    "use strict";
+
+    angular.module('prerial').service('ContainerService', ContainerService);
+
+    ContainerService.$inject = ['$document'];
+
+    var DATA_KEY = 'pre-container-id',
+        POOL_SIZE = 3;
+
+    var $body,
+        containerBase = document.createElement('div');
+
+    /**
+     * Expands containers pool on demand
+     * @param {Array} pool Array of containers
+     * @returns {{container: Object, inUse: boolean, id: string, rel: null}}
+     */
+    function expandPool(pool) {
+        var $elem = angular.element(containerBase.cloneNode(false)),
+            uid = _.uniqueId('pre-container-'),
+            newContainer = {container: $elem, inUse: false, id: uid, rel: null};
+
+        $elem.appendTo($body).data(DATA_KEY, uid);
+        pool.push(newContainer);
+
+        return newContainer;
+    }
+
+    /**
+     * Initializes containers pool
+     * @param {Array} pool Array of containers
+     */
+    function initPool(pool) {
+        var i = POOL_SIZE;
+        $body = angular.element(document.body);
+
+        /**
+         * Pre-populate the pool of containers
+         */
+        while (i > 0) {
+            expandPool(pool);
+            i--;
+        }
+    }
+
+    function ContainerService() {
+        /**
+         * Holds an array of available containers
+         * @type {Array}
+         */
+        this.containers = [];
+    }
+
+    ContainerService.prototype = {
+        /**
+         * Returns next available container
+         * @param {Element|jQuery} [rel] Related element which requests the container
+         * Related element can be used to create a temporary relationship between the component which requests a container and
+         * a container itself. It can be used to prevent container hiding when clicking over the rel component.
+         * @returns {jQuery}
+         */
+        getContainer: function (rel) {
+            /**
+             * Pre-populate pool of containers on first use
+             */
+            if (!this.containers.length) {
+                initPool(this.containers);
+            }
+
+            var context = _.find(this.containers, {inUse: false});
+            if (!context) {
+                context = expandPool(this.containers);
+            }
+            context.inUse = true;
+            context.rel = rel;
+
+            return context.container;
+        },
+        /**
+         * Releases container from use and marks it as available
+         * Returns element to pristine state by removing event bindings, in-line styles and CSS classes (data preserved)
+         * @param {Element} elem DOM element of the container
+         * @returns {ContainerService}
+         */
+        releaseContainer: function (elem) {
+            var $elem = angular.element(elem),
+                uid = $elem.data(DATA_KEY),
+                context = this.getContainerContext(uid);
+
+            if (context) {
+                context.inUse = false;
+                context.rel = null;
+                $elem.removeAttr('style').removeAttr('class').off().empty();
+            }
+            return this;
+        },
+        /**
+         * Returns an array of all containers currently in-use
+         * @param {Element|jQuery} [rel] Related element used to obtain active container only related to the given object
+         * @returns {Array} Array of containers
+         */
+        getActiveContainers: function (rel) {
+            var filter = {inUse: true};
+            if (rel !== undefined) {
+                filter.rel = rel;
+            }
+
+            return _.chain(this.containers).filter(filter).map(function (n) {
+                return n.container;
+            }).valueOf();
+        },
+        /**
+         * Return container context object by container id
+         * @param {string|Element|jQuery} id Unique container id or element.
+         * @returns {Object}
+         */
+        getContainerContext: function (id) {
+            var context, uid;
+            if (_.isString(id)) {
+                context = _.find(this.containers, {id: id});
+            } else {
+                uid = angular.element(id).data(DATA_KEY);
+                context = uid ? _.find(this.containers, {id: uid}) : undefined;
+            }
+            return context;
+        },
+        /**
+         * Releases all containers
+         * @returns {ContainerService}
+         */
+        releaseAll: function () {
+            var me = this, active = this.getActiveContainers();
+            _.each(active, function (container) {
+                me.releaseContainer(container);
+            });
+            return this;
+        }
+    };
+
+}(angular, _));;/**
  * @author Akhlesh Tiwari
  * @name Typeahead-combobox data filter service
  * Date: 06/10/2015
@@ -502,7 +642,283 @@
         };
     }
 })(angular, _);
-;(function(window, angular) {
+;
+(function (angular, window) {
+    'use strict';
+    /**
+     * Function which returns window scroll offset
+     * @param w
+     * @returns {*}
+     */
+    function getScrollOffsets(w) {
+        // Use the specified window or the current window if no argument
+        w = w || window;
+        // This works for all browsers except IE versions 8 and before
+        if (w.pageXOffset != null) return {
+            x: w.pageXOffset,
+            y: w.pageYOffset
+        };
+        // For IE (or any browser) in Standards mode
+        var d = w.document;
+        if (document.compatMode === "CSS1Compat") {
+            return {
+                x: d.documentElement.scrollLeft,
+                y: d.documentElement.scrollTop
+            };
+        }
+        // For browsers in Quirks mode
+        return {
+            x: d.body.scrollLeft,
+            y: d.body.scrollTop
+        };
+    }
+
+    function getElementScrollOffsets(e) {
+        return {
+            x: e.prop('scrollLeft'),
+            y: e.prop('scrollTop')
+        };
+    }
+
+    function getBounds(elem) {
+        var out = {}, offset = elem.offset();
+
+        angular.extend(out, offset);
+
+        out.width = elem.width();
+        out.height = elem.height();
+
+        return out;
+    }
+
+    angular.module('prerial').provider('ViewportService', ViewportService);
+    function ViewportService() {
+        var $window = angular.element(window),
+            vWidth,
+            vHeight,
+            scrollOffset = getScrollOffsets(window);
+
+
+        function update() {
+            vWidth = $window.width();
+            vHeight = $window.height();
+            scrollOffset = getScrollOffsets(window);
+        }
+
+        this.threshold = 0;
+        this.container = window;
+
+        this.setThreshold = function (t) {
+            this.threshold = t || 0;
+        };
+
+        this.setContainer = function (c) {
+            $window.unbind('scroll resize');
+            this.container = (c && c.nodeType === 1) ? c : window;
+            $window.bind('scroll resize', update);
+        };
+
+        this.$get = function () {
+            $window.bind('scroll resize', update);
+            var me = this, relativeTo;
+            update();
+
+            return {
+                /**
+                 * Detects if element is above the fold
+                 * @param elem
+                 * @param container
+                 * @returns {boolean}
+                 */
+                aboveTheFold: function (elem, container) {
+                    var fold, cBcr, eBcr = getBounds(elem),
+                        cSo, yOffset;
+
+                    relativeTo = container || me.container;
+
+                    if (relativeTo === window) {
+                        fold = scrollOffset.y;
+                        yOffset = scrollOffset.y;
+                    } else {
+                        cSo = getElementScrollOffsets(container);
+                        yOffset = cSo.y;
+                        cBcr = getBounds(relativeTo);
+                        fold = cBcr.top + cSo.y;
+                    }
+
+                    return fold > (eBcr.top + yOffset + me.threshold);
+                },
+                /**
+                 * Detects if element is below a visible fold
+                 * @param elem
+                 * @param container
+                 * @returns {boolean}
+                 */
+                belowTheFold: function (elem, container) {
+                    var fold, cBcr, eBcr = getBounds(elem),
+                        cSo, yOffset;
+
+                    relativeTo = container || me.container;
+
+                    if (relativeTo === window) {
+                        fold = vHeight + scrollOffset.y;
+                        yOffset = scrollOffset.y;
+                    } else {
+                        cSo = getElementScrollOffsets(container);
+                        yOffset = cSo.y;
+                        cBcr = getBounds(relativeTo);
+                        fold = cBcr.top + cBcr.height + cSo.y;
+                    }
+
+                    return fold <= eBcr.top + yOffset - me.threshold;
+                },
+                /**
+                 * Detects if element is to the right of the fold
+                 * @param elem
+                 * @param container
+                 * @returns {boolean}
+                 */
+                rightOffFold: function (elem, container) {
+                    var fold, cBcr, eBcr = getBounds(elem);
+                    relativeTo = container || me.container;
+
+                    if (relativeTo === window) {
+                        fold = vWidth + scrollOffset.x;
+                    } else {
+                        cBcr = getBounds(relativeTo);
+                        fold = cBcr.left + cBcr.width;
+                    }
+
+                    return fold <= eBcr.left - me.threshold;
+                },
+                /**
+                 * Detects is element is to the left off the fold
+                 * @param elem
+                 * @param container
+                 * @returns {boolean}
+                 */
+                leftOffFold: function (elem, container) {
+                    var fold, cBcr, eBcr = getBounds(elem);
+                    relativeTo = container || me.container;
+
+                    if (relativeTo === window) {
+                        fold = scrollOffset.x;
+                    } else {
+                        cBcr = getBounds(relativeTo);
+                        fold = cBcr.left;
+                    }
+
+                    return fold >= eBcr.left + me.threshold + eBcr.width;
+                },
+                /**
+                 * Checks if element is in view
+                 * @param elem
+                 * @param container
+                 * @returns {boolean}
+                 */
+                inView: function (elem, container) {
+                    return !this.rightOffFold(elem, container) && !this.leftOffFold(elem, container) && !this.belowTheFold(elem, container) && !this.aboveTheFold(elem, container);
+                },
+                /**
+                 * Checks if elements' height fits within a window or container
+                 * @param elem
+                 * @param container
+                 * @returns {boolean}
+                 */
+                fitsHeight: function (elem, container) {
+                    update();
+
+                    var fold, cBcr, eBcr = getBounds(elem);
+                    relativeTo = container || me.container;
+
+                    if (relativeTo === window) {
+                        fold = vHeight + scrollOffset.y;
+                    } else {
+                        cBcr = getBounds(relativeTo);
+                        fold = cBcr.height + scrollOffset.y;
+                    }
+                    return fold > eBcr.top + eBcr.height + me.threshold;
+                },
+                /**
+                 * Checks if elements' width fits within a window or container
+                 * @param elem
+                 * @param container
+                 * @returns {boolean}
+                 */
+                fitsWidth: function (elem, container) {
+                    update();
+
+                    var fold, cBcr, eBcr = getBounds(elem);
+                    relativeTo = container || me.container;
+
+                    if (relativeTo === window) {
+                        fold = vWidth + scrollOffset.x;
+                    } else {
+                        cBcr = getBounds(relativeTo);
+                        fold = cBcr.width + scrollOffset.x;
+                    }
+                    return fold > eBcr.left + eBcr.width + me.threshold;
+                },
+                /**
+                 * Returns an offset relative to the container
+                 * @param {jQuery} elem
+                 * @param {jQuery} [container]
+                 */
+                getRelativeBounds: function (elem, container) {
+                    relativeTo = container || me.container;
+                    var cBcr = getBounds(relativeTo), eBcr = getBounds(elem);
+
+                    eBcr.top = ~(cBcr.top - eBcr.top) + 1;
+                    eBcr.left = ~(cBcr.left - eBcr.left) + 1;
+
+                    return eBcr;
+                },
+
+                /**
+                 * Returns true if an element positioned at X,Y will fit entirely in the view, else returns false.
+                 * @param x - X coordinate to test
+                 * @param y - y coodinate to test
+                 * @param elem - {jQuery} element being positioned
+                 * @param container - {jQuery} container for the element
+                 */
+
+                coordinatesInView: function(x, y, elem, container) {
+
+                    var relativeTo = container || $(me.container), cBcr, eBcr=getBounds(elem), left, top;
+
+                    if (relativeTo[0] === window) {
+                        left = scrollOffset.x;
+                        top = scrollOffset.y;
+                    } else {
+                        cBcr = getElementScrollOffsets(relativeTo);
+                        left = cBcr.x;
+                        top = cBcr.y;
+                        y = y+top;
+                        x = x+left;
+                    }
+
+                    var tl = {x: left, y: top}; // top left of container
+                    var tr = {x: tl.x + relativeTo.innerWidth(), y: tl.y}; //top right of container
+                    var bl = {x: tl.x, y: tl.y + relativeTo.innerHeight()}; // bottom left of container
+
+
+                    if (y < tl.y || y > bl.y) return false; // is the proposed top left y coordinate in view
+                    if (x < tl.x || x > tr.x) return false; // is the proposed top left x coordinate in view
+                    if (((y + eBcr.height) < tl.y) || ((y + eBcr.height) > bl.y)) return false; // will the bottom of the element still be in view
+                    if (((x + eBcr.width) < tl.x) || ((x + eBcr.width) > tr.x)) return false; // will the far right of the element still be in view
+
+                    return true;
+
+                },
+
+                /**
+                 * Returns window scroll offset
+                 */
+                getScrollOffsets: getScrollOffsets
+            };
+        };
+    }
+})(angular, window);;(function(window, angular) {
 	'use strict';
 
 	angular.module('prerial')
@@ -718,7 +1134,177 @@
             }
         };
     });
-})(angular);;(function(window, angular) {
+})(angular);;(function (angular) {
+    'use strict';
+
+    function PopoverDirective(){
+        return {
+            restrict: 'A',
+
+            controller:'TooltipController',
+            require: ['saPopover'],
+            compile: function (tElement, tAttrs) {
+
+                // remove title attribute so default browser behavior doesn't pick it up.
+                tAttrs.saTitle = tAttrs.title;
+
+                tAttrs.title = "";
+
+                tElement.attr("title","");
+
+                var customContent = tElement.find(".custom-content")
+
+                if (customContent.length>0) {
+                    tAttrs.customContent = customContent[0].outerHTML;
+                    customContent.remove();
+                }
+
+                return function(scope, elem, attrs, ctrls){
+                    var popoverCtrl = ctrls[0];
+
+                    attrs.tooltipTemplate = 'assets/d/sa-tooltip/sa-popover.html';
+                    attrs.tooltipArrowClass = "popover-arrow";
+                    attrs.toolTipContentClass = "popover-inner";
+                    attrs.isPopover = true;
+                    attrs.toolTipClasses = "sa-popover popover " + (( attrs.popoverClass ) ? attrs.popoverClass : "");
+
+                    popoverCtrl.init(elem, attrs);
+
+                    function showTooltip(e){
+                        var containerEl;
+                        containerEl = popoverCtrl.showTooltip(e);
+
+                    }
+
+                    if (attrs.toggleMode === 'click') {
+
+                        elem.on("click.poEvents", showTooltip);
+
+                    } else {
+
+                        elem.on("mouseover.poEvents", showTooltip);
+
+                        elem.on("mouseout.poEvents", popoverCtrl.hideTooltip);
+                    }
+
+                    elem.on("$destroy", function(e){
+                        elem.off(".poEvents");
+                        popoverCtrl.cleanUp();
+                    });
+                }
+            }
+        }
+    }
+
+    angular.module('prerial').directive('saPopover', PopoverDirective)
+}(angular));;/**
+ * Created by Mikhail on 1/7/2016.
+ */
+(function () {
+    'use strict';
+
+    function TooltipController( attrs, elem, $templateCache, tooltipService) {
+
+        var titleHold, template, dimensions;
+
+        this.hideTooltip = function() {
+            if (template) {
+                elem.attr("title", titleHold);
+                template.remove();
+            }
+        };
+
+        this.showTooltip = function(e) {
+            titleHold = elem.attr("title");
+            elem.attr("title", "");
+            if (!template) {
+                template = $($templateCache.get('src/tooltip/tooltip.html'));
+            }
+            template.find('.tooltip-inner').html(attrs.title);
+            template.addClass("pre-tooltip tooltip top").show();
+            $('body').append(template);
+//            dimensions = tooltipService.getDimensions(elem, $('.tooltip-container'), $('.tooltip-tooltip-arrow'), true);
+            var top = elem.offset().top - ($('.tooltip-container').height() + elem.height());
+            var left = e.clientX - elem.width()/2;
+            template.css('left', left).css('top', top);
+        };
+
+    }
+
+    TooltipController.$inject = ['$attrs', '$element', '$templateCache','TooltipService'];
+
+    angular.module('prerial').controller('TooltipController', TooltipController);
+
+})();;(function () {
+    'use strict';
+
+    function TooltipDirective() {
+
+        return {
+            restrict: 'A',
+            require: ['preTooltip'],
+            controller: 'TooltipController',
+            link: function (scope, elem, attrs, controllers) {
+
+                var comboboxController = controllers[0];
+
+                elem.on("mouseover", function(e) {
+                    comboboxController.showTooltip(e);
+                });
+
+                elem.on("mouseout", function(e) {
+                    comboboxController.hideTooltip(e);
+                });
+            }
+        }
+    }
+
+    angular.module('prerial').directive({preTooltip: TooltipDirective});
+
+})();;(function () {
+    "use strict";
+
+    angular.module('prerial').service('TooltipService', TooltipService);
+
+    function TooltipService(){
+
+        this.getDimensions = function(elem, container, tooltipArrow, isVisible){
+
+            var offset = elem.offset();
+
+            var linkWidth = elem.prop('offsetWidth');
+
+            var linkHeight = elem.prop('offsetHeight');
+
+            if (!isVisible) container.css({display: "block", position: "absolute", visibility: "hidden"});
+
+            var tipWidth = container.prop('offsetWidth');
+
+            var tipHeight = container.prop('offsetHeight');
+
+            var tooltipArrowOffsetLeft = tooltipArrow.prop("offsetLeft");
+
+            var tooltipArrowWidth = tooltipArrow.prop("offsetWidth");
+
+            var tooltipArrowHeight = tooltipArrow.prop("offsetHeight");
+
+            if (!isVisible) container.css({display: "none", position: "", visibility: ""});
+
+            return {
+                "offset" : offset,
+                "linkWidth" : linkWidth,
+                "linkHeight" : linkHeight,
+                "tipWidth" : tipWidth,
+                "tipHeight" : tipHeight,
+                "tooltipArrowOffsetLeft" : tooltipArrowOffsetLeft,
+                "tooltipArrowWidth" : tooltipArrowWidth,
+                "tooltipArrowHeight" : tooltipArrowHeight
+            };
+        }
+
+    }
+}());
+;(function(window, angular) {
 	'use strict';
 
 angular.module('prerial')
@@ -791,6 +1377,16 @@ angular.module('prerial')
 
   $templateCache.put('src/modal/modalbody.html',
     "<div style=\"width:200px;height:60px;margin:20px\">Hello Modal!</div>"
+  );
+
+
+  $templateCache.put('src/tooltip/popover.html',
+    "<div class=\"pre-popover-wrapper\"><div class=\"popover-arrow\"></div><button class=\"close pre-icon-close-box\" type=\"button\"></button><div class=\"popover-inner\"><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div></div>"
+  );
+
+
+  $templateCache.put('src/tooltip/tooltip.html',
+    "<div class=\"tooltip-container\"><span class=\"tooltip-arrow\"></span><p class=\"tooltip-inner\"></p></div>"
   );
 
 }]);
