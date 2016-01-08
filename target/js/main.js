@@ -227,13 +227,7 @@
         }
     };
 
-}(angular, _));;/**
- * @author Akhlesh Tiwari
- * @name Typeahead-combobox data filter service
- * Date: 06/10/2015
- */
-
-(function (angular) {
+}(angular, _));;(function (angular) {
     'use strict';
 
     function filterService($filter) {
@@ -918,7 +912,7 @@
             };
         };
     }
-})(angular, window);;(function(window, angular) {
+})(angular, window);;(function() {
 	'use strict';
 
 	angular.module('prerial')
@@ -969,11 +963,11 @@
     });
 
 
-})(window, window.angular);
+})();
 
 
 
-;(function(window, angular) {
+;(function() {
 	'use strict';
 
     angular.module('prerial').service('dataActionService', function($http) {
@@ -998,10 +992,10 @@
 */
     });
 
-})(window, window.angular);
+})();
 
 
-;(function (w, angular) {
+;(function () {
     'use strict';
 
     angular.module('prerial').controller('dtDataProviderController', DataProviderController);
@@ -1014,10 +1008,10 @@
 		}
     }
 
-})(window, window.angular);
+})();
 
 
-;(function(window, angular) {
+;(function() {
 	'use strict';
 
 	angular.module('prerial')
@@ -1037,7 +1031,7 @@
 		}
     });
 
-})(window, window.angular);
+})();
 
 
 

@@ -1,9 +1,3 @@
-/**
- * @author Akhlesh Tiwari
- * @name Typeahead-combobox data filter service
- * Date: 06/10/2015
- */
-
 (function (angular) {
     'use strict';
 

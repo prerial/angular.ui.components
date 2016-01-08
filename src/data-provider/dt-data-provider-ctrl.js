@@ -1,4 +1,4 @@
-(function (w, angular) {
+(function () {
     'use strict';
 
     angular.module('prerial').controller('dtDataProviderController', DataProviderController);
@@ -11,6 +11,6 @@
 		}
     }
 
-})(window, window.angular);
+})();
 
 
