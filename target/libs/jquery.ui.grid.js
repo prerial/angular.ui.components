@@ -135,10 +135,12 @@ var Grid  =  function () {
 		});
 	};
 	var oncontextmenu = function(e){
+
 		if(e.preventDefault != undefined)
 		e.preventDefault();
 		if(e.stopPropagation != undefined)
 		e.stopPropagation();
+
 	};
 	var onmousedown = function(evt){
 		var headarr = [];
@@ -170,11 +172,11 @@ var Grid  =  function () {
 	};
 
 	var setGridEvents = function(){
-		$('body').bind("contextmenu",oncontextmenu);
+		$('#gridbox').bind("contextmenu",oncontextmenu);
 		$('.jqRow').bind('click', highlight);
 		$('#' + _id + 'ScrollArea').bind('scroll', onscroll);
 		$('.sort-' + _id).bind('click', onsort)
-		$('body').bind("contextmenu",oncontextmenu);
+//		$('body').bind("contextmenu",oncontextmenu);
 		$('.hdrcell').on('mousedown',onmousedown);
 	};
 
