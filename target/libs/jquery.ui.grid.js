@@ -5,19 +5,19 @@ Array.prototype.move = function(from, to){
 };
 var Grid  =  function () {
 	var _this = this,
-	gridwidth = 0,
-	gridheight = 0,
-	hiliteHold = null,
-	dataArray = [],
-	sortIndex = -1,
-	headerArray = [],
-	typeArray = [],
-	widthArray = [],
-	element = null,
-	_id = '',
-	_table = null,
-	_header = null,
-	_tbody = null;
+		gridwidth = 0,
+		gridheight = 0,
+		hiliteHold = null,
+		dataArray = [],
+		sortIndex = -1,
+		headerArray = [],
+		typeArray = [],
+		widthArray = [],
+		element = null,
+		_id = '',
+		_table = null,
+		_header = null,
+		_tbody = null;
 
 	this.init = function (params) {
 		element = $('#' + params.elid);
@@ -135,12 +135,10 @@ var Grid  =  function () {
 		});
 	};
 	var oncontextmenu = function(e){
-
 		if(e.preventDefault != undefined)
-		e.preventDefault();
+			e.preventDefault();
 		if(e.stopPropagation != undefined)
-		e.stopPropagation();
-
+			e.stopPropagation();
 	};
 	var onmousedown = function(evt){
 		var headarr = [];
@@ -172,11 +170,10 @@ var Grid  =  function () {
 	};
 
 	var setGridEvents = function(){
-		$('#gridbox').bind("contextmenu",oncontextmenu);
+		$('body').bind("contextmenu",oncontextmenu);
 		$('.jqRow').bind('click', highlight);
 		$('#' + _id + 'ScrollArea').bind('scroll', onscroll);
 		$('.sort-' + _id).bind('click', onsort)
-//		$('body').bind("contextmenu",oncontextmenu);
 		$('.hdrcell').on('mousedown',onmousedown);
 	};
 
@@ -185,48 +182,50 @@ var Grid  =  function () {
 		$('.jqRow').unbind('click', highlight);
 		$('#' + _id + 'ScrollArea').unbind('scroll', onscroll);
 		$('.sort-' + _id).unbind('click', onsort)
-		$('body').unbind("contextmenu",oncontextmenu);
 		$('.hdrcell').off('mousedown',onmousedown);
 	}
 };
 
 var GridSort = function(){
-    var cellindex = null;
-    this.dosort = function(arr, arrtype, idx){
-        cellindex = idx;
-        return arr.sort(sortype[arrtype[idx]]);
-    };
-    var getCellContent = function(row){
-        return $(row).children('td')[cellindex].childNodes[0].innerHTML.toUpperCase();
-    };
-    var getCellsContent = function(row1, row2){
-        return {
-            one:$(row1).children('td')[cellindex].childNodes[0].innerHTML.toUpperCase(),
-            two:$(row2).children('td')[cellindex].childNodes[0].innerHTML.toUpperCase()
-        }
-    };
-    var sortype = {
-        str: function(row1,row2){
-            var cells = getCellsContent(row1,row2);
-	        return (cells.one < cells.two) ? -1 : (cells.one > cells.two) ? 1 : 0;
-        },
-        num: function(row1,row2){
-            var cells = getCellsContent(row1,row2);
-	        return cells.one.replace(/[^0-9.\-]/g,"") - cells.two.replace(/[^0-9.\-]/g,"");
-        },
-        dte: function(row1,row2){
-            return Date.parse(getCellContent(row1)) - Date.parse(getCellContent(row2));
-        }
-    };
+	var cellindex = null;
+	this.dosort = function(arr, arrtype, idx){
+		cellindex = idx;
+		return arr.sort(sortype[arrtype[idx]]);
+	};
+	var getCellContent = function(row){
+		return $(row).children('td')[cellindex].childNodes[0].innerHTML.toUpperCase();
+	};
+	var getCellsContent = function(row1, row2){
+		return {
+			one:$(row1).children('td')[cellindex].childNodes[0].innerHTML.toUpperCase(),
+			two:$(row2).children('td')[cellindex].childNodes[0].innerHTML.toUpperCase()
+		}
+	};
+	var sortype = {
+		str: function(row1,row2){
+			var cells = getCellsContent(row1,row2);
+			return (cells.one < cells.two) ? -1 : (cells.one > cells.two) ? 1 : 0;
+		},
+		num: function(row1,row2){
+			var cells = getCellsContent(row1,row2);
+			return cells.one.replace(/[^0-9.\-]/g,"") - cells.two.replace(/[^0-9.\-]/g,"");
+		},
+		dte: function(row1,row2){
+			return Date.parse(getCellContent(row1)) - Date.parse(getCellContent(row2));
+		}
+	};
 };
 
 var ColumnResize = function(){
 
-    var blnResizeActive = false,
+	var blnResizeActive = false,
 		blnResizeAction = false,
 		cellActive = null,
 		mouseOverCell = null,
 		container = null,
+		containerOffset = null,
+		containerOffsetLeft = null,
+		scrollLeft = null,
 		id = null,
 		table = null,
 		header = null,
@@ -236,12 +235,15 @@ var ColumnResize = function(){
 		hScrollArea = null,
 		scrollArea  = null;
 
-    this.initialize = function(gridparams){
+	this.initialize = function(gridparams){
 		blnResizeActive = false;
 		blnResizeAction = false;
 		cellActive = null;
 		mouseOverCell = null;
 		container = gridparams.element[0];
+		containerOffset = gridparams.element.offset(),
+			containerOffsetLeft = containerOffset.left,
+			scrollLeft = 0,
 		id = gridparams._id;
 		table = gridparams.table;
 		header = gridparams.header;
@@ -250,12 +252,12 @@ var ColumnResize = function(){
 		celllength = gridparams.celllength;
 		hScrollArea = gridparams.hScrollArea;
 		scrollArea  = gridparams.scrollArea;
-    	setColumnResizeEvents();
-    };
-    function changeCursor(event){
-        if(mouseOverCell.cellIndex < celllength){
-			var topElementOffset = (container.parentNode.parentNode.tagName == "DIV")?container.parentNode.parentNode.offsetLeft:0;
-			if(event.pageX > $(mouseOverCell).position().left + mouseOverCell.offsetWidth - scrollArea.scrollLeft - 5){
+		setColumnResizeEvents();
+	};
+	function changeCursor(event){
+		if(mouseOverCell.cellIndex < celllength){
+			if(event.pageX > $(mouseOverCell).offset().left + mouseOverCell.offsetWidth - 5){
+//				if(event.pageX > $(mouseOverCell).offset().left + mouseOverCell.offsetWidth + scrollArea.scrollLeft - 5){
 				mouseOverCell.style.cursor = "e-resize";
 				blnResizeActive = true;
 			}else{
@@ -263,61 +265,61 @@ var ColumnResize = function(){
 				blnResizeActive = false;
 			}
 		}
-    };
-    var resetHeaderWidth = function(){
-	    hScrollArea.style.width = (container.offsetWidth > table.offsetWidth)? parseInt(container.offsetWidth)+"px" : parseInt(table.offsetWidth)+"px";
-    };
-    function doScroll(){
-        hScrollArea.style.left = - scrollArea.scrollLeft+"px";
-        resetHeaderWidth();
-    };
-    var mousemove = function(event){
-        blnHeader = false;
-        evt = window.event || event;
-        var el = evt.srcElement || evt.target;
+	}
+	var resetHeaderWidth = function(){
+		hScrollArea.style.width = (container.offsetWidth > table.offsetWidth)? parseInt(container.offsetWidth)+"px" : parseInt(table.offsetWidth)+"px";
+	};
+	function doScroll(){
+		scrollLeft = scrollArea.scrollLeft;
+		hScrollArea.style.left = - scrollLeft + "px";
+		resetHeaderWidth();
+	}
+	var mousemove = function(event){
+		blnHeader = false;
+		evt = window.event || event;
+		var el = evt.srcElement || evt.target;
 		if(el.nodeName!="TH"){el = el.parentNode;}
-        if(el.nodeName == "TH" && !blnResizeAction){
-            mouseOverCell = el;
-            blnHeader = true;
-        }
-        if(blnHeader){
-            changeCursor(event);
-        }
-        if(blnResizeActive && blnResizeAction){
+		if(el.nodeName == "TH" && !blnResizeAction){
+			mouseOverCell = el;
+			blnHeader = true;
+		}
+		if(blnHeader){
+			changeCursor(event);
+		}
+		if(blnResizeActive && blnResizeAction){
 			var thcell = headercells[cellActive.cellIndex];
 			var tblcell = tablecells[cellActive.cellIndex];
-			var topElementOffset = (container.parentNode.parentNode.tagName == "DIV")?container.parentNode.parentNode.offsetLeft:0;
-            var width = event.pageX - $(thcell).position().left + scrollArea.scrollLeft;
+			var width = event.pageX - $(thcell).position().left + scrollArea.scrollLeft - containerOffsetLeft;
 			tblcell.style.width =  (width < 20)? "20px" : width + "px";
 			thcell.style.width = (width < 20)? "20px" : width + "px";
-	    	doScroll();
-            disableSelection(document.body);
-        }
-    };
-    var mousedown = function(event){
-        if(blnResizeActive){
+			doScroll();
+			disableSelection(document.body);
+		}
+	};
+	var mousedown = function(event){
+		if(blnResizeActive){
 			if(mouseOverCell.cellIndex < celllength){
 				blnResizeAction = true;
 				cellActive = mouseOverCell;
 				cellActive.style.backgroundColor = "#bcb";
 			}
 		}
-    };
-    var mouseup = function(event){
-            if(cellActive) cellActive.style.backgroundColor = "";
-            cellActive = null;
-            blnResizeAction = false;
-            blnResizeActive = false;
-            resetHeaderWidth();
-    };
-    var setColumnResizeEvents = function(){
+	};
+	var mouseup = function(event){
+		if(cellActive) cellActive.style.backgroundColor = "";
+		cellActive = null;
+		blnResizeAction = false;
+		blnResizeActive = false;
+		resetHeaderWidth();
+	};
+	var setColumnResizeEvents = function(){
 		$(header).unbind("mousemove",mousemove);
 		$(header).unbind("mousedown",mousedown);
 		$('body').unbind("mouseup",mouseup);
 		$(header).bind("mousemove",mousemove);
 		$(header).bind("mousedown",mousedown);
 		$('body').bind("mouseup",mouseup);
-    };
+	};
 
 };
 
