@@ -43,10 +43,6 @@
             });
     }]);
 
-    angular.module('prerial').controller('viewPortResizeCtrl', ['$scope',  function (scope) {
-
-    }]);
-
     angular.module('prerial')
         .controller('notificationsCtrl', ['$scope', 'preNotificationService', function(scope, saNotificationService) {
 
@@ -177,6 +173,21 @@ function getElementLeft(el){
     return ol;
 }
 
+(function(angular) {
+    'use strict';
 
+angular.module('prerial').controller('viewPortResizeCtrl',['$rootScope', function($rootScope) {
+
+    $rootScope.$on('resized', function(){
+        $rootScope.$broadcast('rootresized', []);
+    });
+
+    $rootScope.$watch(function (){ return $rootScope.resized;}, function (newValue) {
+        $rootScope.$broadcast('rootresized', []);
+    });
+
+}]);
+
+})(angular);
 
 
