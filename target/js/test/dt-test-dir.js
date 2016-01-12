@@ -1,8 +1,8 @@
-(function(window, angular, undefined) {
+(function() {
 	'use strict';
 
 	angular.module('prerial')
-	.directive('dtTest', function(dataActionService) {
+	.directive('dtTest', function() {
 
 		return {
 			restrict: 'E',
@@ -12,10 +12,10 @@
 
 			}
 		}
-    });
+    })
 
 
-})(window, window.angular);
+})();
 
 
 
