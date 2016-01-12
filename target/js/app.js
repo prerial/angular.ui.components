@@ -3,8 +3,7 @@
 
 	angular.module('prerial')
 	.config( ['$routeProvider', 'navigation', function($routeProvider, navigation) {
-			var navArray = navigation;
-debugger
+
 			$routeProvider
 
 				.when(navigation['Home'].route, navigation['Home'].config)
@@ -15,18 +14,7 @@ debugger
 				.when(navigation['Combobox'].route, navigation['Combobox'].config)
 				.when(navigation['Tooltip'].route, navigation['Tooltip'].config)
 				.when(navigation['GridTag'].route, navigation['GridTag'].config)
-
-/*
-				.when('/data-provider', {controller:'dataProviderController', templateUrl:'partials/data-provider.html'})
-				.when('/modal', {controller:'modalCtrl', templateUrl:'partials/modal.html'})
-				.when('/viewport-resizer', {controller:'viewPortResizeCtrl', templateUrl:'partials/viewport-resizer.html'})
-				.when('/notifications', {controller:'notificationsCtrl', templateUrl:'partials/notifications.html'})
-				.when('/combobox', {controller:'comboboxCtrl', templateUrl:'partials/combobox.html'})
-				.when('/tooltip', {controller:'tooltipCtrl', templateUrl:'partials/tooltip.html'})
-				.when('/gridtag', {controller:'gridtagCtrl', templateUrl:'partials/gridtag.html'})
-*/
-
-				.otherwise({
+                .otherwise({
 					redirectTo: navigation['Home'].route
 				});
 
