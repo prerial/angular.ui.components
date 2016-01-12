@@ -1491,13 +1491,13 @@ body.modal-open {
 }
 
 #topnav {
+  position: absolute;
   display: block;
   height: 35px;
   left: 0;
-  position: absolute;
   right: 0;
   top: 0;
-  background-color: #ccc;
+  background-color: #eee;
 }
 
 #sidebar {
