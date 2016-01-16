@@ -67,7 +67,9 @@ form .pre-dropdown .pre-typeahead-input.ng-invalid + .add-on,
 form .pre-dropdown .pre-typeahead-input.ng-invalid-required + .add-on {
   border-left-width: 1px;
   border-left-color: #c2c2c2; }
-
+form input.ng-invalid.ng-touched {
+  border: 1px solid #FA787E;
+}
 .beside-label {
   padding: 10px 0;
   margin: 0;

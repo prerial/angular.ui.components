@@ -1,0 +1,59 @@
+<div ng-controller="Form2Ctrl">
+<h3>ngModel Options</h3>
+
+        <hr />
+        <h4>debounce</h4>
+
+    <pre>username = "{{user2.name}}"</pre>
+    <form name="user2Form">
+        Name:
+        <input type="text" ng-model="user2.name" ng-model-options="{ debounce: 2000 }" /><br />
+    </form>
+
+            <hr />
+            <h4>updateOn</h4>
+
+    <pre>user.name = <span ng-bind="user3.name"></span></pre>
+    <form name="user3Form">
+        <label>Name:
+            <input type="text" name="user3Name"
+                   ng-model="user3.name"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   ng-keyup="cancel($event)" />
+        </label><br />
+        <label>Other data:
+            <input type="text" ng-model="user3.data" />
+        </label><br />
+    </form>
+
+<hr />
+    <h4>getterSetter</h4>
+
+    <pre>user.name = <span ng-bind="user4.name()"></span></pre>
+    <form name="user4Form">
+        <label>Name:
+            <input type="text" name="user4Name"
+                   ng-model="user4.name"
+                   ng-model-options="{ getterSetter: true }" />
+        </label>
+    </form>
+
+    <hr />
+    <h4>upfateFor</h4>
+
+    <pre>user.name = <span ng-bind="user1.name"></span></pre>
+    <pre>user.data = <span ng-bind="user1.data"></span></pre>
+    <form name="user1Form">
+        <label>Name:
+            <input type="text" name="user1Name"
+                   ng-model="user1.name"
+                   ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }"/>
+        </label>
+        <br />
+        <label>Other data:
+            <input type="text" ng-model="user1.data" />
+        </label>
+        <br />
+    </form>
+
+</div>

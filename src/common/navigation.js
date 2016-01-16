@@ -60,6 +60,11 @@
             {
                 route: '/form1',
                 config: {controller: 'Form1Ctrl', templateUrl:'partials/form/form1.html'}
+            },
+            'Form2':
+            {
+                route: '/form2',
+                config: {controller: 'Form2Ctrl', templateUrl:'partials/form/form2.html'}
             }
         });
 
