@@ -33,6 +33,9 @@ angular.module('prerial')
                         nextSibling.css('top', (h - (start - e.clientY)));
                         nextSibling.css('height', (nsh + (start - e.clientY)));
                     }
+                    if(nextSibling.find('.section-content')) nextSibling.find('.section-content').css('width', nextSibling.width()-12).css('height', nextSibling.height()-12);
+                    if(element.find('.section-content')) element.find('.section-content').css('width', element.width()-12).css('height', element.height()-12);
+
                 };
 
                 function dragEnd(e) {
@@ -67,5 +70,3 @@ angular.module('prerial')
             }
         };
     });
-
-
