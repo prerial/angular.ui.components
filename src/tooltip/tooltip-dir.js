@@ -21,7 +21,6 @@
             }
         }
     }
-
-    angular.module('prerial').directive({preTooltip: TooltipDirective});
+    angular.module('prerial').directive("preTooltip", TooltipDirective);
 
 })();
