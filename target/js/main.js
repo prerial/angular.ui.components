@@ -1057,13 +1057,13 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
                 element.css('width', scope.rWidth);
                 nextSibling = element.next();
 
-                function resize() {
+                function onResize() {
                     if(nextSibling.find('.section-content')) nextSibling.find('.section-content').css('width', nextSibling.width()-12).css('height', nextSibling.height()-12);
                     if(element.find('.section-content')) element.find('.section-content').css('width', element.width()-12).css('height', element.height()-12);
                 };
 
                 scope.$on('rootresized', function(){
-                    resize();
+                    onResize();
                 });
 
                 function dragging(e) {
@@ -1077,7 +1077,6 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
                     }
                     if(nextSibling.find('.section-content')) nextSibling.find('.section-content').css('width', nextSibling.width()-12).css('height', nextSibling.height()-12);
                     if(element.find('.section-content')) element.find('.section-content').css('width', element.width()-12).css('height', element.height()-12);
-
                 };
 
                 function dragEnd(e) {
