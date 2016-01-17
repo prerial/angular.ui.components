@@ -6,7 +6,7 @@
 
     angular.module('prerial').controller('viewPortResizeCtrl',['$rootScope', function($rootScope) {
 
-        $rootScope.$on('resized', function(){
+         $rootScope.$on('resized', function(){
             $rootScope.$broadcast('rootresized', []);
         });
 
