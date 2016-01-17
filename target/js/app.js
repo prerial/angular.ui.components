@@ -18,6 +18,7 @@
 //////////////////////////////////////////////
 				.when(navigation['Form'].route, navigation['Form'].config)
 				.when(navigation['Form1'].route, navigation['Form1'].config)
+				.when(navigation['Form2'].route, navigation['Form2'].config)
 ////////////////////////////////////////////////////////////////////////
 				.otherwise({
 					redirectTo: navigation['Home'].route

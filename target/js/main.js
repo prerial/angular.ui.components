@@ -506,6 +506,11 @@
             {
                 route: '/form1',
                 config: {controller: 'Form1Ctrl', templateUrl:'partials/form/form1.html'}
+            },
+            'Form2':
+            {
+                route: '/form2',
+                config: {controller: 'Form2Ctrl', templateUrl:'partials/form/form2.html'}
             }
         });
 
@@ -1720,7 +1725,7 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
 })();;/**
  * Created by Mikhail on 1/16/2016.
  */
-(function(angular) {
+(function() {
     'use strict';
 
     angular.module('prerial').controller('Form1Ctrl', ['$scope', '$log', function (scope, $log) {
@@ -1742,31 +1747,31 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
             scope.formExample.message = " Calling saved record";
             $log.log('Calling saved record');
         };
-
+/*
         scope.items = [
             {value: 0, label: 'Will', guid: 5, name: 'Will override'},
             {value: 1, label: 'Tim', guid: 8, name: 'Tim override'},
             {value: 2, label: 'John', guid: 9, name: 'John override'}
         ];
-
+*/
         scope.setPristine = function (form) {
                 form.$setPristine();
-        }
+        };
 
         scope.clearModel = function () {
             scope.formExample = new Example();
             scope.formExample.message = " Model Cleared";
             scope.setPristine(scope.demoForm);
-        }
+        };
 
         scope.customEnterFunc = function () {
             scope.formExample.message = "This is a custom function, called on click on Enter button................";
             $log.info("This is a custom function, called on click on Enter button................");
-        }
+        };
 
     }]);
 
-})(angular);
+})();
 ;/**
  * Created by Mikhail on 1/16/2016.
  */
@@ -1778,9 +1783,37 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
 
     angular.module('prerial').controller('FormCtrl', ['$scope', '$log', function (scope, $log) {
 
-    }]);
-    angular.module('prerial').controller('FormValidateCtrl', ['$scope', '$log', function (scope, $log) {
+    }])
+    .controller('FormValidateCtrl', ['$scope', '$log', function (scope, $log) {
 
+    }])
+
+    .controller('Form2Ctrl', ['$scope', function($scope) {
+            $scope.user1 = { name: 'John', data: '' };
+            $scope.user2 = { name: 'Matt', data: '' };
+            $scope.user3 = { name: 'Kevin', data: '' };
+
+            var _name = 'Ann';
+            $scope.user4 = {
+                name: function(newName) {
+                    // Note that newName can be undefined for two reasons:
+                    // 1. Because it is called as a getter and thus called with no arguments
+                    // 2. Because the property should actually be set to undefined. This happens e.g. if the
+                    //    input is invalid
+                    return arguments.length ? (_name = newName) : _name;
+                }
+            };
+
+            $scope.cancel = function(e) {
+                console.log(e.keyCode);
+                if (e.keyCode == 27) {
+                    $scope.user3Form.user3Name.$rollbackViewValue();
+                }
+            };
+        }])
+
+    .controller('Form3Ctrl', ['$scope', function($scope) {
+        $scope.user = {};
     }]);
 
 })();
