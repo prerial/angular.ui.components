@@ -20,5 +20,5 @@
 - start Node server
 - $ node server or dbl click server.bat
 or
- $ grunt local
+ $ grunt localhost
 
