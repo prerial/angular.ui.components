@@ -4,7 +4,7 @@
 (function() {
     'use strict';
 
-    angular.module('prerial') .constant('navigation',
+    angular.module('prerial') .constant('Navigation',
 
         {
             'Home': {
@@ -40,11 +40,26 @@
                 {
                     route: '/tooltip',
                     config: {controller: 'tooltipCtrl', templateUrl:'partials/tooltip.html'}
-            },
+                },
             'GridTag':
             {
                 route: '/gridtag',
                 config: {controller: 'gridtagCtrl', templateUrl:'partials/gridtag.html'}
+            },
+            'Buttons':
+            {
+                route: '/buttons',
+                config: {controller: 'ButtonsCtrl', templateUrl:'partials/buttons.html'}
+            },
+            'Form':
+            {
+                route: '/form',
+                config: {controller: 'FormCtrl', templateUrl:'partials/form.html'}
+            },
+            'Form1':
+            {
+                route: '/form1',
+                config: {controller: 'Form1Ctrl', templateUrl:'partials/form/form1.html'}
             }
         });
 

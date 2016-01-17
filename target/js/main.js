@@ -2,9 +2,37 @@
 (function(window, angular) {
     'use strict';
 
-    angular.module('prerial', ['ngRoute', 'ngResource']);
+    angular.module('prerial', ['ngRoute', 'ngResource','ngAnimate', 'ui.bootstrap']);
 
 })(window, window.angular);
+;angular.module('prerial').run(['$templateCache', function($templateCache) {
+  'use strict';
+
+  $templateCache.put('src/combobox/combobox.html',
+    "<div><div><div class=\"pre-dropdown pre-combobox\"><div class=\"input-append pre-input-container\"><input class=\"pre-combobox-input\" type=\"text\" value=\"\"> <span class=\"add-on pre-combobox-toggle pre-icon-arrow-down\" ng-click=\"toggleDropdown()\"></span></div><div><ul ng-show=\"comboShow\" class=\"pre-dropdown-menu pre-combobox-menu\" style=\"max-height:100px\"><li ng-class=\"{'active':isActive(item)}\" ng-repeat=\"item in src\"><a ng-click=\"itemSelect(item)\">{{item.name}}</a></li></ul></div></div><div style=\"margin:10px;font-weight:bold\">Selected item: {{selectedValue}}</div></div></div>"
+  );
+
+
+  $templateCache.put('src/modal/modal.html',
+    "<div class=\"pre-window-wrapper\"><div class=\"pre-window\"><button ng-click=\"hide()\" class=\"close pre-icon-close-box\" type=\"button\"></button><div class=\"pre-window-header\"><h3>Modal window</h3></div><div class=\"pre-window-body\"></div><div class=\"pre-window-footer\" ng-click=\"hide()\" style=\"height:50px\"><button class=\"btn apply btn-primary\">OK</button> <button class=\"btn cancel btn-secondary\">Cancel</button></div></div></div>"
+  );
+
+
+  $templateCache.put('src/modal/modalbody.html',
+    "<div style=\"width:200px;height:60px;margin:20px\">Hello Modal!</div>"
+  );
+
+
+  $templateCache.put('src/tooltip/popover.html',
+    "<div class=\"pre-popover-wrapper\"><div class=\"popover-arrow\"></div><button class=\"close pre-icon-close-box\" type=\"button\"></button><div class=\"popover-inner\"><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div></div>"
+  );
+
+
+  $templateCache.put('src/tooltip/tooltip.html',
+    "<div class=\"tooltip-container\"><span class=\"tooltip-arrow\"></span><p class=\"tooltip-inner\"></p></div>"
+  );
+
+}]);
 ;(function (document, angular) {
     'use strict';
 
@@ -227,7 +255,41 @@
         }
     };
 
-}(angular, _));;(function (angular) {
+}(angular, _));;/**
+ * Created by Mikhail on 1/12/2016.
+ */
+/**
+
+ * @description Debounces event untill all dependencies are addressed within a time window
+ */
+(function (angular) {
+    'use strict';
+
+    function DebounceProvider() {
+        var timer;
+
+        /**
+         * Debounce Provider service
+         * @param {number}   delay    Delay in milliseconds
+         * @param {Function} callback Callback function to execute at the end of debounce
+         * @param {Any}   payload  Any additional data to be forwarded-along to the callback
+         */
+
+        function Debounce(delay, callback, payload) {
+            if (timer) {
+                window.clearTimeout(timer);
+            }
+
+            timer = setTimeout(function () {
+                callback(payload);
+            }, delay);
+        }
+
+        return Debounce;
+    }
+
+    angular.module('prerial').factory('Debounce', DebounceProvider);
+})(angular);;(function (angular) {
     'use strict';
 
     function filterService($filter) {
@@ -388,7 +450,7 @@
 (function() {
     'use strict';
 
-    angular.module('prerial') .constant('navigation',
+    angular.module('prerial') .constant('Navigation',
 
         {
             'Home': {
@@ -424,11 +486,26 @@
                 {
                     route: '/tooltip',
                     config: {controller: 'tooltipCtrl', templateUrl:'partials/tooltip.html'}
-            },
+                },
             'GridTag':
             {
                 route: '/gridtag',
                 config: {controller: 'gridtagCtrl', templateUrl:'partials/gridtag.html'}
+            },
+            'Buttons':
+            {
+                route: '/buttons',
+                config: {controller: 'ButtonsCtrl', templateUrl:'partials/buttons.html'}
+            },
+            'Form':
+            {
+                route: '/form',
+                config: {controller: 'FormCtrl', templateUrl:'partials/form.html'}
+            },
+            'Form1':
+            {
+                route: '/form1',
+                config: {controller: 'Form1Ctrl', templateUrl:'partials/form/form1.html'}
             }
         });
 
@@ -1365,14 +1442,16 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
 (function () {
     'use strict';
 
-    function TooltipController( attrs, elem, $templateCache, tooltipService) {
+    function TooltipController( attrs, elem, $templateCache, tooltipService, Debounce) {
 
         var titleHold, template, dimensions;
 
         this.hideTooltip = function() {
             if (template) {
-                elem.attr("title", titleHold);
-                template.remove();
+                Debounce(1000,function(){
+                    elem.attr("title", titleHold);
+                    template.remove();
+                })
             }
         };
 
@@ -1384,16 +1463,19 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
             }
             template.find('.tooltip-inner').html(attrs.title);
             template.addClass("pre-tooltip tooltip top").show();
-            $('body').append(template);
+ //           Debounce(200,function(){
+                $('body').append(template);
 //            dimensions = tooltipService.getDimensions(elem, $('.tooltip-container'), $('.tooltip-tooltip-arrow'), true);
-            var top = elem.offset().top - ($('.tooltip-container').height() + elem.height());
-            var left = e.clientX - elem.width()/2;
-            template.css('left', left).css('top', top);
+                var top = elem.offset().top - ($('.tooltip-container').height() + elem.height());
+                var left = e.clientX - elem.width()/2;
+                template.css('left', left).css('top', top).stop(true,true).fadeIn(2000);
+
+//            })
         };
 
     }
 
-    TooltipController.$inject = ['$attrs', '$element', '$templateCache','TooltipService'];
+    TooltipController.$inject = ['$attrs', '$element', '$templateCache','TooltipService', 'Debounce'];
 
     angular.module('prerial').controller('TooltipController', TooltipController);
 
@@ -1420,8 +1502,7 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
             }
         }
     }
-
-    angular.module('prerial').directive({preTooltip: TooltipDirective});
+    angular.module('prerial').directive("preTooltip", TooltipDirective);
 
 })();;(function () {
     "use strict";
@@ -1537,31 +1618,473 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
     });
 
 
-;angular.module('prerial').run(['$templateCache', function($templateCache) {
-  'use strict';
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
 
-  $templateCache.put('src/combobox/combobox.html',
-    "<div><div><div class=\"pre-dropdown pre-combobox\"><div class=\"input-append pre-input-container\"><input class=\"pre-combobox-input\" type=\"text\" value=\"\"> <span class=\"add-on pre-combobox-toggle pre-icon-arrow-down\" ng-click=\"toggleDropdown()\"></span></div><div><ul ng-show=\"comboShow\" class=\"pre-dropdown-menu pre-combobox-menu\" style=\"max-height:100px\"><li ng-class=\"{'active':isActive(item)}\" ng-repeat=\"item in src\"><a ng-click=\"itemSelect(item)\">{{item.name}}</a></li></ul></div></div><div style=\"margin:10px;font-weight:bold\">Selected item: {{selectedValue}}</div></div></div>"
-  );
+    angular.module('prerial')
+        .controller('appController', function($scope) {
+
+        });
+
+})();;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+//    angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
+    angular.module('prerial').controller('ButtonsCtrl', function ($scope) {
+
+        $scope.singleModel = 1;
+
+        $scope.radioModel = 'Middle';
+
+        $scope.checkModel = {
+            left: false,
+            middle: true,
+            right: false
+        };
+
+        $scope.checkResults = [];
+
+        $scope.$watchCollection('checkModel', function () {
+            $scope.checkResults = [];
+            angular.forEach($scope.checkModel, function (value, key) {
+                if (value) {
+                    $scope.checkResults.push(key);
+                }
+            });
+        });
+    });
 
 
-  $templateCache.put('src/modal/modal.html',
-    "<div class=\"pre-window-wrapper\"><div class=\"pre-window\"><button ng-click=\"hide()\" class=\"close pre-icon-close-box\" type=\"button\"></button><div class=\"pre-window-header\"><h3>Modal window</h3></div><div class=\"pre-window-body\"></div><div class=\"pre-window-footer\" ng-click=\"hide()\" style=\"height:50px\"><button class=\"btn apply btn-primary\">OK</button> <button class=\"btn cancel btn-secondary\">Cancel</button></div></div></div>"
-  );
+})();
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial').controller('comboboxCtrl', ['$scope', '$log', function(scope, $log) {
+        scope.employees = [
+            {
+                id: 1,
+                name: "Sam",
+                title: "VP"
+            },
+            {
+                id: 2,
+                name: "Felix",
+                title: "Node MQ"
+            },
+            {
+                id: 3,
+                name: "Wess",
+                title: "Charts Pro"
+            },
+            {
+                id: 4,
+                name: "Kevin",
+                title: "JS Pro"
+            }
+        ];
+
+        scope.onSelect = function (value, data) {
+            $log.info('Combobox selected:', value, data);
+        };
+
+        scope.onChange = function (value) {
+            $log.info('Combobox changed:', value);
+        };
+
+    }]);
+})();
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial')
+        .controller('dataProviderController', function($scope) {
+
+            $scope.onDataLoad = function(params){
+
+            }
+
+        });
+
+})();;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function(angular) {
+    'use strict';
+
+    angular.module('prerial').controller('Form1Ctrl', ['$scope', '$log', function (scope, $log) {
+
+        function Example() {
+            this.name = '';
+            this.email = '';
+            this.branchNo = '';
+            this.feedbackCat = '';
+            this.gender = '';
+            this.message = '';
+        }
+
+        scope.formExample = new Example();
+
+        scope.chkLabel = {'male': 'Male', 'female': 'Female'};
+
+        scope.saveRecord = function () {
+            scope.formExample.message = " Calling saved record";
+            $log.log('Calling saved record');
+        };
+
+        scope.items = [
+            {value: 0, label: 'Will', guid: 5, name: 'Will override'},
+            {value: 1, label: 'Tim', guid: 8, name: 'Tim override'},
+            {value: 2, label: 'John', guid: 9, name: 'John override'}
+        ];
+
+        scope.setPristine = function (form) {
+                form.$setPristine();
+        }
+
+        scope.clearModel = function () {
+            scope.formExample = new Example();
+            scope.formExample.message = " Model Cleared";
+            scope.setPristine(scope.demoForm);
+        }
+
+        scope.customEnterFunc = function () {
+            scope.formExample.message = "This is a custom function, called on click on Enter button................";
+            $log.info("This is a custom function, called on click on Enter button................");
+        }
+
+    }]);
+
+})(angular);
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+/**
+ * Created by Mikhail on 1/16/2016.
+ */
+/////////// aaaaaaaa  Form Start  //////////////////////////////
+(function () {
+
+    angular.module('prerial').controller('FormCtrl', ['$scope', '$log', function (scope, $log) {
+
+    }]);
+    angular.module('prerial').controller('FormValidateCtrl', ['$scope', '$log', function (scope, $log) {
+
+    }]);
+
+})();
+
+/*
+(function () {
+    var Employee = function (firstName, lastName, bio, orientation) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bio = bio;
+        this.orientation = orientation;
+    };
+
+    angular.module('prerial').controller('FormCtrl', ['$scope', '$log', function (scope, $log) {
+        scope.firstName = 'John';
+        scope.lastName = 'Smith';
+        scope.bio = 'An employee at Morgan Stanley for 10 years';
+        scope.orientation = 'male';
+        scope.selectedDate;
+
+        scope.chkLabel = {'male': 'Male', 'female': 'Female'}
+
+        scope.cloneRecord = new Employee(scope.firstName, scope.lastName, scope.bio, scope.orientation);
+
+        scope.saveRecord = function () {
+            $log.log('Calling saved record')
+            var clone = scope.cloneRecord;
+
+            scope.firstName = clone.firstName;
+            scope.lastName = clone.lastName;
+            scope.bio = clone.bio;
+            scope.orientation = clone.orientation;
+        };
+
+        scope.employeeId = 1;
+
+        scope.items = [
+            {value: 0, label: 'Will', guid: 5, name: 'Will override'},
+            {value: 1, label: 'Simon', guid: 6, name: 'Simon override'},
+            {value: 2, label: 'Ambika', guid: 7, name: 'Ambika override'},
+            {value: 3, label: 'Tim', guid: 8, name: 'Tim override'},
+            {value: 4, label: 'Jeet', guid: 9, name: 'Jeet override'}
+        ];
 
 
-  $templateCache.put('src/modal/modalbody.html',
-    "<div style=\"width:200px;height:60px;margin:20px\">Hello Modal!</div>"
-  );
+    }]);
+})();
+
+(function(angular) {
+    'use strict';
+
+    angular.module('prerial').controller('FormValidateCtrl', ['$scope', '$log', function (scope, $log) {
+
+        function Example() {
+            this.anonymous = false;
+            this.name = '';
+            this.email = '';
+            this.branchNo = '17';
+            this.feedbackCat = '';
+            this.selectedDate = '';
+            this.refDiv = undefined;
+            this.employeeId = '';
+            this.myLookup = '';
+            this.subject = '';
+            this.curprocess = '';
+            this.processimp = '';
+            this.comments = '';
+            this.radioValue = '';
+            this.checkValue = '';
+            this.checkValue1 = '';
+            this.checkValue2 = '';
+
+        }
+
+        function Example2() {
+            this.name = '';
+            this.email2 = '';
+            this.branchNo2 = '';
+            this.feedbackCat2 = '';
+        }
+
+        scope.formExample = new Example();
+
+        scope.form2Example - new Example2();
 
 
-  $templateCache.put('src/tooltip/popover.html',
-    "<div class=\"pre-popover-wrapper\"><div class=\"popover-arrow\"></div><button class=\"close pre-icon-close-box\" type=\"button\"></button><div class=\"popover-inner\"><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div></div>"
-  );
+        scope.chkLabel = {'male': 'Male', 'female': 'Female'};
 
 
-  $templateCache.put('src/tooltip/tooltip.html',
-    "<div class=\"tooltip-container\"><span class=\"tooltip-arrow\"></span><p class=\"tooltip-inner\"></p></div>"
-  );
+        scope.saveRecord = function () {
+            $log.log('Calling saved record');
+        };
 
-}]);
+
+        scope.items = [
+            {value: 0, label: 'Will', guid: 5, name: 'Will override'},
+            {value: 1, label: 'Simon', guid: 6, name: 'Simon override'},
+            {value: 2, label: 'Ambika', guid: 7, name: 'Ambika override'},
+            {value: 3, label: 'Tim', guid: 8, name: 'Tim override'},
+            {value: 4, label: 'Jeet', guid: 9, name: 'Jeet override'}
+        ];
+
+        scope.clearModel = function () {
+
+            scope.formExample = new Example();
+            scope.setPristine(scope.demoForm);
+        }
+
+        scope.setPristine = function (form) {
+            if (form.$setPristine) {//only supported from v1.1.x
+                form.$setPristine();
+            } else {
+
+                form.$dirty = false;
+                form.$pristine = true;
+                //form.$invalid = false;
+                _.each(form, function (input) {
+
+
+                    if (input.$dirty) {
+                        input.$dirty = false;
+                        input.$pristine = true;
+                    }
+
+                });
+            }
+        }
+
+        scope.clearModel2 = function () {
+
+            scope.form2Example = new Example2();
+            scope.setPristine(scope.demoForm2);
+        }
+
+        scope.customEnterFunc = function () {
+            $log.info("This is a custom function, called on click on Enter button................");
+//            saLog.info("This is a custom function, called on click on Enter button................");
+        }
+
+
+    }]);
+
+
+})(angular);
+*/
+///////////   aaaaaaaaaa End Form Start  //////////////////////////////
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial').controller('gridtagCtrl', ['$scope', function($scope) {
+
+        $scope.buildGrid = function(elemid, options, data){
+            var params = {
+                elid:elemid,
+                fields:[],
+                headers:[],
+                coltypes:[],
+                colwidth:[],
+                data:data.data.Deals
+            };
+
+            options.map(function(item) {
+                params.fields.push(item.field);
+                params.headers.push(item.title);
+                params.coltypes.push(item.format);
+                params.colwidth.push(parseInt(item.width));
+            });
+
+            var mygrid = new Grid();
+            mygrid.init(params);
+        }
+    }]);
+
+})();
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial').controller('modalCtrl', ['$scope', 'prerialModal',
+
+        function (scope, prerialModal) {
+            var modalWindow = null;
+            scope.showModal = function () {
+                modalWindow = new prerialModal();
+                modalWindow.show();
+            };
+            scope.$on("destroy:modal", function handleDestroyEvent() {
+                modalWindow = null;
+            });
+        }]);
+
+})();;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial')
+    .controller('notificationsCtrl', ['$scope', 'preNotificationService', function(scope, saNotificationService) {
+
+        // Get, configure the notifications, and register to scope.
+        // You can set the configuration in one shot like so:
+        scope.notification1 = saNotificationService.create({
+            title: 'Simple notice',
+            text: 'A regular notice'
+        });
+
+        scope.notification2 = saNotificationService.create({
+            title: 'Sticky notice',
+            text: 'You have to click to close me yourself',
+            hide: false
+        });
+
+        scope.notification3 = saNotificationService.create({
+            title: 'See Through Notice',
+            text: 'This is semi-transparent, opacity = 0.5',
+            opacity: 0.5
+        });
+
+        scope.notification4 = saNotificationService.create({
+            title: 'No Shadow Notice',
+            text: 'I don\'t have a shadow. (It\'s cause I\'m a vampire or something. Or is that reflections...)',
+            shadow: false
+        });
+
+        scope.notification5 = saNotificationService.create({
+            title: 'Regular Success',
+            text: 'That thing that you were trying to do worked!',
+            type: 'success'
+        });
+
+    }]);
+
+})();
+
+;/**
+ * Created by Mikhail on 1/4/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial')
+        .directive('dtTest', function() {
+
+            return {
+                restrict: 'E',
+                template: '<ul ng-click="setLeftMenu($event)"><li ng-repeat="item in pizzaData"><div>{{item.Title}}</div></li></ul>',
+                link: function(scope){
+
+                }
+            }
+        });
+
+})();
+
+function disableSelection(target){
+    if (typeof target.onselectstart!="undefined") //IE route
+        target.onselectstart=function(){return false}
+    else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
+        target.style.MozUserSelect="none"
+    else //All other route (ie: Opera)
+        target.onmousedown=function(){return false}
+    target.style.cursor = "default"
+}
+
+function getElementLeft(el){
+    var ol = el.offsetLeft;
+    while ((el = el.offsetParent) != null) { ol += el.offsetLeft; }
+    return ol;
+}
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial').controller('tooltipCtrl', ['$scope', '$log', function(scope, $log) {
+
+    }]);
+})();
+;/**
+ * Created by Mikhail on 1/16/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial').controller('viewPortResizeCtrl',['$rootScope', function($rootScope) {
+
+        $rootScope.$on('resized', function(){
+            $rootScope.$broadcast('rootresized', []);
+        });
+
+        $rootScope.$watch(function (){ return $rootScope.resized;}, function (newValue) {
+            $rootScope.$broadcast('rootresized', []);
+        });
+
+    }]);
+
+})();

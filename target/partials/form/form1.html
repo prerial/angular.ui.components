@@ -1,0 +1,64 @@
+<div>
+<div>
+<div>
+    <br />
+    <br />
+    <br />
+    <div>Model: {{formExample}}</div>
+    <div>Model: {{formExample.message}}</div>
+<form name="demoForm" style="margin: 40px 0 0"  ng-submit="saveRecord()" novalidate>
+    <fieldset class="under-label">
+        <div class="form-row">
+            <div class="control-set">
+                <label for="name">* Name</label>
+                <input name="name2" ng-model="formExample.name" class="txt" type="text" required />
+                <div class="errormsg" ng-show="!demoForm.name.$pristine && demoForm.name.$error.required">Please enter your first name and last name.</div>
+            </div>
+            <div class="control-set">
+                <label for="email">Email Address</label>
+                <input name="email2" ng-model="formExample.email" id="address" type="email" class="txt"/>
+                <div class="errormsg" ng-show="demoForm.email.$dirty && demoForm.email.$invalid">Please enter a valid Email Address.</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="control-set">
+                <label for="branch-number">Branch Number</label>
+                <input name="branchNo" ng-model="formExample.branchNo" type="text" class="txt" />
+            </div>
+            <div class="control-set">
+                <label for="feedback-category">Feedback Category</label>
+                <input name="feedbackCat" ng-model="formExample.feedbackCat" type="text" class="txt" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <input type="radio" ng-model="formExample.gender" value="male" /><label for="gender-1" class="label-radio">Male</label>
+                <input type="radio" ng-model="formExample.gender" value="female" /><label for="gender-1" class="label-radio">Female</label>
+                <br />
+                <br />
+<!--
+                <label for="gender-1" class="label-radio">Male</label><input type="radio" name="radiogroup1" ng-model="formExample.gender" value="male" id="gender1-1">
+                <label for="gender-2" class="label-radio">Feale</label><input type="radio" name="radiogroup1" ng-model="formExample.gender" value="female" id="gender1-2">
+-->
+            </div>
+            <!--
+                 <span class="label-grpname no-base">Gender</span>
+                       Gender:
+                        <input type="radio" ng-model="user.gender" value="male" />male
+                        <input type="radio" ng-model="user.gender" value="female" />female<br />
+                        <input type="button" ng-click="reset()" value="Reset" />
+            -->
+        </div>
+        <div class="control-set-footer left no-dark">
+            <button class="btn btn-secondary" type="button" ng-click="clearModel()">clear all</button>
+            <button class="btn btn-primary" ng-class="{disabled: demoForm.$invalid}" ng-disabled="demoForm.$invalid">submit</button>
+        </div>
+        <div class="control-set-footer left no-base">
+            <button class="btn btn-primary" type="button"  ng-click="clearModel()">clear all</button>
+            <button class="btn btn-secondary" ng-click="customEnterFunc()" ng-class="{disabled: demoForm.$invalid}" ng-disabled="demoForm.$invalid">submit</button>
+        </div>
+    </fieldset>
+</form>
+</div>
+</div>
+</div>

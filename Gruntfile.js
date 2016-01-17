@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
-	var app_files = ['src/modules.js', 'src/*/*.js'],
+	var app_files = 'src/*/*.js',
+		modules = 'src/modules.js',
+		controllers  = 'target/js/controllers/*/*.js',
 		output = 'target/js/main.js',
 		test_output = 'test/built.js';
 
@@ -48,7 +50,7 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			dist: {
-				src: [app_files, '<%= ngtemplates.prerial.dest %>' ],
+				src: [modules, '<%= ngtemplates.prerial.dest %>', app_files, controllers ],
 				dest: output
 			},
 			test: {
@@ -124,6 +126,8 @@ module.exports = function(grunt) {
 	// Load the plugin that provides the "concat" task.
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-angular-templates');
+
 	// Default task(s).
-	grunt.registerTask('build', ['ngtemplates', 'concat','sass']);
+	grunt.registerTask('build', ['ngtemplates', 'concat', 'sass']);
+	grunt.registerTask('default', ['ngtemplates', 'concat', 'sass']);
 };

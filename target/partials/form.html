@@ -1,0 +1,185 @@
+<sa:data-provider id="dpTypeahead">
+    <sa:action name="yahoo" url="http://query.yahooapis.com/v1/public/yql/"
+               query='q=select * from local.search where query="pizza" and location="One New York Plaza, NY 10004"&format=json'
+               schema="query.results.Result"
+               method="jsonp">
+    </sa:action>
+</sa:data-provider>
+
+<div class="page-header"><h1>Form</h1></div>
+<!-- <p>The 3D platform button states include default, hover, and disabled</p> -->
+<div ng-controller="FormValidateCtrl">
+
+    <!-- Tabs -->
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+<!--
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#/form" data-toggle="tab">Demo</a></li>
+            <li><a href="#/form-src" data-toggle="tab">Source</a></li>
+            <li><a href="#/form-ctrl-src" data-toggle="tab">Source Controller</a></li>
+        </ul>
+-->
+        <ul class="nav nav-tabs">
+            <li><a href="#/form1" data-toggle="tab">Form1</a></li>
+            <li><a href="#/form2" data-toggle="tab">Form2</a></li>
+            <li><a href="#/form3" data-toggle="tab">Form3</a></li>
+            <li><a href="#/form4" data-toggle="tab">Form4</a></li>
+            <li><a href="#/form5" data-toggle="tab">Form5</a></li>
+            <li><a href="#/form6" data-toggle="tab">Form6</a></li>
+            <li><a href="#/form7" data-toggle="tab">Form7</a></li>
+            <li><a href="#/form8" data-toggle="tab">Form8</a></li>
+        </ul>
+
+        <div class="tab-content" style="margin-top:40px;">
+            <!--
+                        <form name="demoForm" novalidate>
+                            <fieldset class="beside-label">
+                                <div class="control-set col2">
+                                    <span class="label-grpname no-ba">Submit Anonymously</span>
+                                    <span class="label-grpname no-base no-3d no-mso no-pti no-dark">Submit Anonymously</span>
+                                    <input type="checkbox" ng-model="formExample.anonymous" name="checkboxgroup1" value="1" id="checkboxgroup1-1"><label for="checkboxgroup1-1" class="label-checkbox">&nbsp;</label>
+                                </div>
+                                <div class="control-set col2">
+                                    <label for="name" class="label-txt no-ba">* Name</label>
+                                    <label for="name" class="label-txt no-base no-3d no-mso no-pti no-dark">Name<span class="required">*</span></label>
+                                    <input type="text" name="name" ng-model="formExample.name" class="txt small" required sa-enter="customEnterFunc()" />
+                                    <div class="errormsg" ng-show="!anonymous && demoForm.name.$error.required && !demoForm.name.$pristine">Please enter your Name.</div>
+                                </div>
+                                <div class="control-set col2">
+                                    <label for="email" class="label-txt no-ba">* Email Address</label>
+                                    <label for="email" class="label-txt no-base no-3d no-mso no-pti no-dark">Email Address<span class="required">*</span></label>
+                                    <input type="email" name="email" ng-model="formExample.email" class="txt small" required />
+                                    <div class="errormsg" ng-show="!demoForm.email.$pristine && demoForm.email.$error.required">Please enter your Email Address.</div>
+                                    <div class="errormsg" ng-show="demoForm.email.$dirty && !demoForm.email.$error.required && demoForm.email.$invalid">Please enter a valid Email Address.</div>
+                                </div>
+                                <div class="control-set col2">
+                                    <label for="branch-number" class="label-txt disabled no-ba">Branch Number</label>
+                                    <label for="branch-number" class="label-txt disabled no-base no-3d no-mso no-pti no-dark">Branch Number</label>
+                                    <input type="text" name="branchNo" disabled="disabled" class="txt small disabled" ng-model="formExample.branchNo" />
+                                </div>
+                                <div class="control-set col2">
+                                    <label for="feedback-category" class="label-txt no-ba">Feedback Category</label>
+                                    <label for="feedback-category" class="label-txt no-base no-3d no-mso no-pti no-dark">Feedback Category</label>
+                                    <input type="text" name="feedbackCat" ng-model="formExample.feedbackCat" class="txt small" />
+                                </div>
+                                <div class="control-set col2">
+                                    <label for="filing-date" class="label-txt no-ba">* Filing Date</label>
+                                    <label for="filing-date" class="label-txt no-base no-3d no-mso no-pti no-dark">Filing Date<span class="required">*</span></label>
+                                    <sa:date-picker format="MM/dd/yyyy" name="selectedDate" ng-model="formExample.selectedDate" allow-future="false" ng-required></sa:date-picker>
+                                    <div class="errormsg" ng-show="!demoForm.selectedDate.$pristine && demoForm.selectedDate.$error.required">Please select the Filing Date.</div>
+                                    <div class="errormsg" ng-show="demoForm.selectedDate.$dirty && !demoForm.selectedDate.$error.required && demoForm.selectedDate.$error.invalidDateFormat">Incorrect Format for Filing Date. Please review.</div>
+                                    <div class="errormsg" ng-show="demoForm.selectedDate.$error.invalidDateRange">Date entered is out of range. Please select another date.</div>
+                                </div>
+                                <div class="control-set col2">
+                                    <label for="referring-division" class="label-txt no-ba">* Referring Division</label>
+                                    <label for="referring-division" class="label-txt no-base no-3d no-mso no-pti no-dark">Referring Division<span class="required">*</span></label>
+                                    <sa:dropdown
+                                            name="refDiv"
+                                            ng-model="formExample.refDiv"
+                                            items="items" required></sa:dropdown>
+                                    <div class="errormsg" ng-show="!demoForm.refDiv.$pristine && demoForm.refDiv.$error.required">Please select the Referring Division.</div>
+                                </div>
+
+                                <div class="control-set col2">
+                                    <label for="primary-banker" class="label-txt no-ba">Primary Banker</label>
+                                    <label for="primary-banker" class="label-txt no-base no-3d no-mso no-pti no-dark">Primary Banker</label>
+                                    <sa:typeahead on-query-change="findMatch(query)"
+                                                  query="query" min="3" max="5"
+                                                  ng-model="formExample.myLookup" field="Title"
+                                                  placeholder="Type business name">
+                                        <div> <b ng-bind="item.Title">?</b> - <span ng-bind="item.Distance">?</span>
+                                        </div>
+                                    </sa:typeahead>
+                                </div>
+                                <div class="control-set col2"">
+                                <label for="subject" class="label-txt no-ba">* Subject</label>
+                                <label for="subject" class="label-txt no-base no-3d no-mso no-pti no-dark">Subject<span class="required">*</span></label>
+                                <input type="text" name="subject" ng-model="formExample.subject" class="txt medium" required />
+                                <div class="errormsg" ng-show="!demoForm.subject.$pristine && demoForm.subject.$error.required">Please fill in the Subject.</div>
+                    </div>
+                    <div class="control-set col2">
+                        <label for="textarea-1" class="label-txtarea">What is the current process?</label>
+                        <textarea name="curprocess" ng-model="formExample.curprocess" ng-maxlength=1000>Enter text here.</textarea>
+                        <div class="caption" ng-show="!demoForm.curprocess.$error.maxlength">Please limit your comment to 1000 characters.</div>
+                        <div class="errormsg" ng-show="demoForm.curprocess.$error.maxlength">You description of current process has exceeded 1000 characters. Please edit.</div>
+                    </div>
+                    <div class="control-set col2">
+                        <label for="textarea-2" class="label-txtarea">How can we improve the process?</label>
+                        <textarea name="processimp" ng-model="formExample.processimp" ng-maxlength=1000>Enter text here.</textarea>
+                        <div class="caption" ng-show="!demoForm.processimp.$error.maxlength">Please limit your comment to 1000 characters.</div>
+                        <div class="errormsg" ng-show="demoForm.processimp.$error.maxlength">Your Process Improvement Suggestions have exceeded 1000 characters. Please edit.</div>
+                    </div>
+                    <div class="control-set col2">
+                        <label for="textarea-3" class="label-txtarea no-ba">* Your comments</label>
+                        <label for="textarea-3" class="label-txtarea no-base no-3d no-mso no-pti no-dark">Your comments<span class="required">*</span></label>
+                        <textarea name="comments" ng-model="formExample.comments" ng-maxlength=1000 required ng-focus>Enter text here.</textarea>
+                        <div class="caption">Please limit your comment to 1000 characters.</div>
+                        <div class="errormsg" ng-show="!demoForm.comments.$pristine && demoForm.comments.$error.required">Please enter your comments.</div>
+                        <div class="errormsg" ng-show="demoForm.comments.$error.maxlength">Your comments have exceeded 1000 characters. Please edit.</div>
+                    </div>
+                    <div class="control-set col2">
+                        <span class="label-grpname no-ba">Radio Group</span>
+                        <span class="label-grpname no-base no-3d no-mso no-pti no-dark">Radio Group</span>
+                        <input type="radio" name="radiogroup1" ng-model="formExample.radioValue" value="radio1" id="radiogroup1-1"><label for="radiogroup1-1" class="label-radio">Radio1</label>
+                        <input type="radio" name="radiogroup1" ng-model="formExample.radioValue" value="radio2" id="radiogroup1-2"><label for="radiogroup1-2" class="label-radio">Radio2</label>
+                    </div>
+                    <div class="control-set col2">
+                        <span class="label-grpname no-ba">Checkbox Group</span>
+                        <span class="label-grpname no-base no-3d no-mso no-pti no-dark">Checkbox Group</span>
+                        <input type="checkbox" name="checkboxgroup2" ng-model="formExample.checkValue" value="checkbox1" id="checkboxgroup2-1"><label for="checkboxgroup2-1" class="label-checkbox">Checkbox1</label>
+                        <input type="checkbox" name="checkboxgroup2" ng-model="formExample.checkValue1" value="checkbox2" id="checkboxgroup2-2"><label for="checkboxgroup2-2" class="label-checkbox">Checkbox2</label>
+                    </div>
+                    <div class="control-set col2">
+                        <span class="label-grpname no-ba">APC</span>
+                        <span class="label-grpname no-base no-3d no-mso no-pti no-dark">APC</span>
+                        <input type="checkbox" name="checkboxgroup3" ng-model="formExample.checkValue2" value="checkbox" id="checkboxgroup3-1"><label for="checkboxgroup3-1" class="label-checkbox">&nbsp;</label>
+                    </div>
+                    <div class="control-set-footer no-dark">
+                        <button class="btn btn-secondary" type="button"  ng-click="clearModel()">clear all</button>
+                        <button class="btn btn-primary" ng-class="{disabled: demoForm.$invalid}" ng-disabled="demoForm.$invalid">submit</button>
+                    </div>
+                    <div class="control-set-footer no-base no-3d no-ba no-mso no-pti">
+                        <button class="btn btn-primary" type="button"  ng-click="clearModel()">clear all</button>
+                        <button class="btn btn-secondary" ng-class="{disabled: demoForm.$invalid}" ng-disabled="demoForm.$invalid">submit</button>
+                    </div>
+                    </fieldset>
+                    </form>
+
+                    <form name="demoForm2" style="margin: 40px 0 0" novalidate>
+                        <fieldset class="under-label">
+                            <div class="form-row">
+                                <div class="control-set">
+                                    <label for="name">* Name</label>
+                                    <input name="name2" ng-model="form2Example.name2" class="txt" type="text" required />
+                                    <div class="errormsg" ng-show="!demoForm2.name2.$pristine && demoForm2.name2.$error.required">Please enter your first name and last name.</div>
+                                </div>
+                                <div class="control-set">
+                                    <label for="email">Email Address</label>
+                                    <input name="email2" ng-model="form2Example.email2" id="address" type="email" class="txt"/>
+                                    <div class="errormsg" ng-show="demoForm2.email2.$dirty && demoForm2.email2.$invalid">Please enter a valid Email Address.</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="control-set">
+                                    <label for="branch-number">Branch Number</label>
+                                    <input name="branchNo2" ng-model="form2Example.branchNo2" type="text" class="txt" />
+                                </div>
+                                <div class="control-set">
+                                    <label for="feedback-category">Feedback Category</label>
+                                    <input name="feedbackCat2" ng-model="form2Example.feedbackCat2" type="text" class="txt" />
+                                </div>
+                            </div>
+                            <div class="control-set-footer no-dark">
+                                <button class="btn btn-secondary" type="button"  ng-click="clearModel()">clear all</button>
+                                <button class="btn btn-primary" ng-class="{disabled: demoForm2.$invalid}" ng-disabled="demoForm2.$invalid">submit</button>
+                            </div>
+                            <div class="control-set-footer no-base no-3d no-ba no-mso no-pti">
+                                <button class="btn btn-primary" type="button"  ng-click="clearModel()">clear all</button>
+                                <button class="btn btn-secondary" ng-class="{disabled: demoForm2.$invalid}" ng-disabled="demoForm2.$invalid">submit</button>
+                            </div>
+                        </fieldset>
+                    </form>
+            -->
+    </div>
+</div>
+</div>

@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('prerial')
-	.config( ['$routeProvider', 'navigation', function($routeProvider, navigation) {
+	.config( ['$routeProvider', 'Navigation', function($routeProvider, navigation) {
 
 			$routeProvider
 
@@ -14,7 +14,12 @@
 				.when(navigation['Combobox'].route, navigation['Combobox'].config)
 				.when(navigation['Tooltip'].route, navigation['Tooltip'].config)
 				.when(navigation['GridTag'].route, navigation['GridTag'].config)
-                .otherwise({
+				.when(navigation['Buttons'].route, navigation['Buttons'].config)
+//////////////////////////////////////////////
+				.when(navigation['Form'].route, navigation['Form'].config)
+				.when(navigation['Form1'].route, navigation['Form1'].config)
+////////////////////////////////////////////////////////////////////////
+				.otherwise({
 					redirectTo: navigation['Home'].route
 				});
 

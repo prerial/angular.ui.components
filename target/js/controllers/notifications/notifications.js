@@ -1,12 +1,11 @@
 /**
- * Created by Mikhail on 1/3/2016.
+ * Created by Mikhail on 1/16/2016.
  */
-(function(window, angular) {
+(function() {
     'use strict';
 
-
     angular.module('prerial')
-    .controller('myListCtrl', ['$scope', 'preNotificationService', function(scope, saNotificationService) {
+    .controller('notificationsCtrl', ['$scope', 'preNotificationService', function(scope, saNotificationService) {
 
         // Get, configure the notifications, and register to scope.
         // You can set the configuration in one shot like so:
@@ -41,4 +40,5 @@
 
     }]);
 
-})(window, window.angular);
+})();
+
