@@ -1051,7 +1051,7 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
             },
             link: function(scope, element) {
 
-                var body = $('body'), nextSibling, w, h, dir = scope.rDirection, start;
+                var body = $('body'), nextSibling, w, h, nsw, nsh, dir = scope.rDirection, start;
 
                 element.addClass('resizable');
                 element.css('width', scope.rWidth);
@@ -1060,7 +1060,7 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
                 function onResize() {
                     if(nextSibling.find('.section-content')) nextSibling.find('.section-content').css('width', nextSibling.width()-12).css('height', nextSibling.height()-12);
                     if(element.find('.section-content')) element.find('.section-content').css('width', element.width()-12).css('height', element.height()-12);
-                };
+                }
 
                 scope.$on('rootresized', function(){
                     onResize();
@@ -1068,24 +1068,23 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
 
                 function dragging(e) {
                     if(dir === 'horizontal'){
-                        element.css('width', (w - (start - e.clientX)))
+                        element.css('width', (w - (start - e.clientX)));
                         nextSibling.css('left', (w - (start - e.clientX)))
                     }else{
                         element.css('height', (h - (start - e.clientY)));
                         nextSibling.css('top', (h - (start - e.clientY)));
                         nextSibling.css('height', (nsh + (start - e.clientY)));
                     }
-                    if(nextSibling.find('.section-content')) nextSibling.find('.section-content').css('width', nextSibling.width()-12).css('height', nextSibling.height()-12);
-                    if(element.find('.section-content')) element.find('.section-content').css('width', element.width()-12).css('height', element.height()-12);
-                };
+                    onResize();
+                }
 
-                function dragEnd(e) {
+                function dragEnd() {
                     body.off('mouseup', dragEnd);
                     body.off('mousemove', dragging);
                     element.removeClass('no-transition');
                     scope.$emit('resized', []);
                     scope.$digest();
-                };
+                }
 
                 function dragStart(e, direction) {
                     start = direction === 'horizontal' ? e.clientX : e.clientY;
@@ -1100,7 +1099,7 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
                     if (e.preventDefault) e.preventDefault();
                     e.cancelBubble = true;
                     e.returnValue = false;
-                };
+                }
                 var draghandle = $('<div />').attr('class', 'rg-' + dir).html('<span></span>');
                 element.append(draghandle);
                 draghandle.on('mousedown', function(e) {

@@ -110,7 +110,7 @@ module.exports = function(grunt) {
 //	grunt.loadNpmTasks('grunt-protractor-runner');
 //	grunt.loadNpmTasks('grunt-run');
 
-	grunt.registerTask('local', ['connect:server', 'watch']);
+	grunt.registerTask('localhost', ['connect:server', 'watch']);
 
 //	grunt.registerTask('serve', ['karma:continuous:start', 'run:mock_server', 'connect:livereload', 'watch:karma']);
 
