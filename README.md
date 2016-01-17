@@ -1,4 +1,4 @@
-# AngularJS Node UI Componrnts
+# AngularJS Node UI Components
 
 ## Prerequisites
 
@@ -14,6 +14,11 @@
 - install packages
 - $ npm install
 
+- grunt build
+- $ grunt
+
 - start Node server
 - $ node server or dbl click server.bat
+or
+ $ grunt local
 

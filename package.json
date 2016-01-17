@@ -1,7 +1,12 @@
 {
   "name": "angular-test-seed",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prerial/angular.ui.components.git"
+  },
+  "license" : "UNLICENSED",
   "description": "Project to demostrate setting up Protractor, Grunt, Karma, and Angular",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "ejs": "~2.0",
     "express": "~3.4.4",
