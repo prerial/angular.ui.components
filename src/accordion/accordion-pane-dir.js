@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    function AccordionPaneDirective($timeout) {
+    function AccordionPaneDirective() {
 
         return {
             restrict: 'E',
@@ -17,14 +17,16 @@
             transclude: true,
             link: function (scope, elem, attrs, controllers) {
 
+                var blnShow = false;
                 scope.title = attrs.title;
                 scope.accordionPaneShow = false;
 
                 var accordionController = controllers[0];
 
-                scope.toggle = function(evt, item){
+                scope.toggle = function(){
+                    blnShow = scope.accordionPaneShow;
                     accordionController.hide();
-                    scope.accordionPaneShow = true;
+                    blnShow === false? scope.accordionPaneShow = true : scope.accordionPaneShow = false;
                 };
 
                 scope.hidePane = function(){
@@ -34,8 +36,6 @@
             }
         }
     }
-
-    AccordionPaneDirective.$inject = ['$timeout'];
 
     angular.module('prerial').directive({preAccordionPane: AccordionPaneDirective});
 
