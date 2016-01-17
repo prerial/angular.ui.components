@@ -20,6 +20,7 @@
 				.when(navigation['Form1'].route, navigation['Form1'].config)
 				.when(navigation['Form2'].route, navigation['Form2'].config)
 ////////////////////////////////////////////////////////////////////////
+				.when(navigation['Accordion'].route, navigation['Accordion'].config)
 				.otherwise({
 					redirectTo: navigation['Home'].route
 				});

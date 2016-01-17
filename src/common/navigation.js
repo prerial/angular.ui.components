@@ -65,6 +65,11 @@
             {
                 route: '/form2',
                 config: {controller: 'Form2Ctrl', templateUrl:'partials/form/form2.html'}
+            },
+            'Accordion':
+            {
+                route: '/accordion',
+                config: {controller: 'AccordionCtrl', templateUrl:'partials/accordion.html'}
             }
         });
 

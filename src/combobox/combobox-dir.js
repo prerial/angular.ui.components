@@ -1,7 +1,7 @@
 (function (document, angular) {
     'use strict';
 
-    function ComboBoxDirective($parse) {
+    function ComboBoxDirective() {
 
         return {
             restrict: 'E',
