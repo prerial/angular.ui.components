@@ -8,8 +8,13 @@
 ;angular.module('prerial').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('src/accordion/accordion.html',
+    "<div><ul ng-repeat=\"item in items\"><li><div ng-click=\"toggle($event, item)\">{{item.title}}</div><div ng-show=\"accordionShow\" ng-init=\"accordionShow = false\" ng-model=\"accordionShow\" class=\"accordion-content\">{{item.content}}</div></li></ul></div>"
+  );
+
+
   $templateCache.put('src/combobox/combobox.html',
-    "<div><div><div class=\"pre-dropdown pre-combobox\"><div class=\"input-append pre-input-container\"><input class=\"pre-combobox-input\" type=\"text\" value=\"\"> <span class=\"add-on pre-combobox-toggle pre-icon-arrow-down\" ng-click=\"toggleDropdown()\"></span></div><div><ul ng-show=\"comboShow\" class=\"pre-dropdown-menu pre-combobox-menu\" style=\"max-height:100px\"><li ng-class=\"{'active':isActive(item)}\" ng-repeat=\"item in src\"><a ng-click=\"itemSelect(item)\">{{item.name}}</a></li></ul></div></div><div style=\"margin:10px;font-weight:bold\">Selected item: {{selectedValue}}</div></div></div>"
+    "<div><div class=\"pre-dropdown pre-combobox\"><div class=\"input-append pre-input-container\"><input class=\"pre-combobox-input\" type=\"text\" value=\"\"> <span class=\"add-on pre-combobox-toggle pre-icon-arrow-down\" ng-click=\"toggleDropdown()\"></span></div><div><ul ng-show=\"comboShow\" class=\"pre-dropdown-menu pre-combobox-menu\" style=\"max-height:100px\"><li ng-class=\"{'active':isActive(item)}\" ng-repeat=\"item in src\"><a ng-click=\"itemSelect(item)\">{{item.name}}</a></li></ul></div></div><div style=\"margin:10px;font-weight:bold\">Selected item: {{selectedValue}}</div></div>"
   );
 
 
@@ -33,7 +38,111 @@
   );
 
 }]);
-;(function (document, angular) {
+;/**
+ * Created by Mikhail on 1/17/2016.
+ */
+(function () {
+    'use strict';
+
+    function AccordionController(scope, attrs, elem, parse) {
+        var ngModel, matches = [],
+            input = elem.find('input'),
+            displayText = parse(attrs.display);
+
+        this.init = function(ctrl) {
+            ngModel = ctrl;
+            ngModel.$render = onRender;
+        };
+/*
+        scope.isActive = function (item) {
+            var isActive = false;
+            if (matches.length === 1 && scope.selectedValue === item[attrs.field] ) {
+                isActive = true;
+            }
+            return isActive;
+        };
+
+        scope.$watch(function (){ return ngModel.$viewValue;}, function (newValue) {
+            ngModel.$render();
+            console.log('Watching ngModel: ' + displayText(newValue));
+        });
+
+        scope.itemSelect = function (item) {
+            ngModel.$setViewValue(item);
+            scope.comboShow = false;
+        };
+*/
+        function onRender() {
+            matches.length = 0;
+            if(ngModel.$viewValue && ngModel.$viewValue[attrs.field]) {
+                matches.push(ngModel.$viewValue);
+                scope.selectedValue = ngModel.$viewValue[attrs.field];
+                input.val(displayText(ngModel.$viewValue));
+            }else {
+                input.val(attrs.placeholder);
+            }
+        }
+
+    }
+
+    AccordionController.$inject = ['$scope', '$attrs', '$element', '$parse'];
+
+    angular.module('prerial').controller('AccordionController', AccordionController);
+
+})();
+;/**
+ * Created by Mikhail on 1/17/2016.
+ */
+(function () {
+    'use strict';
+
+    function AccordionDirective($timeout) {
+
+        return {
+            restrict: 'E',
+            require: ['?ngModel','preAccordion'],
+            scope: {
+                src: '=',
+                field: '@'
+            },
+            templateUrl: 'src/accordion/accordion.html',
+            controller: 'AccordionController',
+            replace: true,
+            link: function (scope, elem, attrs, controllers) {
+                scope.items = scope.src;
+                scope.toggle = function(evt, item){
+                    var el = evt.target;
+                    scope.hide();
+                    angular.element(el).scope().accordionShow = true;
+                };
+                scope.hide = function(){
+                    angular.element(elem).children().each(function(idx, item){
+                        angular.element(item).scope().accordionShow = false;
+                    });
+                };
+
+                var ngModelController = controllers[0],
+                    accordionController = controllers[1];
+
+/*
+
+                comboboxController.init(ngModelController);
+                scope.comboShow = false;
+                elem.find('.pre-combobox-toggle').on("click", function handleClickEvent() {
+                    scope.comboShow = !scope.comboShow;
+                    scope.$apply();
+                });
+                elem.find('.pre-dropdown-menu').width(elem.find('.pre-combobox').width() - 2);
+*/
+            }
+        }
+    }
+
+    AccordionDirective.$inject = ['$timeout'];
+
+    angular.module('prerial').directive({preAccordion: AccordionDirective});
+
+})();;(function (document, angular) {
     'use strict';
 
     function ComboBoxController(scope, attrs, elem, parse) {
@@ -84,7 +193,7 @@
 })(document, angular);;(function (document, angular) {
     'use strict';
 
-    function ComboBoxDirective($parse) {
+    function ComboBoxDirective() {
 
         return {
             restrict: 'E',
@@ -275,6 +384,11 @@
             {
                 route: '/form2',
                 config: {controller: 'Form2Ctrl', templateUrl:'partials/form/form2.html'}
+            },
+            'Accordion':
+            {
+                route: '/accordion',
+                config: {controller: 'AccordionCtrl', templateUrl:'partials/accordion.html'}
             }
         });
 
@@ -1100,6 +1214,7 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
                     e.cancelBubble = true;
                     e.returnValue = false;
                 }
+
                 var draghandle = $('<div />').attr('class', 'rg-' + dir).html('<span></span>');
                 element.append(draghandle);
                 draghandle.on('mousedown', function(e) {
@@ -1110,6 +1225,26 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
             }
         };
     });
+;/**
+ * Created by Mikhail on 1/17/2016.
+ */
+(function() {
+    'use strict';
+
+    angular.module('prerial').controller('AccordionCtrl', ['$scope', '$log', function(scope, $log) {
+        scope.accorditems = [
+            {title:'Title 1', content: 'Title 1 Content'},
+            {title:'Title 2', content: 'Title 2 Content'},
+            {title:'Title 3', content: 'Title 3 Content'},
+            {title:'Title 4', content: 'Title 4 Content'},
+            {title:'Title 5', content: 'Title 5 Content'}
+
+        ]
+//debugger
+    }]);
+
+})();
+
 ;/**
  * Created by Mikhail on 1/16/2016.
  */
