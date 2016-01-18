@@ -9,12 +9,12 @@
   'use strict';
 
   $templateCache.put('src/accordion/accordion-pane.html',
-    "<div class=\"accordion-group\"><div class=\"accordion-heading\"><a class=\"accordion-toggle\" ng-click=\"toggle($event, title)\">{{title}}</a></div><div class=\"accordion-body collapse\" ng-show=\"accordionPaneShow\"><div class=\"accordion-inner\" ng-transclude></div></div></div>"
+    "<div class=\"pre-accordion-ct\"><div class=\"pre-main-head\"><a class=\"pre-toggle-switch\" ng-click=\"toggle($event, title)\">{{title}}</a></div><div class=\"pre-detail\" ng-show=\"accordionPaneShow\"><div ng-transclude></div></div></div>"
   );
 
 
   $templateCache.put('src/accordion/accordion.html',
-    "<div class=\"accordion\" ng-transclude></div>"
+    "<div class=\"pre-accordion\" ng-transclude></div>"
   );
 
 
@@ -111,7 +111,6 @@
                 var blnShow = false;
                 scope.title = attrs.title;
                 scope.accordionPaneShow = false;
-
                 var accordionController = controllers[0];
 
                 scope.toggle = function(){
@@ -122,6 +121,7 @@
 
                 scope.hidePane = function(){
                     scope.accordionPaneShow = false;
+
                 };
 
             }
