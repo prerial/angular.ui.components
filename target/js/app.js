@@ -15,11 +15,9 @@
 				.when(navigation['Tooltip'].route, navigation['Tooltip'].config)
 				.when(navigation['GridTag'].route, navigation['GridTag'].config)
 				.when(navigation['Buttons'].route, navigation['Buttons'].config)
-//////////////////////////////////////////////
 				.when(navigation['Form'].route, navigation['Form'].config)
 				.when(navigation['Form1'].route, navigation['Form1'].config)
 				.when(navigation['Form2'].route, navigation['Form2'].config)
-////////////////////////////////////////////////////////////////////////
 				.when(navigation['Accordion'].route, navigation['Accordion'].config)
 				.when(navigation['Tabs'].route, navigation['Tabs'].config)
 				.otherwise({

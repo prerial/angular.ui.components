@@ -14,6 +14,7 @@
         scope.selectTab = function(tab){
             var tabarr =  angular.element(elem).find('.tab-content').children();
             tabarr.each(function(idx, item){
+                scope.tabsitems[idx].selected = tab.index === scope.tabsitems[idx].index;
                 angular.element(item).scope().hidePane();
             });
             angular.element(tabarr[tab.index]).scope().selectPane();
