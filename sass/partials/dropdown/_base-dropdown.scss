@@ -127,17 +127,14 @@
         max-height: 220px;
         -webkit-animation-name: fadeInDown;
         -moz-animation-name: fadeInDown;
-        -ms-animation-name: fadeInDown;
         -o-animation-name: fadeInDown;
         animation-name: fadeInDown;
         -webkit-animation-fill-mode: both;
         -moz-animation-fill-mode: both;
-        -ms-animation-fill-mode: both;
         -o-animation-fill-mode: both;
         animation-fill-mode: both;
         -webkit-animation-duration: 0.3s;
         -moz-animation-duration: 0.3s;
-        -ms-animation-duration: 0.3s;
         -o-animation-duration: 0.3s;
         animation-duration: 0.3s;
     }
@@ -166,7 +163,7 @@
         text-decoration: none;
         background-color: #d7dce0;
         background-image: none;
-        background-repeat: none;
+        background-repeat: no-repeat;
         cursor: pointer;
     }
 
@@ -177,7 +174,7 @@
         text-decoration: none;
         background-color: #fff;
         background-image: none;
-        background-repeat: none;
+        background-repeat: no-repeat;
     }
 
     &.multi-checkbox {
@@ -197,7 +194,7 @@
                 text-decoration: none;
                 background-color: #fff;
                 background-image: none;
-                background-repeat: none;
+                background-repeat: no-repeat;
                 outline: 0;
                 cursor: pointer;
             }

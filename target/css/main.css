@@ -414,7 +414,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eb862e), color-stop(100%, #9f5b1f));
   background: -webkit-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   background: -ms-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
-  background: -moz-linear-gradient(center top, #eb862e 0%, #9f5b1f 100%);
+  background: -moz-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   background: -o-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   background: linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb862e', endColorstr='#9f5b1f')";
@@ -436,7 +436,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #687a91), color-stop(100%, #43566b));
   background: -webkit-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: -ms-linear-gradient(top, #687a91 0%, #43566b 100%);
-  background: -moz-linear-gradient(center top, #687a91 0%, #43566b 100%);
+  background: -moz-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: -o-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: linear-gradient(top, #687a91 0%, #43566b 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#687a91', endColorstr='#43566b')";
@@ -452,7 +452,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eb862e), color-stop(100%, #9f5b1f));
   background: -webkit-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   background: -ms-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
-  background: -moz-linear-gradient(center top, #eb862e 0%, #9f5b1f 100%);
+  background: -moz-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   background: -o-linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   background: linear-gradient(top, #eb862e 0%, #9f5b1f 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb862e', endColorstr='#9f5b1f')";
@@ -474,7 +474,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f4f5), color-stop(100%, #d1d2d3));
   background: -webkit-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -ms-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
-  background: -moz-linear-gradient(center top, #f3f4f5 0%, #d1d2d3 100%);
+  background: -moz-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -o-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f4f5', endColorstr='#d1d2d3')";
@@ -496,7 +496,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f4f5), color-stop(100%, #d1d2d3));
   background: -webkit-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -ms-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
-  background: -moz-linear-gradient(center top, #f3f4f5 0%, #d1d2d3 100%);
+  background: -moz-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -o-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f4f5', endColorstr='#d1d2d3')";
@@ -512,7 +512,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f4f5), color-stop(100%, #d1d2d3));
   background: -webkit-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -ms-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
-  background: -moz-linear-gradient(center top, #f3f4f5 0%, #d1d2d3 100%);
+  background: -moz-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -o-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f4f5', endColorstr='#d1d2d3')";
@@ -534,7 +534,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #edf3fa), color-stop(100%, #cad0d6));
   background: -webkit-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   background: -ms-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
-  background: -moz-linear-gradient(center top, #edf3fa 0%, #cad0d6 100%);
+  background: -moz-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   background: -o-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   background: linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf3fa', endColorstr='#cad0d6')";
@@ -556,7 +556,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #687a91), color-stop(100%, #43566b));
   background: -webkit-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: -ms-linear-gradient(top, #687a91 0%, #43566b 100%);
-  background: -moz-linear-gradient(center top, #687a91 0%, #43566b 100%);
+  background: -moz-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: -o-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: linear-gradient(top, #687a91 0%, #43566b 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#687a91', endColorstr='#43566b')";
@@ -572,7 +572,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #edf3fa), color-stop(100%, #cad0d6));
   background: -webkit-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   background: -ms-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
-  background: -moz-linear-gradient(center top, #edf3fa 0%, #cad0d6 100%);
+  background: -moz-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   background: -o-linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   background: linear-gradient(top, #edf3fa 0%, #cad0d6 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf3fa', endColorstr='#cad0d6')";
@@ -594,7 +594,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f4f5), color-stop(100%, #d1d2d3));
   background: -webkit-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -ms-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
-  background: -moz-linear-gradient(center top, #f3f4f5 0%, #d1d2d3 100%);
+  background: -moz-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -o-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f4f5', endColorstr='#d1d2d3')";
@@ -616,7 +616,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f4f5), color-stop(100%, #d1d2d3));
   background: -webkit-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -ms-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
-  background: -moz-linear-gradient(center top, #f3f4f5 0%, #d1d2d3 100%);
+  background: -moz-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -o-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f4f5', endColorstr='#d1d2d3')";
@@ -632,7 +632,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f4f5), color-stop(100%, #d1d2d3));
   background: -webkit-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -ms-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
-  background: -moz-linear-gradient(center top, #f3f4f5 0%, #d1d2d3 100%);
+  background: -moz-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: -o-linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   background: linear-gradient(top, #f3f4f5 0%, #d1d2d3 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f4f5', endColorstr='#d1d2d3')";
@@ -659,7 +659,7 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #687a91), color-stop(100%, #43566b));
   background: -webkit-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: -ms-linear-gradient(top, #687a91 0%, #43566b 100%);
-  background: -moz-linear-gradient(center top, #687a91 0%, #43566b 100%);
+  background: -moz-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: -o-linear-gradient(top, #687a91 0%, #43566b 100%);
   background: linear-gradient(top, #687a91 0%, #43566b 100%);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#687a91', endColorstr='#43566b')";
@@ -732,7 +732,6 @@ input[type="color"],
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
   border-radius: 3px;
   font-size: 14px;
@@ -876,7 +875,6 @@ form input.ng-invalid.ng-touched {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
@@ -922,7 +920,6 @@ form input.ng-invalid.ng-touched {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
@@ -1015,7 +1012,6 @@ form input.ng-invalid.ng-touched {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
@@ -1067,7 +1063,6 @@ input[type="text"].displaytypeahead {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
@@ -1085,7 +1080,7 @@ body.modal-open {
   zoom: 1;
 }
 
-.lt-ie9 .pre-modal-backdrop, .lt-ie9
+.lt-ie9 .pre-modal-backdrop, .lt-ie9,
 .pre-modal-backdrop.fade.in {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)";
 }
@@ -1116,7 +1111,6 @@ body.modal-open {
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
 
@@ -1129,7 +1123,6 @@ body.modal-open {
   -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
   -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
   -o-transition: opacity 0.3s linear, top 0.3s ease-out;
-  -ms-transition: opacity 0.3s linear, top 0.3s ease-out;
   transition: opacity 0.3s linear, top 0.3s ease-out;
   opacity: 1;
   zoom: 1;
@@ -1250,7 +1243,6 @@ body.modal-open {
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
   background-clip: padding-box;
   -webkit-transform: translate3d(0, 0, 0);
   /*Forces HA*/
@@ -1346,7 +1338,6 @@ body.modal-open {
 .pre-window-wrapper .pre-window.opacity {
   -webkit-transition: 0.2s ease-in opacity;
   -moz-transition: 0.2s ease-in opacity;
-  -ms-transition: 0.2s ease-in opacity;
   transition: 0.2s ease-in opacity;
   opacity: 1;
 }
@@ -1355,14 +1346,12 @@ body.modal-open {
   opacity: 0;
   -webkit-transition-timing-function: ease-out;
   -moz-transition-timing-function: ease-out;
-  -ms-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
 
 .pre-window-wrapper .pre-window.top {
   -webkit-transition: 0.3s ease-out top;
   -moz-transition: 0.3s ease-out top;
-  -ms-transition: 0.3s ease-out top;
   transition: 0.3s ease-out top;
 }
 
@@ -1370,14 +1359,12 @@ body.modal-open {
   top: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
 
 .pre-window-wrapper .pre-window.right {
   -webkit-transition: 0.3s ease-out right;
   -moz-transition: 0.3s ease-out right;
-  -ms-transition: 0.3s ease-out right;
   transition: 0.3s ease-out right;
 }
 
@@ -1385,14 +1372,12 @@ body.modal-open {
   right: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
 
 .pre-window-wrapper .pre-window.bottom {
   -webkit-transition: 0.3s ease-out bottom;
   -moz-transition: 0.3s ease-out bottom;
-  -ms-transition: 0.3s ease-out bottom;
   transition: 0.3s ease-out bottom;
 }
 
@@ -1400,14 +1385,12 @@ body.modal-open {
   bottom: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
 
 .pre-window-wrapper .pre-window.left {
   -webkit-transition: 0.3s ease-out left;
   -moz-transition: 0.3s ease-out left;
-  -ms-transition: 0.3s ease-out left;
   transition: 0.3s ease-out left;
 }
 
@@ -1415,7 +1398,6 @@ body.modal-open {
   left: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
 
@@ -1578,7 +1560,7 @@ body.modal-open {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0px;
+  left: 0;
   width: 420px;
   right: 0;
   overflow: hidden;
@@ -1787,7 +1769,6 @@ body.modal-open {
   background: transparent;
   margin: 0;
   text-indent: 5px;
-  line-height: 15px;
   color: #555;
   padding: 3px 1px 3px 1px;
   overflow: hidden;
@@ -1807,20 +1788,20 @@ body.modal-open {
 .pre-dropdown-menu {
   overflow-x: hidden;
   position: absolute;
-  left: 0px;
+  left: 0;
   z-index: 1000;
   float: left;
   width: 162px;
   min-width: 162px;
   background-color: rgb(255, 255, 255);
   overflow-y: scroll;
-  max-height: 0px;
+  max-height: 0;
   box-shadow: rgba(255, 255, 255, 0) 1px 1px 2px inset;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   box-sizing: border-box;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   list-style: none;
   border-radius: 1px;
   border-top: 1px solid transparent;
@@ -1940,7 +1921,6 @@ body.modal-open {
   -webkit-box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0);
   box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0);
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
   background-clip: padding-box;
   border-top: solid 1px transparent;
   border-right: solid 1px transparent;
@@ -1972,17 +1952,14 @@ body.modal-open {
   max-height: 220px;
   -webkit-animation-name: fadeInDown;
   -moz-animation-name: fadeInDown;
-  -ms-animation-name: fadeInDown;
   -o-animation-name: fadeInDown;
   animation-name: fadeInDown;
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
-  -ms-animation-fill-mode: both;
   -o-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-duration: 0.3s;
   -moz-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
   -o-animation-duration: 0.3s;
   animation-duration: 0.3s;
 }
@@ -2009,7 +1986,7 @@ body.modal-open {
   text-decoration: none;
   background-color: #d7dce0;
   background-image: none;
-  background-repeat: none;
+  background-repeat: no-repeat;
   cursor: pointer;
 }
 .pre-dropdown-menu > .active > a,
@@ -2019,7 +1996,7 @@ body.modal-open {
   text-decoration: none;
   background-color: #fff;
   background-image: none;
-  background-repeat: none;
+  background-repeat: no-repeat;
 }
 .pre-dropdown-menu.multi-checkbox li {
   line-height: 23px;
@@ -2034,7 +2011,7 @@ body.modal-open {
   text-decoration: none;
   background-color: #fff;
   background-image: none;
-  background-repeat: none;
+  background-repeat: no-repeat;
   outline: 0;
   cursor: pointer;
 }
