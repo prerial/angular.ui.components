@@ -9,7 +9,7 @@
   'use strict';
 
   $templateCache.put('src/accordion/accordion-pane.html',
-    "<div class=\"accordion-group\"><div class=\"accordion-heading\"><a class=\"accordion-toggle\" ng-click=\"toggle($event, title)\">{{title}}</a></div><div class=\"accordion-body collapse\" ng-show=\"accordionPaneShow\" ng-init=\"accordionPaneShow=false\"><div class=\"accordion-inner\" ng-transclude></div></div></div>"
+    "<div class=\"accordion-group\"><div class=\"accordion-heading\"><a class=\"accordion-toggle\" ng-click=\"toggle($event, title)\">{{title}}</a></div><div class=\"accordion-body collapse\" ng-show=\"accordionPaneShow\"><div class=\"accordion-inner\" ng-transclude></div></div></div>"
   );
 
 
@@ -95,7 +95,7 @@
 (function () {
     'use strict';
 
-    function AccordionPaneDirective($timeout) {
+    function AccordionPaneDirective() {
 
         return {
             restrict: 'E',
@@ -108,14 +108,16 @@
             transclude: true,
             link: function (scope, elem, attrs, controllers) {
 
+                var blnShow = false;
                 scope.title = attrs.title;
                 scope.accordionPaneShow = false;
 
                 var accordionController = controllers[0];
 
-                scope.toggle = function(evt, item){
+                scope.toggle = function(){
+                    blnShow = scope.accordionPaneShow;
                     accordionController.hide();
-                    scope.accordionPaneShow = true;
+                    blnShow === false? scope.accordionPaneShow = true : scope.accordionPaneShow = false;
                 };
 
                 scope.hidePane = function(){
@@ -125,8 +127,6 @@
             }
         }
     }
-
-    AccordionPaneDirective.$inject = ['$timeout'];
 
     angular.module('prerial').directive({preAccordionPane: AccordionPaneDirective});
 
