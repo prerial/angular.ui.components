@@ -1,7 +1,1 @@
-<div>
-    <ul ng-repeat="item in items">
-        <li><div ng-click="toggle($event, item)">{{item.title}}</div>
-            <div ng-show="accordionShow" ng-init="accordionShow = false" ng-model="accordionShow" class="accordion-content">{{item.content}}</div>
-        </li>
-    </ul>
-</div>
+<div class='accordion' ng-transclude></div>

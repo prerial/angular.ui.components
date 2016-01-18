@@ -8,8 +8,13 @@
 ;angular.module('prerial').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('src/accordion/accordion-pane.html',
+    "<div class=\"accordion-group\"><div class=\"accordion-heading\"><a class=\"accordion-toggle\" ng-click=\"toggle($event, title)\">{{title}}</a></div><div class=\"accordion-body collapse\" ng-show=\"accordionPaneShow\" ng-init=\"accordionPaneShow=false\"><div class=\"accordion-inner\" ng-transclude></div></div></div>"
+  );
+
+
   $templateCache.put('src/accordion/accordion.html',
-    "<div><ul ng-repeat=\"item in items\"><li><div ng-click=\"toggle($event, item)\">{{item.title}}</div><div ng-show=\"accordionShow\" ng-init=\"accordionShow = false\" ng-model=\"accordionShow\" class=\"accordion-content\">{{item.content}}</div></li></ul></div>"
+    "<div class=\"accordion\" ng-transclude></div>"
   );
 
 
@@ -45,44 +50,12 @@
     'use strict';
 
     function AccordionController(scope, attrs, elem, parse) {
-        var ngModel, matches = [],
-            input = elem.find('input'),
-            displayText = parse(attrs.display);
 
-        this.init = function(ctrl) {
-            ngModel = ctrl;
-            ngModel.$render = onRender;
+        this.hide = function(){
+            angular.element(elem).children().each(function(idx, item){
+                angular.element(item.children[1]).scope().hidePane();
+            });
         };
-/*
-        scope.isActive = function (item) {
-            var isActive = false;
-            if (matches.length === 1 && scope.selectedValue === item[attrs.field] ) {
-                isActive = true;
-            }
-            return isActive;
-        };
-
-        scope.$watch(function (){ return ngModel.$viewValue;}, function (newValue) {
-            ngModel.$render();
-            console.log('Watching ngModel: ' + displayText(newValue));
-        });
-
-        scope.itemSelect = function (item) {
-            ngModel.$setViewValue(item);
-            scope.comboShow = false;
-        };
-*/
-        function onRender() {
-            matches.length = 0;
-            if(ngModel.$viewValue && ngModel.$viewValue[attrs.field]) {
-                matches.push(ngModel.$viewValue);
-                scope.selectedValue = ngModel.$viewValue[attrs.field];
-                input.val(displayText(ngModel.$viewValue));
-            }else {
-                input.val(attrs.placeholder);
-            }
-        }
-
     }
 
     AccordionController.$inject = ['$scope', '$attrs', '$element', '$parse'];
@@ -100,7 +73,7 @@
 
         return {
             restrict: 'E',
-            require: ['?ngModel','preAccordion'],
+            require: ['preAccordion'],
             scope: {
                 src: '=',
                 field: '@'
@@ -108,39 +81,54 @@
             templateUrl: 'src/accordion/accordion.html',
             controller: 'AccordionController',
             replace: true,
-            link: function (scope, elem, attrs, controllers) {
-                scope.items = scope.src;
-                scope.toggle = function(evt, item){
-                    var el = evt.target;
-                    scope.hide();
-                    angular.element(el).scope().accordionShow = true;
-                };
-                scope.hide = function(){
-                    angular.element(elem).children().each(function(idx, item){
-                        angular.element(item).scope().accordionShow = false;
-                    });
-                };
-
-                var ngModelController = controllers[0],
-                    accordionController = controllers[1];
-
-/*
-
-                comboboxController.init(ngModelController);
-                scope.comboShow = false;
-                elem.find('.pre-combobox-toggle').on("click", function handleClickEvent() {
-                    scope.comboShow = !scope.comboShow;
-                    scope.$apply();
-                });
-                elem.find('.pre-dropdown-menu').width(elem.find('.pre-combobox').width() - 2);
-*/
-            }
+            transclude: true
         }
     }
 
     AccordionDirective.$inject = ['$timeout'];
 
     angular.module('prerial').directive({preAccordion: AccordionDirective});
+
+})();;/**
+ * Created by Mikhail on 1/17/2016.
+ */
+(function () {
+    'use strict';
+
+    function AccordionPaneDirective($timeout) {
+
+        return {
+            restrict: 'E',
+            require: ['^preAccordion'],
+            scope: {
+                src: '='
+            },
+            templateUrl: 'src/accordion/accordion-pane.html',
+            replace: true,
+            transclude: true,
+            link: function (scope, elem, attrs, controllers) {
+
+                scope.title = attrs.title;
+                scope.accordionPaneShow = false;
+
+                var accordionController = controllers[0];
+
+                scope.toggle = function(evt, item){
+                    accordionController.hide();
+                    scope.accordionPaneShow = true;
+                };
+
+                scope.hidePane = function(){
+                    scope.accordionPaneShow = false;
+                };
+
+            }
+        }
+    }
+
+    AccordionPaneDirective.$inject = ['$timeout'];
+
+    angular.module('prerial').directive({preAccordionPane: AccordionPaneDirective});
 
 })();;(function (document, angular) {
     'use strict';

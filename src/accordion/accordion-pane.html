@@ -1,0 +1,8 @@
+<div class='accordion-group' >
+    <div class='accordion-heading'>
+        <a class='accordion-toggle' ng-click='toggle($event, title)'>{{title}}</a>
+    </div>
+    <div class='accordion-body collapse' ng-show="accordionPaneShow" ng-init="accordionPaneShow=false">
+        <div class='accordion-inner' ng-transclude></div>
+    </div>
+</div>

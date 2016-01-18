@@ -8,7 +8,7 @@
 
         return {
             restrict: 'E',
-            require: ['?ngModel','preAccordion'],
+            require: ['preAccordion'],
             scope: {
                 src: '=',
                 field: '@'
@@ -16,33 +16,7 @@
             templateUrl: 'src/accordion/accordion.html',
             controller: 'AccordionController',
             replace: true,
-            link: function (scope, elem, attrs, controllers) {
-                scope.items = scope.src;
-                scope.toggle = function(evt, item){
-                    var el = evt.target;
-                    scope.hide();
-                    angular.element(el).scope().accordionShow = true;
-                };
-                scope.hide = function(){
-                    angular.element(elem).children().each(function(idx, item){
-                        angular.element(item).scope().accordionShow = false;
-                    });
-                };
-
-                var ngModelController = controllers[0],
-                    accordionController = controllers[1];
-
-/*
-
-                comboboxController.init(ngModelController);
-                scope.comboShow = false;
-                elem.find('.pre-combobox-toggle').on("click", function handleClickEvent() {
-                    scope.comboShow = !scope.comboShow;
-                    scope.$apply();
-                });
-                elem.find('.pre-dropdown-menu').width(elem.find('.pre-combobox').width() - 2);
-*/
-            }
+            transclude: true
         }
     }
 
