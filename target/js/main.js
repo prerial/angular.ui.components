@@ -33,6 +33,16 @@
   );
 
 
+  $templateCache.put('src/tabs/tabs-pane.html',
+    "<div><div class=\"tab-pane\" ng-class=\"{active: selected}\" ng-show=\"selected\" ng-transclude></div></div>"
+  );
+
+
+  $templateCache.put('src/tabs/tabs.html',
+    "<div class=\"pre-tab tabs-above\"><ul class=\"nav nav-tabs\"><li ng-repeat=\"item in tabsitems\" ng-class=\"{active:tab.selected && !tab.disabled,disabled:tab.disabled}\"><a ng-click=\"selectTab(item)\">{{item.title}}</a></li></ul><div class=\"tab-content\" ng-transclude></div></div>"
+  );
+
+
   $templateCache.put('src/tooltip/popover.html',
     "<div class=\"pre-popover-wrapper\"><div class=\"popover-arrow\"></div><button class=\"close pre-icon-close-box\" type=\"button\"></button><div class=\"popover-inner\"><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div></div>"
   );
@@ -377,6 +387,11 @@
             {
                 route: '/accordion',
                 config: {controller: 'AccordionCtrl', templateUrl:'partials/accordion.html'}
+            },
+            'Tabs':
+            {
+                route: '/tabs',
+                config: {controller: 'TabsCtrl', templateUrl:'partials/tabs.html'}
             }
         });
 
@@ -968,7 +983,105 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
             }
         };
     });
-})(angular);;(function (angular) {
+})(angular);;/**
+ * Created by Mikhail on 1/18/2016.
+ */
+(function () {
+    'use strict';
+
+    function TabsContainerController(scope, elem) {
+        scope.tabsitems = [];
+
+        this.setTab = function(tab) {
+            scope.tabsitems.push(tab);
+        };
+
+        scope.selectTab = function(tab){
+            var tabarr =  angular.element(elem).find('.tab-content').children();
+            tabarr.each(function(idx, item){
+                angular.element(item).scope().hidePane();
+            });
+            angular.element(tabarr[tab.index]).scope().selectPane();
+        };
+    }
+
+    TabsContainerController.$inject = ['$scope', '$element'];
+
+    angular.module('prerial').controller('TabsContainerController', TabsContainerController);
+
+})();;/**
+ * Created by Mikhail on 1/18/2016.
+ */
+
+(function () {
+    'use strict';
+
+    function TabsContainer() {
+
+        return {
+            restrict: 'E',
+            require: ['preTabsContainer'],
+            scope: {
+                src: '='
+            },
+            templateUrl: 'src/tabs/tabs.html',
+            controller: 'TabsContainerController',
+            replace: true,
+            transclude: true
+        }
+    }
+
+    TabsContainer.$inject = ['$timeout'];
+
+    angular.module('prerial').directive({preTabsContainer: TabsContainer});
+
+})();
+
+;/**
+ * Created by Mikhail on 1/18/2016.
+ */
+(function () {
+    'use strict';
+
+    function TabsPaneDirective() {
+
+        return {
+            restrict: 'E',
+            require: ['^preTabsContainer'],
+            templateUrl: 'src/tabs/tabs-pane.html',
+            replace: true,
+            scope:true,
+            transclude: true,
+            link: function (scope, elem, attrs, controllers) {
+                var blnShow = false;
+                scope.title = attrs.title;
+                scope.selected = attrs.selected === 'true'? true : false;
+                var tabsController = controllers[0];
+                var tabitem =  {
+                    title:attrs.title,
+                    index:attrs.index,
+                    content:elem.html(),
+                    disabled:attrs.disabled,
+                    selected:scope.selected
+                };
+
+                tabsController.setTab(tabitem);
+
+                scope.hidePane = function(){
+                    scope.selected = false;
+                };
+
+                scope.selectPane = function(){
+                    scope.selected = true;
+                };
+            }
+        }
+    }
+
+    angular.module('prerial').directive({preTabsPane: TabsPaneDirective});
+
+})();
+;(function (angular) {
     'use strict';
 
     function PopoverDirective(){
@@ -1667,6 +1780,27 @@ angular.module('prerial').controller('preGridController', ['$scope', '$http', '$
 
 })();
 
+;/**
+ * Created by Mikhail on 1/18/2016.
+ */
+(function () {
+    'use strict';
+
+    angular.module('prerial').controller('TabsCtrl', ['$scope', '$log', function(scope, $log) {
+
+        scope.showFlag = false;
+
+        scope.onTabOpen = function(selectedTab){
+            $log.log("Tab -> index: " + selectedTab.index + " , title: " + selectedTab.title);
+        };
+
+        scope.hideShowTab = function() {
+            scope.showFlag? scope.showFlag = false : scope.showFlag = true;
+        }
+
+    }]);
+
+})();
 ;/**
  * Created by Mikhail on 1/4/2016.
  */
