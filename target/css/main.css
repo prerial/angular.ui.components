@@ -2613,4 +2613,69 @@ body.modal-open {
   border-right-width: 0;
 }
 
+.ng-hide-add, .ng-hide-remove {
+  /* ensure visibility during the transition */
+  display: block !important;
+  /* yes, important */
+}
+
+.pre-accordion-ct {
+  padding: 0;
+  margin-bottom: 10px;
+  /*    background-color: #e8e8e8; */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.pre-accordion-ct .pre-detail {
+  transition: 0.6s linear all;
+  max-height: 500px;
+  opacity: 1;
+  overflow: hidden;
+}
+.pre-accordion-ct .pre-detail.ng-hide {
+  max-height: 0;
+}
+.pre-accordion-ct .pre-main-head {
+  position: relative;
+  word-wrap: break-word;
+  cursor: pointer;
+  color: #18619c;
+  padding: 4px 10px;
+  margin-right: 12px;
+  background-color: #e8e8e8;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold;
+  border-top: solid 1px #d1d1d1;
+  border-right: solid 1px transparent;
+  border-bottom: solid 1px #d1d1d1;
+  border-left: solid 1px transparent;
+}
+.pre-accordion-ct .pre-main-head .pre-toggle-switch {
+  /*
+              position: absolute;
+              top:0;
+              left:0;
+  */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.pre-accordion-ct .pre-main-head .pre-toggle-switch .pre-icon-expand,
+.pre-accordion-ct .pre-main-head .pre-toggle-switch .pre-icon-collapse {
+  width: 14px;
+  height: 12px;
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  color: #898989;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: normal;
+}
+
 /*# sourceMappingURL=main.css.map */

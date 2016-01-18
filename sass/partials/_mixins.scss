@@ -74,6 +74,53 @@
   -ms-box-sizing: $border-box-type;
   box-sizing: $border-box-type;
 }
+// @mixin sa-transition (...) {
+@mixin pre-transition ($x) {
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -o-transition: $x;
+  -ms-transition: $x;
+  transition: $x;
+}
+
+@mixin pre-transition-2 ($x, $y) {
+  -webkit-transition: $x, $y;
+  -moz-transition: $x, $y;
+  -o-transition: $x, $y;
+  -ms-transition: $x, $y;
+  transition: $x, $y;
+}
+// @props: ~`"@{arguments}".replace(/\'/g, '').replace(/[\[\]]/g, '')`;
+// -moz-transition: @props;
+// -webkit-transition: @props;
+// transition: @props;
+
+
+// CSS Transform
+// @mixin sa-transform (...) {
+@mixin pre-transform ($x) {
+  -webkit-transform: $x;
+  -moz-transform: $x;
+  -o-transform: $x;
+  -ms-transform: $x;
+  transform: $x;
+}
+// -moz-transform: @arguments;
+// -webkit-transform: @arguments;
+// transform: @arguments;
+
+// Linear Gradience
+// @mixin sa-linear-gradience (...) {
+@mixin pre-linear-gradience ($location, $start, $stop) {
+  background: transparent;
+  background: -moz-linear-gradient(top, $stop 0%, $stop 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$stop));
+  background: -webkit-linear-gradient(top, $start 0%,$stop 100%);
+  background: -o-linear-gradient(top, $start 0%,$stop 100%);
+  background: -ms-linear-gradient(top, $start 0%,$stop 100%);
+  background: linear-gradient(top, $start 0%,$stop 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start}', endColorstr='#{$stop}')";
+}
 
 /*
 You can define a default value as well if an attribute

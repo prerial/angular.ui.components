@@ -20,7 +20,6 @@
                 var blnShow = false;
                 scope.title = attrs.title;
                 scope.accordionPaneShow = false;
-
                 var accordionController = controllers[0];
 
                 scope.toggle = function(){
@@ -31,6 +30,7 @@
 
                 scope.hidePane = function(){
                     scope.accordionPaneShow = false;
+
                 };
 
             }
