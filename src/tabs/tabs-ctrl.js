@@ -12,6 +12,9 @@
         };
 
         scope.selectTab = function(tab){
+            for(var i = 0; i < scope.tabsitems.length; i++){
+                scope.tabsitems[i].selected = tab.index === scope.tabsitems[i].index;
+            }
             var tabarr =  angular.element(elem).find('.tab-content').children();
             tabarr.each(function(idx, item){
                 angular.element(item).scope().hidePane();
