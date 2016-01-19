@@ -5,7 +5,7 @@ body.modal-open {
 .pre-modal-backdrop.fade.in {
   opacity: 0.54;
   zoom: 1; }
-.lt-ie9 .pre-modal-backdrop, .lt-ie9
+.lt-ie9 .pre-modal-backdrop, .lt-ie9,
 .pre-modal-backdrop.fade.in {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)"; }
 
@@ -34,7 +34,6 @@ body.modal-open {
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
   background-clip: padding-box; }
 .pre-modal.fade {
   top: -1150%; }
@@ -43,7 +42,6 @@ body.modal-open {
   -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
   -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
   -o-transition: opacity 0.3s linear, top 0.3s ease-out;
-  -ms-transition: opacity 0.3s linear, top 0.3s ease-out;
   transition: opacity 0.3s linear, top 0.3s ease-out;
   opacity: 1;
   zoom: 1; }
@@ -144,7 +142,6 @@ body.modal-open {
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
   background-clip: padding-box;
   -webkit-transform: translate3d(0, 0, 0);
   /*Forces HA*/
@@ -220,58 +217,48 @@ body.modal-open {
 .pre-window-wrapper .pre-window.opacity {
   -webkit-transition: 0.2s ease-in opacity;
   -moz-transition: 0.2s ease-in opacity;
-  -ms-transition: 0.2s ease-in opacity;
   transition: 0.2s ease-in opacity;
   opacity: 1; }
 .pre-window-wrapper .pre-window.opacity.ng-hide {
   opacity: 0;
   -webkit-transition-timing-function: ease-out;
   -moz-transition-timing-function: ease-out;
-  -ms-transition-timing-function: ease-out;
   transition-timing-function: ease-out; }
 .pre-window-wrapper .pre-window.top {
   -webkit-transition: 0.3s ease-out top;
   -moz-transition: 0.3s ease-out top;
-  -ms-transition: 0.3s ease-out top;
   transition: 0.3s ease-out top; }
 .pre-window-wrapper .pre-window.top.ng-hide {
   top: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in; }
 .pre-window-wrapper .pre-window.right {
   -webkit-transition: 0.3s ease-out right;
   -moz-transition: 0.3s ease-out right;
-  -ms-transition: 0.3s ease-out right;
   transition: 0.3s ease-out right; }
 .pre-window-wrapper .pre-window.right.ng-hide {
   right: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in; }
 .pre-window-wrapper .pre-window.bottom {
   -webkit-transition: 0.3s ease-out bottom;
   -moz-transition: 0.3s ease-out bottom;
-  -ms-transition: 0.3s ease-out bottom;
   transition: 0.3s ease-out bottom; }
 .pre-window-wrapper .pre-window.bottom.ng-hide {
   bottom: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in; }
 .pre-window-wrapper .pre-window.left {
   -webkit-transition: 0.3s ease-out left;
   -moz-transition: 0.3s ease-out left;
-  -ms-transition: 0.3s ease-out left;
   transition: 0.3s ease-out left; }
 .pre-window-wrapper .pre-window.left.ng-hide {
   left: -100% !important;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   transition-timing-function: ease-in; }
 
 .pre-window-backdrop {
