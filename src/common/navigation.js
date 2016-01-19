@@ -75,6 +75,11 @@
             {
                 route: '/tabs',
                 config: {controller: 'TabsCtrl', templateUrl:'partials/tabs.html'}
+            },
+            'ContextMenu':
+            {
+                route: '/context-menu',
+                config: {controller: 'ContextMenuCtrl', templateUrl:'partials/context-menu.html'}
             }
         });
 
