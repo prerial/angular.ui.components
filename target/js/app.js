@@ -20,6 +20,7 @@
 				.when(navigation['Form2'].route, navigation['Form2'].config)
 				.when(navigation['Accordion'].route, navigation['Accordion'].config)
 				.when(navigation['Tabs'].route, navigation['Tabs'].config)
+				.when(navigation['ContextMenu'].route, navigation['ContextMenu'].config)
 				.otherwise({
 					redirectTo: navigation['Home'].route
 				});

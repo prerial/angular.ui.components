@@ -1,0 +1,32 @@
+.context-menu-container{
+  display:inline-block;
+  position:absolute;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+
+    p {
+      margin: 0;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      @include font (12px, 20px, normal);
+      color: $color-gray-dark-1;
+
+      b {
+      color: darkred;
+      }
+    }
+
+	.header {
+		@include font (18px, 18px, bold);
+		padding: 6px 0 2px 2px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid #ccc;
+	}
+
+  	.btn {
+  		float: right;
+  		margin: 10px 0 2px;
+  	}
+}

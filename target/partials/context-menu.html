@@ -1,0 +1,45 @@
+<div>
+    <script type="text/ng-template" id="myMenu.html">
+        <div style="padding:10px;position:relative;top:0;left:0">
+            <p class="header">Context Menu 1</p>
+            <p>This is custom context menu 1</p>
+            <p>Scope binding value: <b>{{Test}}</b></p><p> (from controller)</p>
+            <button ng-click="closeMenu()" class="btn btn-secondary">Close</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="myMenu1.html">
+        <div style="padding:10px;position:relative;top:0;left:0">
+            <h3>Context Menu 2</h3>
+            <p>This is custom context menu</p>
+            <p>Scope binding value: <b>{{Test1}}</b></p><p> (from controller)</p>
+            <button ng-click="closeMenu()" class="btn btn-secondary">Close</button>
+        </div>
+    </script>
+
+    <style>
+        .test-area {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        .faded {
+            color: #eee;
+        }
+    </style>
+
+    <h2 style="margin:40px">Context Menu Directive</h2>
+
+    <div class="bs-docs-example" style="margin:40px;width:400px">
+        <div class="test-area" pre-context-menu="myMenu.html">
+            <span class="faded">right-click anywhere within this box</span>
+        </div>
+    </div>
+    <div class="bs-docs-example" style="margin:40px;width:400px">
+        <div class="test-area" pre-context-menu="myMenu1.html">
+            <span class="faded">right-click anywhere within this box</span>
+        </div>
+    </div>
+
