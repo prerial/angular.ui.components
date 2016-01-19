@@ -26,7 +26,6 @@
   -webkit-transition: $x, $y;
   -moz-transition: $x, $y;
   -o-transition: $x, $y;
-  -ms-transition: $x, $y;
   transition: $x, $y;
 }
 // Disables content selection in an element
@@ -64,7 +63,7 @@
 
 @mixin background-clip($background-clip: padding-box) {
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
+  -moz-background-clip: padding;
   background-clip: padding-box;
 }
 // Makes block elements bound to their set dimensions w/o allowing padding to alter final dimensions
@@ -79,7 +78,6 @@
   -webkit-transition: $x;
   -moz-transition: $x;
   -o-transition: $x;
-  -ms-transition: $x;
   transition: $x;
 }
 
@@ -87,7 +85,6 @@
   -webkit-transition: $x, $y;
   -moz-transition: $x, $y;
   -o-transition: $x, $y;
-  -ms-transition: $x, $y;
   transition: $x, $y;
 }
 // @props: ~`"@{arguments}".replace(/\'/g, '').replace(/[\[\]]/g, '')`;

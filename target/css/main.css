@@ -1741,7 +1741,6 @@ body.modal-open {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 .pre-combobox .input-append .add-on {
@@ -1762,7 +1761,6 @@ body.modal-open {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 .pre-combobox .input-append .add-on.pre-icon-arrow-down {
@@ -1802,7 +1800,6 @@ body.modal-open {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
@@ -1875,7 +1872,6 @@ body.modal-open {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 .pre-dropdown .input-append .add-on {
@@ -1896,7 +1892,6 @@ body.modal-open {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 .pre-dropdown .input-append .add-on.pre-icon-arrow-down {
@@ -1945,7 +1940,7 @@ body.modal-open {
   -webkit-box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0);
   box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0);
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
+  -moz-background-clip: padding;
   background-clip: padding-box;
   border-top: solid 1px transparent;
   border-right: solid 1px transparent;
@@ -2261,7 +2256,7 @@ body.modal-open {
 .pre-popover.top .tooltip-arrow.left,
 .pre-popover.top .popover-arrow.left {
   left: 20px;
-  margin-left: 0px;
+  margin-left: 0;
 }
 .pre-tooltip.top .tooltip-arrow.right, .top.pre-popover .tooltip-arrow.right,
 .pre-tooltip.top .popover-arrow.right,
@@ -2270,7 +2265,7 @@ body.modal-open {
 .pre-popover.top .popover-arrow.right {
   right: 20px;
   left: auto;
-  margin-left: 0px;
+  margin-left: 0;
 }
 .pre-tooltip.top .tooltip-arrow:after, .top.pre-popover .tooltip-arrow:after,
 .pre-tooltip.top .popover-arrow:after,
@@ -2313,7 +2308,7 @@ body.modal-open {
 .pre-popover.bottom .tooltip-arrow.left,
 .pre-popover.bottom .popover-arrow.left {
   left: 20px;
-  margin-left: 0px;
+  margin-left: 0;
 }
 .pre-tooltip.bottom .tooltip-arrow.right, .bottom.pre-popover .tooltip-arrow.right,
 .pre-tooltip.bottom .popover-arrow.right,
@@ -2322,7 +2317,7 @@ body.modal-open {
 .pre-popover.bottom .popover-arrow.right {
   right: 20px;
   left: auto;
-  margin-left: 0px;
+  margin-left: 0;
 }
 .pre-tooltip.bottom .tooltip-arrow:after, .bottom.pre-popover .tooltip-arrow:after,
 .pre-tooltip.bottom .popover-arrow:after,
@@ -2420,7 +2415,7 @@ body.modal-open {
 .pre-popover.bottom-right .popover-arrow.top,
 .pre-popover.top-right .tooltip-arrow.top,
 .pre-popover.top-right .popover-arrow.top {
-  margin-top: 0px;
+  margin-top: 0;
   top: 15%;
 }
 .pre-tooltip.right .tooltip-arrow.bottom, .right.pre-popover .tooltip-arrow.bottom,
@@ -2559,7 +2554,7 @@ body.modal-open {
 .pre-popover.bottom-left .popover-arrow.top,
 .pre-popover.top-left .tooltip-arrow.top,
 .pre-popover.top-left .popover-arrow.top {
-  margin-top: 0px;
+  margin-top: 0;
   top: 15%;
 }
 .pre-tooltip.left .tooltip-arrow.bottom, .left.pre-popover .tooltip-arrow.bottom,
@@ -2913,13 +2908,22 @@ body.modal-open {
 .pre-tab .tab-content {
   padding: 6px;
   background-color: #fff;
-  min-height: 60px;
+  /*        min-height: 60px; */
 }
 .pre-tab .tab-content .tab-pane {
+  transition: 0.6s linear all;
+  max-height: 500px;
+  opacity: 0;
   display: none;
 }
 .pre-tab .tab-content .tab-pane.active {
+  opacity: 1;
   display: block;
+}
+.pre-tab .tab-content .tab-pane.ng-hide {
+  max-height: 0;
+  opacity: 0;
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */

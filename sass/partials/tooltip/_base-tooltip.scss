@@ -128,13 +128,13 @@
 
       &.left {
         left: 20px;
-        margin-left: 0px;
+        margin-left: 0;
       }
 
       &.right {
         right: 20px;
         left: auto;
-        margin-left: 0px;
+        margin-left: 0;
       }
 
       &:after {
@@ -167,13 +167,13 @@
 
       &.left {
         left: 20px;
-        margin-left: 0px;
+        margin-left: 0;
       }
 
       &.right {
         right: 20px;
         left: auto;
-        margin-left: 0px;
+        margin-left: 0;
       }
 
       &:after {
@@ -209,7 +209,7 @@
       border-right-color: #999;
 
       &.top {
-        margin-top: 0px;
+        margin-top: 0;
         top: 15%;
       }
 
@@ -251,7 +251,7 @@
       border-left-color: #999;
 
       &.top {
-        margin-top: 0px;
+        margin-top: 0;
         top: 15%;
       }
 

@@ -273,14 +273,23 @@
     .tab-content {
         padding: 6px;
         background-color: #fff;
-        min-height: 60px;
+/*        min-height: 60px; */
 
         .tab-pane {
+            transition: 0.6s linear all;
+            max-height: 500px;
+            opacity:0;
             display: none;
 
             &.active {
+                opacity:1;
                 display: block;
             }
+        }
+        .tab-pane.ng-hide {
+            max-height: 0;
+            opacity:0;
+            display: none;
         }
     }
 
