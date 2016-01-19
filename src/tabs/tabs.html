@@ -1,0 +1,8 @@
+<div class="pre-tab tabs-above" >
+    <ul class="nav nav-tabs">
+        <li ng-repeat="item in tabsitems" ng-class="{active:tab.selected && !tab.disabled,disabled:tab.disabled}">
+            <a ng-click="selectTab(item)" >{{item.title}}</a>
+        </li>
+    </ul>
+    <div class="tab-content" ng-transclude></div>
+</div>

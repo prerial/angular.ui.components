@@ -70,6 +70,11 @@
             {
                 route: '/accordion',
                 config: {controller: 'AccordionCtrl', templateUrl:'partials/accordion.html'}
+            },
+            'Tabs':
+            {
+                route: '/tabs',
+                config: {controller: 'TabsCtrl', templateUrl:'partials/tabs.html'}
             }
         });
 

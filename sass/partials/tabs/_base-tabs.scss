@@ -1,0 +1,287 @@
+// Tabbs
+.pre-tab {
+
+    &:before,
+    &:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    &.tabs-above { 
+
+        > .nav {
+            margin: 1px 0 0 0;
+            padding: 0;
+            list-style: none;
+            background-color: #f1f1f1;
+        }
+
+        > .nav-tabs {
+            border-bottom: 1px solid #d8d8d8;
+
+            &:before,
+            &:after {
+                display: table;
+                line-height: 0;
+                content: "";
+            }
+
+            &:after {
+                clear: both;
+            }
+
+            > li {
+                position: relative;
+                float: left;
+                margin-bottom: -1px;
+
+                
+                > a {
+                    @include border-radius(0);
+                    @include font(11px, 22px, bold);
+                    @include bordered(transparent, transparent, #d8d8d8, transparent);
+                    color: $color-blue-dark-3;
+                    background-color: #f1f1f1;
+                    padding: 3px 15px;
+                    margin-right: 0;
+                    margin-left: 0;
+                    cursor: pointer;
+                    display: block;
+                    
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 10px;
+                    right: 0;
+                    height: 12px;
+                    border-right: 1px solid #d8d8d8;
+                }
+
+
+                &:first-child {
+                
+                    &.active {
+
+                        > a,
+                        > a:hover,
+                        > a:focus {
+                            @include bordered(#d8d8d8, #d8d8d8, transparent, #d8d8d8);
+                            color: $color-orange-dark;
+                            background-color: #fff;
+                        }    
+                    }
+                }
+
+                &.active {
+
+                    > a,
+                    > a:hover,
+                    > a:focus {
+                        @include bordered(#d8d8d8, #d8d8d8, transparent, #d8d8d8);
+                        color: $color-orange-dark;
+                        background-color: #fff;
+                        cursor: default;
+                        margin-left: -1px;
+                        text-decoration: none;
+                    }    
+                } 
+
+                &.disabled {
+
+					> a {
+					    color: #999;
+						text-decoration: none;
+						cursor: default;
+					}
+				}
+	
+            }
+        }
+    }
+
+    &.tabs-below {
+        min-height: 160px;
+        @include bordered(transparent, #d8d8d8, #d8d8d8, #d8d8d8); 
+
+        > .nav {
+            margin-bottom: 0;
+            margin-left: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #f1f1f1;
+        }
+
+        > .nav-tabs {
+            border-top: 1px solid #d8d8d8;
+
+            &:before,
+            &:after {
+                display: table;
+                line-height: 0;
+                content: "";
+            }
+
+            &:after {
+                clear: both;
+            } 
+
+            > li {
+                position: relative;
+                float: left;
+                margin-bottom: 0;
+                margin-top: -1px;
+
+                > a {
+                    @include border-radius(0);
+                    @include font(11px, 22px, bold);
+                    @include bordered(#d8d8d8, transparent, transparent, transparent);
+                    color: $color-blue-dark-3;
+                    background-color: #f1f1f1;
+                    padding: 3px 15px;
+                    margin-right: 0;
+                    margin-left: 0;
+                    cursor: pointer;
+                    display: block;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 10px;
+                    right: 0;
+                    height: 12px;
+                    border-right: 1px solid #d8d8d8;
+                }
+
+                &:first-child {
+                
+                    &.active {
+
+                        > a,
+                        > a:hover,
+                        > a:focus {
+                            @include bordered(transparent, #d8d8d8, #d8d8d8, #d8d8d8);
+                            color: $color-orange-dark;
+                            background-color: #fff;
+                        }    
+                    }
+                }
+
+                &.active {
+
+                    > a,
+                    > a:hover,
+                    > a:focus {
+                        @include bordered(transparent, #d8d8d8, #d8d8d8, #d8d8d8);
+                        color: $color-orange-dark;
+                        background-color: #fff;
+                        cursor: default;
+                        margin-left: -1px;
+                        text-decoration: none;
+                    }    
+                } 
+
+                &.disabled {
+
+					> a {
+					    color: #999;
+						text-decoration: none;
+						cursor: default;
+					}
+				}	
+            }
+        }
+    }    
+
+    &.tabs-left {
+        min-height: 200px;
+        @include bordered(#d8d8d8, #d8d8d8, #d8d8d8, #d8d8d8);
+        margin-top: 10px;
+
+        > .nav {
+            list-style: none;
+            background-color: #fff;
+        }
+
+        > .nav-tabs {
+            margin: 0 20px 10px 0;
+            padding: 0;
+            border: 0;
+            float: left; 
+
+            &:before,
+            &:after {
+                display: table;
+                line-height: 0;
+                content: "";
+            }
+
+            &:after {
+                clear: both;
+            }
+
+            > li {
+                margin-bottom: -2px;
+                float: none;
+
+                > a {
+                    @include border-radius(0);
+                    @include font(11px, 22px, bold);
+                    @include bordered(transparent, #d8d8d8, #d8d8d8, transparent);
+                    color: $color-blue-dark-3;
+                    background-color: #f1f1f1;
+                    padding: 3px 15px;
+                    margin-right: 1px;
+                    margin-bottom: 3px;
+                    min-width: 74px;
+                    cursor: pointer;
+                    display: block;
+                }
+
+                &.active {
+
+                    > a,
+                    > a:hover,
+                    > a:focus {
+                        @include bordered(transparent, transparent, #d8d8d8, transparent);
+                        color: $color-orange-dark;
+                        background-color: #fff;
+                        cursor: default;
+                        text-decoration: none;
+                    }    
+                }
+
+                &.disabled {
+
+					> a {
+					    color: #999;
+						text-decoration: none;
+						cursor: default;
+					}
+				}				
+            }
+        }
+    }
+
+    .tab-content {
+        padding: 6px;
+        background-color: #fff;
+        min-height: 60px;
+
+        .tab-pane {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+}
