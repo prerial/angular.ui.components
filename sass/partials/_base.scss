@@ -38,6 +38,31 @@ body {
   */
 }
 
+.ngview.ng-enter,
+.ngview.ng-leave {
+  -webkit-transition: 600ms linear all;
+  -moz-transition: 600ms linear all;
+  -ms-transition: 600ms linear all;
+  -o-transition: 600ms linear all;
+  transition: 600ms linear all;
+}
+
+.ngview.ng-enter {
+  opacity:0;
+}
+
+.ngview.ng-enter-active {
+  opacity:1;
+}
+
+.ngview.ng-leave {
+  opacity:.4;
+}
+
+.ngview.ng-leave-active {
+  opacity:0;
+}
+
 /*
 * {
   box-sizing: border-box;
