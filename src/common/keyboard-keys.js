@@ -1,7 +1,7 @@
 /**
  * Created by Mikhail on 1/5/2016.
  */
-(function (angular) {
+(function () {
     'use strict';
 
     var alpha = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase(),
@@ -57,4 +57,5 @@
     }
 
     angular.module('prerial').constant('KeyboardKeys', keys);
-})(angular);
+
+})();

@@ -27,11 +27,12 @@ body {
   box-sizing: border-box;
   position: absolute;
   right: 0;
-  left: 238px;
-  overflow-y: auto;
   top: 0;
   bottom: 0;
-  /*
+  left: 238px;
+  overflow-y: auto;
+  margin-left:40px;
+  /* style="float:left;overflow:auto"
           top: 47px;
           bottom: 58px;
           padding: 0 20px 20px;

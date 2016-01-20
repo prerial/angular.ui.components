@@ -20,8 +20,6 @@
         }
     }
 
-    TabsContainer.$inject = ['$timeout'];
-
     angular.module('prerial').directive({preTabsContainer: TabsContainer});
 
 })();

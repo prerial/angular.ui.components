@@ -1,5 +1,5 @@
 
-(function (angular, $) {
+(function () {
     'use strict';
 
     prerialModalFactory.$inject = ['$rootScope', '$window', '$compile', '$templateCache', 'TemplateService', 'PositioningService'];
@@ -18,12 +18,12 @@
 
             function compileTemplate(tmpl) {
                 return $compile($templateCache.get(tmpl));
-            };
+            }
 
             function centerModal() {
                 var win = modalEl.children();
                 positioningService.centerElement(modalEl, windowEl, -win.prop('offsetHeight') / 2, -win.prop('offsetWidth') / 2);
-            };
+            }
 
             this.show = function () {
                 var scope = $rootScope.$new();
@@ -56,7 +56,7 @@
 
                 centerModal(scope.wrapper);
                 $(window).on('resize', centerModal);
-            }
+            };
 
             function destroy() {
                 $(window).off('resize', centerModal);
@@ -72,4 +72,4 @@
 
     angular.module('prerial').factory({ 'prerialModal': prerialModalFactory });
 
-}(angular, jQuery));
+}());
