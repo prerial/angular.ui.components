@@ -7,7 +7,7 @@
 
     function ContextMenu(templateService) {
 
-        var TEMPLATE_ERROR_MESSAGE = 'Unable to load menu content';
+        var TEMPLATE_ERROR = 'Unable to load menu content';
 
         return {
             controller: function () {
@@ -16,32 +16,22 @@
             require: ['preContextMenu'],
             compile: function (tElem, tAttrs) {
 
-                var menuTemplateUrl = tAttrs.preContextMenu,
-                    menuTemplate = templateService.get(menuTemplateUrl);
+                var menuTemplateUrl = tAttrs.preContextMenu, menuTemplate = templateService.get(menuTemplateUrl);
 
                 if (!menuTemplateUrl) {
                     throw new Error('Context menu is missing required template URL!');
                 }
 
                 return function link(scope, elem, attrs, ctrl) {
-                    var mouseOffset = 10, offset,
-                        saContextMenu = ctrl[0],
+                    var mouseOffset = 10,
+                        offset,
+                        contextMenuController = ctrl[0],
                         menuContainer = null,
-                        contextScope,
-                        containerConfig = {
-                            closeOnBlur: {
-                                ignoreChildren: true
-                            },
-                            closeOnScroll: true,
-                            closeOnResize: true,
-                            onClose: function () {
-                                contextScope.$destroy();
-                            }
-                        };
+                        contextScope;
 
                     elem.bind('contextmenu.pre-context-menu', function (e) {
 
-                        if (!saContextMenu.enabled) {
+                        if (!contextMenuController.enabled) {
                             return;
                         }
                         e.preventDefault();
@@ -65,32 +55,26 @@
                             });
                             contextScope.$digest();
                         }, function () {
-                            menuContainer.append(TEMPLATE_ERROR_MESSAGE + ' from \'' + menuTemplateUrl + '\'');
+                            menuContainer.append(TEMPLATE_ERROR + ' from \'' + menuTemplateUrl + '\'');
                         }).always(function () {
                              menuContainer.css({left: (e.clientX + mouseOffset),top: (e.clientY + mouseOffset)}).show();
                         });
-                     });
+                    });
 
-                    /**
-                     * Close menu and cleanup the scope when originating element is destroyed
-                     */
-                    elem.on('$destroy', function () {
+                    function onDestroy(){
                         if (contextScope) {
                             contextScope.closeMenu();
                             contextScope.$destroy();
                             contextScope = null;
                         }
+                    }
+
+                    elem.on('$destroy', function () {
+                        onDestroy();
                     });
 					
-                    /**
-                     * Cleanup memory on Scope.$destroy
-                     */
                     scope.$on('$destroy', function () {
-                        if (contextScope) {
-                            contextScope.closeMenu();
-                            contextScope.$destroy();
-                            contextScope = null;
-                        }
+                        onDestroy();
                         elem.off('.pre-context-menu');
                     });
                 };
