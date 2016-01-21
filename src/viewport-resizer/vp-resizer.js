@@ -10,7 +10,6 @@ angular.module('prerial')
             link: function(scope, element) {
 
                 var body = $('body'), nextSibling, w, h, nsw, nsh, dir = scope.rDirection, start;
-
                 element.addClass('resizable');
                 element.css('width', scope.rWidth);
                 nextSibling = element.next();

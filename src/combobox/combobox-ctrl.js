@@ -1,4 +1,4 @@
-(function (document, angular) {
+(function () {
     'use strict';
 
     function ComboBoxController(scope, attrs, elem, parse) {
@@ -46,4 +46,4 @@
 
     angular.module('prerial').controller('ComboBoxController', ComboBoxController);
 
-})(document, angular);
+})();

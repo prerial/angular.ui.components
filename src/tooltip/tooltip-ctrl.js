@@ -30,7 +30,7 @@
 //            dimensions = tooltipService.getDimensions(elem, $('.tooltip-container'), $('.tooltip-tooltip-arrow'), true);
                 var top = elem.offset().top - ($('.tooltip-container').height() + elem.height());
                 var left = e.clientX - elem.width()/2;
-                template.css('left', left).css('top', top).stop(true,true).fadeIn(2000);
+                template.css('left', left).css('top', top).stop(true,true).hide(2000);
 
 //            })
         };

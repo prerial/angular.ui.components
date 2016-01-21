@@ -53,10 +53,11 @@
                                 }
                                 menuContainer.append(contents);
                             });
-                            contextScope.$digest();
+ //                           contextScope.$apply();
+ //                           contextScope.$digest();
                         }, function () {
                             menuContainer.append(TEMPLATE_ERROR + ' from \'' + menuTemplateUrl + '\'');
-                        }).always(function () {
+                        }).finally(function () {
                              menuContainer.css({left: (e.clientX + mouseOffset),top: (e.clientY + mouseOffset)}).show();
                         });
                     });

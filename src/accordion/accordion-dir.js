@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    function AccordionDirective($timeout) {
+    function AccordionDirective() {
 
         return {
             restrict: 'E',
@@ -19,8 +19,6 @@
             transclude: true
         }
     }
-
-    AccordionDirective.$inject = ['$timeout'];
 
     angular.module('prerial').directive({preAccordion: AccordionDirective});
 

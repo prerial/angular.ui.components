@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    function AccordionController(scope, attrs, elem, parse) {
+    function AccordionController(elem) {
 
         this.hide = function(){
             angular.element(elem).children().each(function(idx, item){
@@ -13,7 +13,7 @@
         };
     }
 
-    AccordionController.$inject = ['$scope', '$attrs', '$element', '$parse'];
+    AccordionController.$inject = ['$element'];
 
     angular.module('prerial').controller('AccordionController', AccordionController);
 

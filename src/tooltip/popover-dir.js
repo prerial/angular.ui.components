@@ -16,7 +16,7 @@
 
                 tElement.attr("title","");
 
-                var customContent = tElement.find(".custom-content")
+                var customContent = tElement.find(".custom-content");
 
                 if (customContent.length>0) {
                     tAttrs.customContent = customContent[0].outerHTML;
@@ -35,23 +35,17 @@
                     popoverCtrl.init(elem, attrs);
 
                     function showTooltip(e){
-                        var containerEl;
-                        containerEl = popoverCtrl.showTooltip(e);
-
+                        popoverCtrl.showTooltip(e);
                     }
 
                     if (attrs.toggleMode === 'click') {
-
                         elem.on("click.poEvents", showTooltip);
-
                     } else {
-
                         elem.on("mouseover.poEvents", showTooltip);
-
                         elem.on("mouseout.poEvents", popoverCtrl.hideTooltip);
                     }
 
-                    elem.on("$destroy", function(e){
+                    elem.on("$destroy", function(){
                         elem.off(".poEvents");
                         popoverCtrl.cleanUp();
                     });

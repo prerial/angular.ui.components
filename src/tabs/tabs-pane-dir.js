@@ -14,9 +14,9 @@
             scope:true,
             transclude: true,
             link: function (scope, elem, attrs, controllers) {
-                var blnShow = false;
+
                 scope.title = attrs.title;
-                scope.selected = attrs.selected === 'true'? true : false;
+                scope.selected = attrs.selected === 'true';
                 var tabsController = controllers[0];
                 var tabitem =  {
                     title:attrs.title,
