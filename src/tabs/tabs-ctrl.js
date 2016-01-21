@@ -16,8 +16,10 @@
             tabArray.each(function(idx, item){
                 scope.tabsitems[idx].selected = tab.index === scope.tabsitems[idx].index;
                 angular.element(item).scope().hidePane();
+                if(idx === tabArray.length-1){
+                    angular.element(tabArray[tab.index]).scope().selectPane();
+                }
             });
-            angular.element(tabArray[tab.index]).scope().selectPane();
         };
     }
 
