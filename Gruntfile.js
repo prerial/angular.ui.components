@@ -99,6 +99,29 @@ module.exports = function(grunt) {
 				}
 			}
 		}
+
+		,
+		compass: {                  // Task
+			dist: {                   // Target
+				options: {              // Target options
+					sassDir: 'sass',
+					cssDir: 'target/css',
+					environment: 'production'
+				}
+			},
+			dev: {                    // Another target
+				options: {
+					sassDir: 'sass',
+					cssDir: 'target/css'
+				}
+			},
+			compileWithConfigFile: {
+				options: {
+					config: 'config.rb'
+				}
+
+			}
+		}
 	});
 
 	// Before generating any new files, remove any previously-created files.
@@ -106,7 +129,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
-//	grunt.loadNpmTasks('grunt-contrib-compass');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 //	grunt.loadNpmTasks('grunt-protractor-runner');
 //	grunt.loadNpmTasks('grunt-run');
 
@@ -128,6 +151,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-angular-templates');
 
 	// Default task(s).
-	grunt.registerTask('build', ['ngtemplates', 'concat', 'sass']);
-	grunt.registerTask('default', ['ngtemplates', 'concat', 'sass']);
+	grunt.registerTask('build', ['ngtemplates', 'concat', 'compass']);
+	grunt.registerTask('default', ['ngtemplates', 'concat', 'compass']);
 };
