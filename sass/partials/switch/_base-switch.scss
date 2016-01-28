@@ -1,0 +1,36 @@
+
+%button-label {
+  position: relative;
+  font-family: verdana, Arial, sans-serif;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  float:left;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  width: 50% ;
+  &.on {
+    background-color: $pink-dark;
+    color: $white;
+  }
+}
+.pre-switch-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block ;
+  border: 1px solid $gray;
+  border-radius: 20px;
+  cursor: pointer;
+  height: 40px ;
+  line-height: 40px ;
+  width: 120px ;
+    div.label-on {
+      border-radius: 3px 0 0 3px ;
+      @extend %button-label;
+    }
+    div.label-off {
+      border-radius: 0 3px 3px 0 ;
+      @extend %button-label;
+    }
+}

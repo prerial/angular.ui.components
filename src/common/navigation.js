@@ -80,6 +80,11 @@
             {
                 route: '/context-menu',
                 config: {controller: 'ContextMenuCtrl', templateUrl:'partials/context-menu.html'}
+            },
+            'Switch':
+            {
+                route: '/switch',
+                config: {controller: 'SwitchCtrl', templateUrl:'partials/switch.html'}
             }
         });
 
