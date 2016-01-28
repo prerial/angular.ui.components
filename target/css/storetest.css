@@ -1,0 +1,22 @@
+body { padding-top: 70px; }
+.my-class {
+    margin:0;
+    margin-left:300px;
+}
+
+@media (max-width: 767px) {
+    .my-class {
+        margin-left:0;
+    }
+}
+
+.my-title {
+    font-size: 21px !important;
+}
+
+.my-nav {
+    width:280px;
+    position: absolute;
+    float:left;
+}
+
