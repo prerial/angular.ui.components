@@ -1,7 +1,6 @@
 
 %button-label {
-  position: relative;
-  font-family: verdana, Arial, sans-serif;
+  font-family: Arial, verdana, sans-serif;
   top: 0;
   bottom: 0;
   left: 0;
@@ -9,11 +8,13 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+  color: $lighter-black;
+  background-color: transparent;
   width: 50%;
   &.on {
     border-radius: 20px;
+    color: $light-black;
     background-color: $white;
-    color: $lighter-black;
   }
 }
 .pre-switch-button {
@@ -27,18 +28,11 @@
   line-height: 40px ;
   width: 80px ;
   background-color: $pink;
-
   &.on {
     background-color: $green;
     border: 1px solid $dark-green;
   }
   div.label-on, div.label-off {
     @extend %button-label;
-  }
-  div.label-on {
-    background-color: transparent;
-  }
-  div.label-off {
-    background-color: transparent;
   }
 }
