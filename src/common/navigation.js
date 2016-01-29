@@ -85,6 +85,11 @@
             {
                 route: '/switch',
                 config: {controller: 'SwitchCtrl', templateUrl:'partials/switch.html'}
+            },
+            'Badge':
+            {
+                route: '/badge',
+                config: {controller: 'BadgeCtrl', templateUrl:'partials/badge.html'}
             }
         });
 
