@@ -9,28 +9,36 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  width: 50% ;
+  width: 50%;
   &.on {
-    background-color: $pink-dark;
-    color: $white;
+    border-radius: 20px;
+    background-color: $white;
+    color: $lighter-black;
   }
 }
 .pre-switch-button {
   position: relative;
   overflow: hidden;
   display: inline-block ;
-  border: 1px solid $gray;
+  border: 1px solid $dark-red;
   border-radius: 20px;
   cursor: pointer;
   height: 40px ;
   line-height: 40px ;
-  width: 120px ;
-    div.label-on {
-      border-radius: 3px 0 0 3px ;
-      @extend %button-label;
-    }
-    div.label-off {
-      border-radius: 0 3px 3px 0 ;
-      @extend %button-label;
-    }
+  width: 80px ;
+  background-color: $pink;
+
+  &.on {
+    background-color: $green;
+    border: 1px solid $dark-green;
+  }
+  div.label-on, div.label-off {
+    @extend %button-label;
+  }
+  div.label-on {
+    background-color: transparent;
+  }
+  div.label-off {
+    background-color: transparent;
+  }
 }
