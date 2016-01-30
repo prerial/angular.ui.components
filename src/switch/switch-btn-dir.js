@@ -25,7 +25,7 @@
 
                 element.on( "click", function( event ) {
                     var target = angular.element( event.target );
-                    scope.switchIsOn = target.hasClass( "label-on" );
+                    scope.switchIsOn = target.parent().hasClass( "label-on" );
                     ngModelController.$setViewValue( scope.switchIsOn );
                     scope.$apply()
                 });
