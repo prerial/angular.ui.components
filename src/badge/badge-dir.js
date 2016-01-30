@@ -7,31 +7,31 @@
     angular.module('prerial').directive('preBadge', function () {
         return {
             restrict: 'E',
+            replace: true,
             scope: {
                 notification: '=',
                 className: '@',
                 onClick: '&'
             },
             templateUrl: 'src/badge/badge.html',
-            compile: function (tElement, tAttrs) {
-                if (!tAttrs.notification) {
-                    throw new Error('Sambuca Badge Icon require an expression to bind to.');
+            link: function(scope, element, attrs) {
+
+                if (!attrs.notification) {
+                    throw new Error('Badge Icon require an expression to bind to.');
                 }
-                return function (scope, element, attrs) {
 
-                    scope.iconAlign = attrs.iconAlign;
+                scope.iconAlign = attrs.iconAlign;
 
-                    scope.notificationLabel = scope.notification > 9 ? "9+" : scope.notification;
+                scope.notificationLabel = scope.notification > 9 ? "9+" : scope.notification;
 
-                    scope.handleClick = function () {
-                        scope.notification = 0;
-                        if (scope.onClick) {
-                            scope.onClick();
-                        }
-                    };
+                scope.handleClick = function () {
+                    scope.notification = 0;
+                    if (scope.onClick) {
+                        scope.onClick();
+                    }
                 };
             }
-        };
+        }
     });
 
 })();
