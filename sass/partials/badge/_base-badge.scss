@@ -1,0 +1,48 @@
+.pre-badge {
+  position: relative;
+  width: 23px;
+  height: 20px;
+  cursor: pointer;
+
+  .add-on {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    // Need fixed New icon position.
+    &.pre-icon-mail {
+      background-position: -70px -120px;
+      width: 13px;
+      height: 13px;
+    }
+    &.aaa {
+      background-color: $gray;
+      width: 23px;
+      height: 23px;
+    }
+
+    // Need fixed New icon position.
+    &.pre-icon-alert {
+      background-position: -70px -120px;
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  .notification {
+    position: absolute;
+    top: -3px;
+    left: 10px;
+    min-height: 15px;
+    min-width: 15px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid $color-white;
+    background-color: $color-orange-golden;
+
+    &.left {
+      left: -15px;
+    }
+  }
+}
