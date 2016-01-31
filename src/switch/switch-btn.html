@@ -1,8 +1,8 @@
 <div  class="pre-switch-button" ng-class="{ bg: switchIsOn }">
-    <div class="label-off" ng-class="{ on: !switchIsOn }">
-        {{textOff}}
+    <div class="label-off">
+        <div class="handle" ng-class="{ on: !switchIsOn }">{{textOff}}</div>
     </div>
-    <div class="label-on" ng-class="{ on: switchIsOn }">
-        {{textOn}}
+    <div class="label-on">
+        <div class="handle" ng-class="{ on: switchIsOn }">{{textOn}}</div>
     </div>
 </div>

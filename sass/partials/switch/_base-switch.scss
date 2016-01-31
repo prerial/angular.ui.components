@@ -8,14 +8,9 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  color: $lighter-black;
+  color: $white;
   background-color: transparent;
   width: 50%;
-  &.on {
-    border-radius: 20px;
-    color: $light-black;
-    background-color: $white;
-  }
 }
 .pre-switch-button {
   position: relative;
@@ -30,9 +25,35 @@
   background-color: $pink;
   &.bg {
     background-color: $green;
-    border: 1px solid $dark-green;
+    border: 1px solid $darker-green;
   }
   div.label-on, div.label-off {
     @extend %button-label;
+    .handle{
+      height: 38px;
+      width: 38px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      background-color: transparent;
+      &.on {
+        background-color: $white;
+      }
+    }
+  }
+  div.label-on {
+    .handle{
+      &.on {
+        border: 1px solid $darker-green;
+        color: $dark-green;
+      }
+    }
+  }
+  div.label-off {
+    .handle{
+      &.on {
+        border: 1px solid $dark-red;
+        color: $color-red-dark;
+      }
+    }
   }
 }
