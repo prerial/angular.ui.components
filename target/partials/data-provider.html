@@ -20,14 +20,16 @@
 			</dt-action>
 		</dt-data-provider>
 
+            query='q=select * from local.search where query="pizza" and location="One New York Plaza, NY 10004"'
+
 -->
 <dt-data-provider id="pizzaData">
     <dt-action
             name="pizza"
             method="JSONP"
             url="http://query.yahooapis.com/v1/public/yql/"
-            query='q=select * from local.search where query="pizza" and location="One New York Plaza, NY 10004"&format=json',
-            schema="query.results.Result",
+			query='q=select * from local.search where query="pizza" and location="One New York Plaza, NY 10004"&format=json&env=store://datatables.org/alltableswithkeys'
+            schema="query.results.Result"
             on-load="onDataLoad(data)">
     </dt-action>
 </dt-data-provider>
