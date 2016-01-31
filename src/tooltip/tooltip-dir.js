@@ -9,14 +9,14 @@
             controller: 'TooltipController',
             link: function (scope, elem, attrs, controllers) {
 
-                var comboboxController = controllers[0];
+                var controller = controllers[0];
 
                 elem.on("mouseover", function(e) {
-                    comboboxController.showTooltip(e);
+                    controller.showTooltip(e);
                 });
 
                 elem.on("mouseout", function(e) {
-                    comboboxController.hideTooltip(e);
+                    controller.hideTooltip(e);
                 });
             }
         }

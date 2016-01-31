@@ -4,20 +4,19 @@
 (function () {
     'use strict';
 
-    function TooltipController( attrs, elem, $templateCache, tooltipService, Debounce) {
+    function TooltipController( attrs, elem, $templateCache) {
 
-        var titleHold, template, dimensions;
+        var titleHold, template;
 
         this.hideTooltip = function() {
             if (template) {
-                Debounce(1000,function(){
-                    elem.attr("title", titleHold);
-                    template.remove();
-                })
+                elem.attr("title", titleHold);
+                template.remove();
             }
         };
 
         this.showTooltip = function(e) {
+
             titleHold = elem.attr("title");
             elem.attr("title", "");
             if (!template) {
@@ -25,19 +24,16 @@
             }
             template.find('.tooltip-inner').html(attrs.title);
             template.addClass("pre-tooltip tooltip top").show();
- //           Debounce(200,function(){
-                $('body').append(template);
-//            dimensions = tooltipService.getDimensions(elem, $('.tooltip-container'), $('.tooltip-tooltip-arrow'), true);
-                var top = elem.offset().top - ($('.tooltip-container').height() + elem.height());
-                var left = e.clientX - elem.width()/2;
-                template.css('left', left).css('top', top).stop(true,true).hide(2000);
+            $('body').append(template);
+            var top = elem.offset().top - ($('.tooltip-container').height() + elem.height());
+            var left = e.clientX - elem.width()/2;
+            template.css('left', left).css('top', top).stop(true,true);
 
-//            })
         };
 
     }
 
-    TooltipController.$inject = ['$attrs', '$element', '$templateCache','TooltipService', 'Debounce'];
+    TooltipController.$inject = ['$attrs', '$element', '$templateCache'];
 
     angular.module('prerial').controller('TooltipController', TooltipController);
 
