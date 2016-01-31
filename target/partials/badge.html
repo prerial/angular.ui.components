@@ -4,32 +4,34 @@
     <style>
         .pre-badge {
             float: left;
-            margin: 20px;
+            margin-right: 20px;
         }
     </style>
 
     <div style="width: 300px">
 
-        <pre-badge notification="notification3" class-name="aaa" on-click="customClick()">
+        <pre-badge ng-model="notification3" class-name="aaa" on-click="customClick()">
             <div class="pre-badge" ng-click="handleClick()">
-                <div class="add-on aaa" style="width:20px;height:20px;background: blue"></div>
+                <div class="add-on"></div>
                 <div class="ng-hide" ng-class="{notification: 1}" ng-show="notification"></div>
             </div>
         </pre-badge>
 
-        <pre-badge notification="notification1" class-name="aaa" on-click="customClick()">
+        <pre-badge ng-model="notification1" class-name="aaa" on-click="customClick()">
             <div class="pre-badge" ng-click="handleClick()">
-                <div class="add-on aaa" style="width:20px;height:20px;background: blue"></div>
-                <div class="ng-hide" ng-class="{notification: 3}" ng-show="notification"></div>
-            </div>
-        </pre-badge>
-
-        <pre-badge notification="notification2" class-name="aaa">
-            <div class="pre-badge" ng-click="handleClick()">
-                <div class="add-on aaa" style="width:20px;height:20px;background: blue"></div>
+                <div class="add-on"></div>
                 <div class="ng-hide" ng-class="{notification: 1}" ng-show="notification"></div>
             </div>
         </pre-badge>
+
+        <pre-badge ng-model="notification2" class-name="aaa">
+            <div class="pre-badge" ng-click="handleClick()">
+                <div class="add-on"></div>
+                <div class="ng-hide" ng-class="{notification: 1}" ng-show="notification"></div>
+            </div>
+        </pre-badge>
+        <br /><br /><br />
+        <button style="display:block;position: absolute" ng-click="setNotifications()">Set Random</button>
 
     </div>
 

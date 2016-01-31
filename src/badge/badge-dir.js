@@ -8,21 +8,19 @@
         return {
             restrict: 'E',
             replace: true,
+            require: 'ngModel',
             scope: {
                 notification: '=',
                 className: '@',
                 onClick: '&'
             },
             templateUrl: 'src/badge/badge.html',
-            link: function(scope, element, attrs) {
+            link: function(scope, element, attributes, ngModelController) {
 
-                if (!attrs.notification) {
-                    throw new Error('Badge Icon require an expression to bind to.');
-                }
-
-                scope.iconAlign = attrs.iconAlign;
-
-                scope.notificationLabel = scope.notification > 9 ? "9+" : scope.notification;
+                ngModelController.$render = function() {
+                    scope.notification = ngModelController.$viewValue;
+                    scope.badgeLabel = scope.notification > 9 ? "9+" : scope.notification;
+                };
 
                 scope.handleClick = function () {
                     scope.notification = 0;

@@ -14,6 +14,15 @@
             scope.customClick = function() {
                 $log.log('Custom click event handler fired');
             };
+            function getRandomIntInclusive(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            scope.setNotifications = function() {
+                scope.notification3 = getRandomIntInclusive(0, 20);
+                scope.notification1 = getRandomIntInclusive(0, 8);
+                scope.notification2 = getRandomIntInclusive(0, 10);
+
+            };
 
         }]);
 
