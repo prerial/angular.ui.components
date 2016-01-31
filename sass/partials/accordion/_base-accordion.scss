@@ -3,11 +3,9 @@
   display: block !important; /* yes, important */
 }
 
-
-.pre-accordion-ct {
+.pre-accordion-pane {
     padding:0;
     margin-bottom: 10px;
-/*    background-color: #e8e8e8; */
     @include pre-border-box;
 
     .pre-detail {
@@ -34,13 +32,7 @@
         @include bordered(#d1d1d1, transparent, #d1d1d1, transparent);
         
         .pre-toggle-switch {
-/*
-            position: absolute;
-            top:0;
-            left:0;
-*/
             @include pre-unselectable;
-
             .pre-icon-expand,
             .pre-icon-collapse {
                 width: 14px;

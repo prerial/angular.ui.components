@@ -15,12 +15,13 @@
             },
 
             togglePane: function(idx) {
+                var paneIsHidden = this.panes[idx].scope.accordionPaneShow;
                 for(var key in this.panes) {
                     if (this.panes.hasOwnProperty(key)) {
                         this.panes[key].scope.accordionPaneShow = false;
                     }
                 }
-                this.panes[idx].scope.accordionPaneShow = !this.panes[idx].scope.accordionPaneShow;
+                this.panes[idx].scope.accordionPaneShow = !paneIsHidden;
             }
         };
     }
