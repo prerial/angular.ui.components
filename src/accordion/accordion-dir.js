@@ -14,7 +14,6 @@
                 field: '@'
             },
             templateUrl: 'src/accordion/accordion.html',
-            controller: 'AccordionController',
             replace: true,
             transclude: true
         }

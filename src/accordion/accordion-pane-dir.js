@@ -4,29 +4,35 @@
 (function () {
     'use strict';
 
-    function AccordionPaneDirective() {
+    function AccordionPaneDirective(accordionService) {
 
         return {
             restrict: 'E',
-            require: ['^preAccordion'],
             scope: {
                 src: '='
             },
             templateUrl: 'src/accordion/accordion-pane.html',
             replace: true,
             transclude: true,
-            link: function (scope, elem, attrs, controllers) {
+            link: function (scope, elem, attrs) {
 
                 scope.title = attrs.title;
                 scope.idx = attrs.idx;
                 scope.accordionPaneShow = false;
 
+                accordionService.addPane({
+                    scope: scope,
+                    idx: attrs.idx
+                });
+
                 scope.toggle = function(idx){
-                    controllers[0].hide(elem, idx);
+                    accordionService.togglePane(idx);
                 };
             }
         }
     }
+
+    AccordionPaneDirective.$inject = ['accordionService'];
 
     angular.module('prerial').directive({preAccordionPane: AccordionPaneDirective});
 
