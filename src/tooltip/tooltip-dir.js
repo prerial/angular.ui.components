@@ -12,10 +12,12 @@
                 var controller = controllers[0];
 
                 elem.on("mouseover", function(e) {
+                    e.preventDefault();
                     controller.showTooltip(e);
                 });
 
                 elem.on("mouseout", function(e) {
+                    e.preventDefault();
                     controller.hideTooltip(e);
                 });
             }
