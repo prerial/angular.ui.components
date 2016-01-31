@@ -20,10 +20,6 @@
 
                 comboboxController.init(ngModelController);
                 scope.comboShow = false;
-                elem.find('.pre-combobox-toggle').on("click", function handleClickEvent() {
-                    scope.comboShow = !scope.comboShow;
-                    scope.$apply();
-                });
                 elem.find('.pre-dropdown-menu').width(elem.find('.pre-combobox').width() - 2);
 
             }

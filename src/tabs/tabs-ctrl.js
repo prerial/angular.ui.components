@@ -4,7 +4,8 @@
 (function () {
     'use strict';
 
-    function TabsContainerController(scope, elem) {
+    function TabsContainerController(scope) {
+
         scope.tabsitems = [];
 
         this.setTab = function(tab) {
@@ -12,18 +13,18 @@
         };
 
         scope.selectTab = function(tab){
-            var tabArray =  angular.element(elem).find('.tab-content').children();
-            tabArray.each(function(idx, item){
+            scope.tabsitems.forEach(function(item, idx){
                 scope.tabsitems[idx].selected = tab.index === scope.tabsitems[idx].index;
-                angular.element(item).scope().hidePane();
-                if(idx === tabArray.length-1){
-                    angular.element(tabArray[tab.index]).scope().selectPane();
+                if(tab.index == idx){
+                    item.scope.selectPane();
+                }else{
+                    item.scope.hidePane();
                 }
             });
         };
     }
 
-    TabsContainerController.$inject = ['$scope', '$element'];
+    TabsContainerController.$inject = ['$scope'];
 
     angular.module('prerial').controller('TabsContainerController', TabsContainerController);
 

@@ -11,6 +11,10 @@
             ngModel.$render = onRender;
         };
 
+        scope.toggleDropdown = function () {
+            scope.comboShow = !scope.comboShow;
+        };
+
         scope.isActive = function (item) {
             var isActive = false;
             if (matches.length === 1 && scope.selectedValue === item[attrs.field] ) {

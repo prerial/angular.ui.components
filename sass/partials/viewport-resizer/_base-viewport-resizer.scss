@@ -1,3 +1,13 @@
+.stretch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Can be changed by hand ;)*/
+  overflow: auto;
+}
+
 .viewport{
   ::-webkit-scrollbar {
     width: 10px;
