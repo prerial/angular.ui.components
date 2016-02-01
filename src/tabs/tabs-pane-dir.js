@@ -8,25 +8,25 @@
 
         return {
             restrict: 'E',
-            require: ['^preTabsContainer'],
+            require: '^preTabsContainer',
             templateUrl: 'src/tabs/tabs-pane.html',
             replace: true,
             scope:true,
             transclude: true,
-            link: function (scope, elem, attrs, controllers) {
+            link: function (scope, elem, attrs, tabsController) {
 
                 scope.title = attrs.title;
                 scope.selected = attrs.selected === 'true';
-                var tabsController = controllers[0];
-                var tabitem =  {
-                    title:attrs.title,
-                    index:attrs.index,
-                    content:elem.html(),
-                    disabled:attrs.disabled,
-                    selected:scope.selected
-                };
 
-                tabsController.setTab(tabitem);
+                tabsController.setTab({
+                        title:attrs.title,
+                        index:attrs.index,
+                        content:elem.html(),
+                        disabled:attrs.disabled,
+                        scope: scope,
+                        selected:scope.selected
+                    }
+                );
 
                 scope.hidePane = function(){
                     scope.selected = false;
