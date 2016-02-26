@@ -16,12 +16,12 @@
   line-height: $line-height;
   font-weight: $font-weight;
 }
-
+/*
 @mixin box-shadow ($inset, $x, $y, $blur, $color) {
   -webkit-box-shadow: $inset $x $y $blur $color;
   box-shadow: $inset $x $y $blur $color;
 }
-
+*/
 @mixin pre-transition-2 ($x, $y) {
   -webkit-transition: $x, $y;
   -moz-transition: $x, $y;
