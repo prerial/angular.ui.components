@@ -1,9 +1,6 @@
 /**
  * Created by Mikhail on 1/16/2016.
  */
-/**
- * Created by Mikhail on 1/16/2016.
- */
 (function() {
     'use strict';
 
