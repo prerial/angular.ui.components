@@ -43,10 +43,6 @@
   border-left: solid 1px $left-color;
 }
 
-@mixin border-radius($radius: 0) {
-  border-radius: $radius;
-}
-
 @mixin padding($top-padding: 10px, $right-padding: 10px, $bottom-padding: 10px, $left-padding: 10px) {
   padding-top: $top-padding;
   padding-right: $right-padding;
