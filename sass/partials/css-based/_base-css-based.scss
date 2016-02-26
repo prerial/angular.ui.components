@@ -17,120 +17,121 @@
 /* ============================================================
   SWITCH 1 - ROUND
 ============================================================ */
+input.cmn-toggle-round:checked + label:before {
+  background-color: $color-green-light;
+}
+input.cmn-toggle-round:checked + label:after {
+  margin-left: 30px;
+}
 input.cmn-toggle-round + label {
   padding: 2px;
   width: 60px;
   height: 30px;
-  background-color: #dddddd;
+  background-color: $color-gray-medium-5;
   @include border-radius(60px);
-}
-input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
-  display: block;
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  bottom: 1px;
-  content: "";
-}
-input.cmn-toggle-round + label:before {
-  right: 1px;
-  background-color: #f1f1f1;
-  @include border-radius(30px);
-  @include transition(background 0.4s);
-}
-input.cmn-toggle-round + label:after {
-  width: 28px;
-  background-color: #fff;
-  @include border-radius(100%);
-  @include box-shadow(0 2px 5px  rgba(0, 0, 0, 0.3));
-  @include transition(margin 0.4s);
-}
-input.cmn-toggle-round:checked + label:before {
-  background-color: #8ce196;
-}
-input.cmn-toggle-round:checked + label:after {
-  margin-left: 30px;
+  &:before, &:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+  }
+  &:before {
+    right: 1px;
+    background-color: $color-gray-light-3;
+    @include border-radius(30px);
+    @include transition(background 0.4s);
+  }
+  &:after {
+    width: 28px;
+    background-color: $white;
+    @include border-radius(100%);
+    @include box-shadow(0 2px 5px  rgba(0, 0, 0, 0.3));
+    @include transition(margin 0.4s);
+  }
 }
 
 /* ============================================================
   SWITCH 2 - ROUND FLAT
 ============================================================ */
+input.cmn-toggle-round-flat:checked + label {
+  background-color: $color-green-light;
+}
+input.cmn-toggle-round-flat:checked + label:after {
+  margin-left: 40px;
+  background-color: $color-green-light;
+}
 input.cmn-toggle-round-flat + label {
   padding: 2px;
   width: 80px;
   height: 40px;
-  background-color: #dddddd;
+  background-color: $color-gray-medium-5;
   @include border-radius(40px);
   @include transition(background 0.4s);
-}
-input.cmn-toggle-round-flat + label:before, input.cmn-toggle-round-flat + label:after {
-  display: block;
-  position: absolute;
-  content: "";
-}
-input.cmn-toggle-round-flat + label:before {
-  top: 2px;
-  left: 2px;
-  bottom: 2px;
-  right: 2px;
-  background-color: #fff;
-  @include border-radius(40px);
-  @include transition(background 0.4s);
-}
-input.cmn-toggle-round-flat + label:after {
-  top: 4px;
-  left: 4px;
-  bottom: 4px;
-  width: 32px;
-  background-color: #ddd;
-  @include border-radius(32px);
-  @include transition(margin 0.4s, background 0.4s);
-}
-input.cmn-toggle-round-flat:checked + label {
-  background-color: #8ce196;
-}
-input.cmn-toggle-round-flat:checked + label:after {
-  margin-left: 40px;
-  background-color: #8ce196;
+  &:before, &:after {
+    display: block;
+    position: absolute;
+    content: "";
+  }
+  &:before {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    background-color: $white;
+    @include border-radius(40px);
+    @include transition(background 0.4s);
+  }
+  &:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 32px;
+    background-color: $color-gray-medium-5;
+    @include border-radius(32px);
+    @include transition(margin 0.4s, background 0.4s);
+  }
 }
 
 /* ============================================================
   SWITCH 3 - YES NO
 ============================================================ */
-input.cmn-toggle-yes-no + label {
-  padding: 2px;
-  width: 80px;
-  height: 40px;
-}
-input.cmn-toggle-yes-no + label:before, input.cmn-toggle-yes-no + label:after {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  color: #fff;
-  font-family: "Roboto Slab", serif;
-  font-size: 16px;
-  text-align: center;
-  line-height: 40px;
-}
-input.cmn-toggle-yes-no + label:before {
-  background-color: #dddddd;
-  content: attr(data-off);
-  @include transition(transform 0.5s);
-  @include backface-visibility(hidden);
-}
-input.cmn-toggle-yes-no + label:after {
-  background-color: #8ce196;
-  content: attr(data-on);
-  @include transition(transform 0.5s);
-  @include transform(rotateY(180deg));
-  @include backface-visibility(hidden);
-}
 input.cmn-toggle-yes-no:checked + label:before {
   @include transform(rotateY(180deg));
 }
 input.cmn-toggle-yes-no:checked + label:after {
   @include transform(rotateY(0deg));
 }
+input.cmn-toggle-yes-no + label {
+  padding: 2px;
+  width: 80px;
+  height: 40px;
+  &:before, &:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: $white;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+  }
+  &:before {
+     background-color: $color-gray-medium-5;
+     content: attr(data-off);
+     @include transition(transform 0.5s);
+     @include backface-visibility(hidden);
+  }
+  &:after {
+    background-color: $color-green-light;
+    content: attr(data-on);
+    @include transition(transform 0.5s);
+    @include transform(rotateY(180deg));
+    @include backface-visibility(hidden);
+  }
+}
+
