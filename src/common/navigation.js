@@ -90,6 +90,11 @@
             {
                 route: '/badge',
                 config: {controller: 'BadgeCtrl', templateUrl:'partials/badge.html'}
+            },
+            'Icons':
+            {
+                route: '/icons',
+                config: {controller: 'IconsCtrl', templateUrl:'partials/icons.html'}
             }
         });
 
