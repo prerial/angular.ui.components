@@ -20,7 +20,14 @@
 
             scope.setRating = function(evt) {
                 var idx = evt.target.dataset.index;
-                scope.isRated[idx] = !scope.isRated[idx];
+                scope.isRated.forEach(function(value, index){
+                    if(index <= +idx){
+                        scope.isRated[index] = true;
+                    }else{
+                        scope.isRated[index] = false;
+                    }
+//                    scope.isRated[idx] = !scope.isRated[idx];
+                })
             };
             scope.customClick = function() {
                 $log.log('Custom click event handler fired');
