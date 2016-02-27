@@ -21,11 +21,7 @@
             scope.setRating = function(evt) {
                 var idx = evt.target.dataset.index;
                 scope.isRated.forEach(function(value, index){
-                    if(index <= +idx){
-                        scope.isRated[index] = true;
-                    }else{
-                        scope.isRated[index] = false;
-                    }
+                    index <= +idx? scope.isRated[index] = true : scope.isRated[index] = false;
                 })
             };
 
