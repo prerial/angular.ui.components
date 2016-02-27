@@ -1,0 +1,108 @@
+@mixin pre-spinner-animation($args) {
+  @include animation($args);
+}
+@mixin pre-spinner-animation-delay($args){
+  @include animation-delay($args);
+}
+@mixin pre-spinner-animation-play-state($args) {
+  @include animation-play-state($args);
+}
+@mixin pre-spinner-transform($args) {
+  @include transform($args);
+}
+.pre-spinner {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  &.gray .pre-spinner-blade {
+    background-color: #8C8C8C;
+  }
+  &.animating .pre-spinner-blade {
+    @include animation-play-state(running);
+  }
+  &.large {
+    width: 35px;
+    height: 35px;
+  }
+  &.large .pre-spinner-blade {
+    width: 8.57143%;
+    height: 25.71429%;
+    @include border-radius(50%/16.67%);
+  }
+  .pre-spinner-blade {
+    position: absolute;
+    left: 44.5%;
+    top: 37%;
+    width: 10%;
+    height: 25%;
+    background-color: white;
+    @include border-radius(50%/20%);
+    @include animation(pre-spinner-blade-fade 1.6s linear infinite);
+    @include animation-play-state(paused);
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        @include pre-spinner-animation-delay(1.6s / 12 * ($i - 21));
+        @include pre-spinner-transform(rotate(#{360deg / 12 * $i}) translate(0, -150%));
+      }
+    }
+  }
+}
+@-webkit-keyframes pre-spinner-blade-fade {
+  0% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@keyframes pre-spinner-blade-fade {
+  0% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+.pre-loading {
+  border: 6px solid rgba(0, 0, 0, .1);
+  border-top: 6px solid rgba(0, 0, 0, .4);
+  @include border-radius(100%);
+  height: 20px;
+  width: 20px;
+  animation: rotate .9s infinite linear;
+  &.large{
+    height: 35px;
+    width: 35px;
+  }
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(359deg);}
+}
+
+ul.hamburger {
+  float: left;
+  cursor: pointer;
+  padding:0;
+  margin:0;
+  list-style-type: none;
+  li {
+    display: block;
+    text-align: left;
+    .hamburger-bar {
+      display: block;
+      width: 25px;
+      height: 4px;
+      background-color: $color-gray-light-8;
+      @include border-radius(3px);
+      margin: 0 auto 3px;
+    }
+  }
+}
