@@ -11,6 +11,17 @@
             scope.notification1 = 5;
             scope.notification2 = 11;
 
+            scope.isRated = [];
+            scope.isRated[0] = true;
+            scope.isRated[1] = true;
+            scope.isRated[2] = true;
+            scope.isRated[3] = true;
+            scope.isRated[4] = false;
+
+            scope.setRating = function(evt) {
+                var idx = evt.target.dataset.index;
+                scope.isRated[idx] = !scope.isRated[idx];
+            };
             scope.customClick = function() {
                 $log.log('Custom click event handler fired');
             };

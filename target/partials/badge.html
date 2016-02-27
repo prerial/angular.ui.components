@@ -34,5 +34,14 @@
         <button class="btn btn-primary" ng-click="setNotifications()">Set Random</button>
 
     </div>
+    <br /><br />
+
+        <ul class="pre-rating" ng-click="setRating($event)">
+            <li class="pre-rating-item" ng-class="isRated[0]?'is-active':''" data-index="0"></li>
+            <li class="pre-rating-item" ng-class="isRated[1]?'is-active':''" data-index="1"></li>
+            <li class="pre-rating-item" ng-class="isRated[2]?'is-active':''" data-index="2"></li>
+            <li class="pre-rating-item" ng-class="isRated[3]?'is-active':''" data-index="3"></li>
+            <li class="pre-rating-item" ng-class="isRated[4]?'is-active':''" data-index="4"></li>
+        </ul>
 
 </div>
