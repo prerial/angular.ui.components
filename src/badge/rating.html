@@ -1,0 +1,3 @@
+<ul class="pre-rating" ng-click="setRating($event)">
+    <li class="pre-rating-item" ng-repeat="rate in isRated track by $index" ng-class="isRated[{{$index}}]?'is-active':''" data-index="{{$index}}"></li>
+</ul>
