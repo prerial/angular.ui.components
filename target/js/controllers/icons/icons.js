@@ -7,7 +7,10 @@
     angular.module('prerial').controller('IconsCtrl', ['$scope',
 
         function (scope) {
-
+            scope.hamburgerCtr = 0;
+            scope.toggleHamburger = function(){
+                scope.hamburgerCtr++;
+            }
         }]);
 
 })();
