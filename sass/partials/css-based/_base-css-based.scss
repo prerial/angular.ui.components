@@ -142,38 +142,5 @@ input.cmn-toggle-yes-no + label {
   }
 }
 
-.loading {
-  border: 6px solid rgba(0, 0, 0, .1);
-  border-top: 6px solid rgba(0, 0, 0, .4);
-  @include border-radius(100%);
-  height: 50px;
-  width: 50px;
-  animation: rot .9s infinite linear;
-}
-
-@keyframes rot {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(359deg);}
-}
-
-ul.hamburger {
-  float: left;
-  cursor: pointer;
-  padding:0;
-  margin:0;
-  list-style-type: none;
-  li {
-    display: block;
-    text-align: left;
-    .hamburger-bar {
-      display: block;
-      width: 25px;
-      height: 4px;
-      background-color: $color-gray-light-8;
-      @include border-radius(3px);
-      margin: 0 auto 3px;
-    }
-  }
-}
 
 
