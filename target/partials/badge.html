@@ -35,7 +35,7 @@
 
     </div>
 
-    <br /><br />
+    <br /><br />Inline:
 
         <ul class="pre-rating" ng-click="setRating($event)">
             <li class="pre-rating-item" ng-class="isRated[0]?'is-active':''" data-index="0"></li>
@@ -44,5 +44,21 @@
             <li class="pre-rating-item" ng-class="isRated[3]?'is-active':''" data-index="3"></li>
             <li class="pre-rating-item" ng-class="isRated[4]?'is-active':''" data-index="4"></li>
         </ul>
+    <br />
+    <button class="btn btn-primary" ng-click="getRate(isRated, 'rate')" style="margin-right:12px">Get Rating</button>Rating: {{rate}}
+    <br /><br />
+    Directives:
+    <br />
+    <div>
+        <pre-rating on-click="getRating()" is-rated="isRated1"></pre-rating>
+    </div>
+    <br />
+    <button class="btn btn-primary" ng-click="getRate(isRated1, 'rate1')" style="margin-right:12px">Get Rating</button>Rating: {{rate1}}
+    <br /><br />
+    <div>
+        <pre-rating on-click="getRating()" is-rated="isRated2"></pre-rating>
+    </div>
+    <br />
+    <button class="btn btn-primary" ng-click="getRate(isRated2, 'rate2')" style="margin-right:12px">Get Rating</button>Rating: {{rate2}}
 
 </div>

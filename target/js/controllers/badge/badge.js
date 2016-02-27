@@ -11,12 +11,12 @@
             scope.notification1 = 5;
             scope.notification2 = 11;
 
-            scope.isRated = [];
-            scope.isRated[0] = true;
-            scope.isRated[1] = true;
-            scope.isRated[2] = true;
-            scope.isRated[3] = true;
-            scope.isRated[4] = false;
+            scope.rate = 0;
+            scope.rate1 = 0;
+            scope.rate2 = 0;
+            scope.isRated = [ true, true, true, true, false ];
+            scope.isRated1 = [ true, true, false, false ];
+            scope.isRated2 = [ true, true, true, true, true, true, true, true, true, true ];
 
             scope.setRating = function(evt) {
                 var idx = evt.target.dataset.index;
@@ -26,9 +26,19 @@
                     }else{
                         scope.isRated[index] = false;
                     }
-//                    scope.isRated[idx] = !scope.isRated[idx];
                 })
             };
+
+            scope.getRate = function(arr, disval) {
+                if(!arr) return;
+                scope[disval] = arr.length;
+                arr.forEach(function(value, index){
+                    if(value === true){
+                        scope[disval] = index + 1;
+                    }
+                });
+            };
+
             scope.customClick = function() {
                 $log.log('Custom click event handler fired');
             };
