@@ -28,6 +28,46 @@ body {
   box-sizing: border-box;
 }
 */
+ul.pre-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.pre-nav li.pre-nav-item {
+  display: flex;
+  flex: 0 0 20px;
+  cursor: pointer;
+  height:28px;
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.2em;
+  padding-right: 2em;
+}
+
+ul.pre-nav li.pre-nav-item div{
+  margin: auto 0;
+}
+ul.pre-nav li.pre-nav-item:hover div a{
+  margin: auto 0;
+  color:black;
+  font-weight:bold;
+  text-decoration: none;
+}
+
+ul.pre-nav li.pre-nav-item:hover {
+  background: lightgrey;
+}
+
+ul.pre-nav li.pre-nav-item:hover::before {
+  content: '';
+  position: absolute;
+  background: #009933;
+  top:0;
+  left:0;
+  height: 100%;
+  width: .5em;
+}
+
 .examples-pane{
   margin-top:40px;
 }

@@ -95,6 +95,11 @@
             {
                 route: '/icons',
                 config: {controller: 'IconsCtrl', templateUrl:'partials/icons.html'}
+            },
+            'Transitions':
+            {
+                route: '/transitions',
+                config: {controller: 'IconsCtrl', templateUrl:'partials/transitions.html'}
             }
         });
 
