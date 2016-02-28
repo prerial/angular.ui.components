@@ -24,6 +24,7 @@
 				.when(navigation['Switch'].route, navigation['Switch'].config)
 				.when(navigation['Badge'].route, navigation['Badge'].config)
 				.when(navigation['Icons'].route, navigation['Icons'].config)
+				.when(navigation['Transitions'].route, navigation['Transitions'].config)
 				.otherwise({
 					redirectTo: navigation['Home'].route
 				});
