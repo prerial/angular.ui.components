@@ -1,6 +1,24 @@
 <h2 style="margin:40px">Tooltip</h2>
 
 <div class="examples-pane">
+<!--
+    <div ng-repeat="item in items">
+        <span my-tooltip tooltip="item.description">
+            {{item.text}}
+        </span>
+    </div>
+    <div>
+        <span my-tooltip title="MMMMMM NNNNNNNN">
+           ZZZZZZZZZZZZZZZ
+        </span>
+    </div>
+-->
+    <div ng-repeat="item in items">
+        <a style="cursor:pointer;padding:4px" pre-tooltip tooltip="item.description">
+            {{item.text}}
+        </a><p>
+    </div>
+
     <pre>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Cras at nisl in massa cursus tincidunt. Nullam gravida orci odio,
@@ -8,9 +26,11 @@
     Ut volutpat lacinia libero eget blandit. Curabitur justo diam,
     consectetur eu interdum vel, consequat quis quam.
     </pre>
+
+
 </div>
 <div>
-    <a style="padding:2px" ng-href="http://www.google.com" pre-tooltip title="Default Content tooltip 1">MouseOver to show tooltip</a>
+    <a style="padding:2px" ng-href="http://www.google.com" pre-tooltip title="Title default content tooltip 1">MouseOver to show tooltip</a>
 
 </div>
 
