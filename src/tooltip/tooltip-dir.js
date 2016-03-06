@@ -35,8 +35,8 @@
         return {
             restrict: 'A',
             scope:{
-                tooltip:'=tooltip',
-                title:'@title'
+                tooltip:'=',
+                title:'@'
             },
             link: function (scope, elem, attrs) {
 
