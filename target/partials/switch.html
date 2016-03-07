@@ -1,14 +1,35 @@
 <div>
-    <h2 style="margin:40px">Switch button</h2>
+    <h2 style="margin:40px">Switch buttons</h2>
 
-    <pre-switch-button
-            ng-model="switchIsOn"
-            text-on="On"
-            text-off="Off">
-    </pre-switch-button>
-
+    <table>
+        <tr>
+            <td>
+                <div class="row" style="height:60px;display: -webkit-flex; display: flex;">
+                    <pre-switch-checkbox
+                            ng-model="switchOn"
+                            text-on="On"
+                            text-off="Off">
+                    </pre-switch-checkbox>
+                </div>
+            </td>
+            <td>
+                <pre-switch-button
+                        ng-model="switchIsOn"
+                        text-on="On"
+                        text-off="Off">
+                </pre-switch-button>
+            </td>
+        </tr>
+        <tr>
+            <td> <a ng-click="toggleSwitchCheck()">Toggle</a> : {{ switchOn }}</td>
+            <td> <a ng-click="toggleSwitchState()">Toggle</a> : {{ switchIsOn }}</td>
+        </tr>
+    </table>
     <p>
-        <a ng-click="toggleSwitchState()">Toggle</a> : {{ switchIsOn }}
+
+
+    </p>
+    <p>
     </p>
 
 </div>
