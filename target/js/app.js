@@ -13,6 +13,7 @@
 				.when(navigation['Notifications'].route, navigation['Notifications'].config)
 				.when(navigation['Combobox'].route, navigation['Combobox'].config)
 				.when(navigation['Tooltip'].route, navigation['Tooltip'].config)
+				.when(navigation['Typeahead'].route, navigation['Typeahead'].config)
 				.when(navigation['GridTag'].route, navigation['GridTag'].config)
 				.when(navigation['Buttons'].route, navigation['Buttons'].config)
 				.when(navigation['Form'].route, navigation['Form'].config)
