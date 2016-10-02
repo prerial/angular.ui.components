@@ -37,10 +37,15 @@
                     config: {controller: 'comboboxCtrl', templateUrl:'partials/combobox.html'}
             },
             'Tooltip':
-                {
-                    route: '/tooltip',
-                    config: {controller: 'tooltipCtrl', templateUrl:'partials/tooltip.html'}
-                },
+            {
+                route: '/tooltip',
+                config: {controller: 'tooltipCtrl', templateUrl:'partials/tooltip.html'}
+            },
+            'Typeahead':
+            {
+                route: '/typeahead',
+                config: {controller: 'typeaheadCtrl', templateUrl:'partials/typeahead.html'}
+            },
             'GridTag':
             {
                 route: '/gridtag',

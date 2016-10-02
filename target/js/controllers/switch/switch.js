@@ -8,9 +8,13 @@
         .controller('SwitchCtrl', ['$scope', function(scope) {
 
             scope.switchIsOn = false;
+            scope.switchOn = false;
 
+            scope.toggleSwitchCheck = function() {
+                scope.switchOn = !scope.switchOn;
+            };
             scope.toggleSwitchState = function() {
-                scope.switchIsOn = ! scope.switchIsOn;
+                scope.switchIsOn = !scope.switchIsOn;
             };
 
         }]);
