@@ -13,7 +13,6 @@
             {title:'Title 5', content: 'Title 5 Content'}
 
         ]
-//debugger
     }]);
 
 })();
