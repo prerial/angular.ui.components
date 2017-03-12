@@ -9,7 +9,7 @@
         {
             'Home': {
                     route: '/home',
-                    config: {controller: 'appController', template:'<h2 class="examples-pane">Controllers Home</h2>'}
+                    config: {controller: 'appController', template:'<h2 class="examples-pane">Components Home</h2>'}
             },
             'DataProvider':
                 {
