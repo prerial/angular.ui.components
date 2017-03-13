@@ -3,9 +3,9 @@
  */
 (function (angular) {
     'use strict';
-debugger
+
     angular.module('prerial').directive('preTypeahead',['$timeout', function ($timeout) {
-debugger
+
 //        typeAhead.directive('typeahead', function($timeout) {
         return {
             restrict: 'AEC',
@@ -22,7 +22,7 @@ debugger
                 onSelect:'&'
             },
             link:function(scope,elem,attrs){
-debugger
+
                 scope.handleSelection=function(selectedItem){
                     scope.model=selectedItem;
                     scope.current=0;
