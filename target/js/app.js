@@ -2,8 +2,9 @@
 	'use strict';
 
 	angular.module('prerial')
-	.config( ['$routeProvider', 'Navigation', function($routeProvider, navigation) {
+	.config( ['$locationProvider', '$routeProvider', 'Navigation', function($locationProvider, $routeProvider, navigation) {
 
+			$locationProvider.hashPrefix('');
 			$routeProvider
 
 				.when(navigation['Home'].route, navigation['Home'].config)

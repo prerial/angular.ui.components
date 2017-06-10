@@ -9,6 +9,8 @@ module.exports = function(config){
       'test/libs/angular/angular.js',
       'test/libs/angular/angular-route.js',
       'test/libs/angular/angular-resource.js',
+      'test/libs/angular/angular-animate.js',
+      'test/libs/bootstrap/ui-bootstrap-tpls-1.0.3.js',
       'test/libs/jquery/jquery.js',
       'test/libs/lodash/lodash.js',
       'test/libs/angular/angular-mocks.js',
@@ -24,7 +26,7 @@ module.exports = function(config){
       // 'app/partials/*.html',
 
       // include unit test specs
-      'test/mocks/*.js',
+      // 'test/mocks/*.js',
       // include unit test specs
       //  'test/unit/for-unit-test/*.js',
         'test/unit/*.js'
@@ -57,7 +59,7 @@ module.exports = function(config){
     //  'book/js/fortest/*.js': ['jshint', 'coverage']
     },
 
-    reporters: ['dots'/*, 'progress', 'coverage'*/],
+    reporters: ['dots', 'progress', 'coverage'],
 
     // list of karma plugins
     plugins : [
