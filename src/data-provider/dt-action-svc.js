@@ -10,7 +10,7 @@
 			}
 			return $http({method: param.method, url: param.url})
 
-			.success(function(data) {
+			.then(function(data) {
 				return data;
 			});
     	};
